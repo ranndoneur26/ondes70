@@ -198,6 +198,31 @@
   .segment.discover.active{background:var(--red);border-color:var(--red);color:var(--cream-3);}
   .segment:hover:not(.active){border-color:var(--ink);}
 
+  .synth-toggle-btn{
+    font-family:var(--mono);font-size:12px;letter-spacing:0.04em;padding:9px 15px;
+    border:1px solid var(--red);border-radius:999px;color:var(--red);
+    display:flex;align-items:center;gap:7px;transition:background .15s,color .15s;
+    white-space:nowrap;margin-left:8px;
+  }
+  .synth-toggle-btn:hover{background:var(--red-glow);}
+  .synth-toggle-btn.active{background:var(--red);border-color:var(--red);color:var(--cream-3);}
+  .synth-toggle-icon{font-size:13px;line-height:1;}
+  @media (max-width:640px){.synth-toggle-btn{margin-left:0;width:100%;justify-content:center;}}
+
+  /* ---------- SYNTH MARKERS (triangles) ---------- */
+  #synthMarkersGroup{display:none;}
+  #synthMarkersGroup.visible{display:block;}
+  #markersGroup.hidden{display:none;}
+  .synth-marker{cursor:pointer;}
+  .synth-marker polygon{fill:var(--red);stroke:var(--cream-3);stroke-width:1;transition:fill .15s;}
+  .synth-marker:hover polygon,.synth-marker:focus-visible polygon{fill:var(--red-dark);}
+  .synth-marker text{font-family:var(--mono);font-size:6.5px;fill:var(--red-dark);paint-order:stroke;stroke:var(--cream-3);stroke-width:2px;}
+  .synth-toggle-icon,.synth-marker polygon{color:var(--red);}
+
+  /* ---------- SYNTH POPUP CONTENT ---------- */
+  .synth-card-img{width:100%;max-width:320px;border-radius:3px;display:block;margin:0 0 14px;border:1px solid var(--line-strong);}
+  .synth-card-meta{font-family:var(--mono);font-size:12px;color:var(--grey);margin:0 0 4px;}
+
   /* ---------- LAYOUT ---------- */
   .layout{display:grid;grid-template-columns:1.25fr 1fr;gap:26px;align-items:start;}
   @media (max-width:960px){.layout{grid-template-columns:1fr;}}
@@ -444,6 +469,10 @@
       <button class="segment" data-segment="favorites" type="button">Preferits <span id="countFav">0</span></button>
       <button class="segment discover" data-segment="discover" type="button">Descobreix</button>
     </div>
+    <button class="synth-toggle-btn" id="synthToggleBtn" type="button" aria-pressed="false">
+      <span class="synth-toggle-icon" aria-hidden="true">△</span>
+      <span id="synthToggleLabel">Sintetitzadors</span>
+    </button>
   </section>
 
   <main class="layout">
@@ -1493,6 +1522,40 @@ var STATIONS = [
  descEn:`An experimental beacon connecting southern Africa with the sound laboratories of ${ref('stockhausen','Stockhausen')} and the European school.`}
 ];
 
+/* ================= SYNTHESIZERS (els 10 sintetitzadors més importants dels anys 70) ================= */
+var SYNTHS = [
+  {id:"s1", name:"Minimoog (Model D)", manufacturer:"Moog Music", city:"Trumansburg", country:"Estats Units", cityEn:"Trumansburg", countryEn:"United States", year:1970, lat:42.5309, lng:-76.6491, wikiTitle:"Minimoog",
+    history:`Versió compacta i portàtil del Moog modular, va ser el primer sintetitzador venut en botigues de música. El seu so càlid —fruit d'uns oscil·ladors que mai quedaven perfectament sincronitzats— i la seva roda de pitch el van convertir en un instrument de gira per a Kraftwerk, Tangerine Dream, Klaus Schulze i Stevie Wonder.`,
+    historyEn:`A compact, portable version of the modular Moog, it was the first synthesizer sold in retail stores. Its warm sound — born from oscillators that never stayed perfectly in sync — and its pitch wheel made it a touring instrument for Kraftwerk, Tangerine Dream, Klaus Schulze and Stevie Wonder.`},
+  {id:"s2", name:"Moog Modular (System 55)", manufacturer:"Moog Music", city:"Trumansburg", country:"Estats Units", cityEn:"Trumansburg", countryEn:"United States", year:1972, lat:42.5309, lng:-76.6491, wikiTitle:"Moog synthesizer",
+    history:`El sistema modular original de Robert Moog, amb els seus panells d'oscil·ladors, filtres i cables de connexió, va ser l'eina amb què es va gravar bona part de la Berlin School dels anys 70, incloent-hi discos clau de Tangerine Dream i Klaus Schulze.`,
+    historyEn:`Robert Moog's original modular system, with its patch-cable panels of oscillators and filters, was the tool behind much of the 1970s Berlin School sound, including key Tangerine Dream and Klaus Schulze recordings.`},
+  {id:"s3", name:"ARP 2600", manufacturer:"ARP Instruments", city:"Lexington", country:"Estats Units", cityEn:"Lexington", countryEn:"United States", year:1971, lat:42.4430, lng:-71.2290, wikiTitle:"ARP 2600",
+    history:`Semi-modular i portàtil, amb els seus tres oscil·ladors i l'altaveu integrat, es va convertir en un dels sintetitzadors més versàtils de la dècada, present en bandes sonores i en la producció de disco i electrònica experimental.`,
+    historyEn:`Semi-modular and portable, with three oscillators and a built-in speaker, it became one of the most versatile synthesizers of the decade, used across film scores, disco production and experimental electronic music.`},
+  {id:"s4", name:"ARP Odyssey", manufacturer:"ARP Instruments", city:"Lexington", country:"Estats Units", cityEn:"Lexington", countryEn:"United States", year:1972, lat:42.4430, lng:-71.2290, wikiTitle:"ARP Odyssey",
+    history:`Rival directe del Minimoog, aquest sintetitzador duofònic compacte va guanyar-se un lloc en el funk, el jazz fusion i la música electrònica gràcies a la seva immediatesa i al seu preu més accessible.`,
+    historyEn:`A direct rival to the Minimoog, this compact duophonic synthesizer earned a place in funk, jazz fusion and electronic music thanks to its immediacy and more accessible price.`},
+  {id:"s5", name:"EMS VCS3 (Putney)", manufacturer:"Electronic Music Studios", city:"Londres", country:"Regne Unit", cityEn:"London", countryEn:"United Kingdom", year:1969, lat:51.5074, lng:-0.1278, wikiTitle:"EMS VCS 3",
+    history:`Petit i excèntric, amb la seva matriu de connexions de pins en lloc de cables, el VCS3 britànic va definir el so dels primers Pink Floyd, Brian Eno i el BBC Radiophonic Workshop, i va introduir la síntesi a l'abast d'un pressupost modest.`,
+    historyEn:`Small and eccentric, with its pin-matrix patching instead of cables, the British VCS3 defined the early sound of Pink Floyd, Brian Eno and the BBC Radiophonic Workshop, bringing synthesis within reach of a modest budget.`},
+  {id:"s6", name:"EMS Synthi 100", manufacturer:"Electronic Music Studios", city:"Londres", country:"Regne Unit", cityEn:"London", countryEn:"United Kingdom", year:1971, lat:51.5074, lng:-0.1278, wikiTitle:"EMS Synthi 100",
+    history:`Conegut com "The Delaware", aquest gegantesc sistema modular britànic amb seqüenciador digital de doble pista va equipar estudis acadèmics i estatals d'arreu d'Europa, incloent-hi la Polish Radio Experimental Studio de Varsòvia.`,
+    historyEn:`Known as "The Delaware", this giant British modular system with a dual-track digital sequencer equipped academic and state studios across Europe, including the Polish Radio Experimental Studio in Warsaw.`},
+  {id:"s7", name:"Buchla 200 (Electric Music Box)", manufacturer:"Buchla & Associates", city:"Berkeley", country:"Estats Units", cityEn:"Berkeley", countryEn:"United States", year:1970, lat:37.8715, lng:-122.2730, wikiTitle:"Buchla Electronic Musical Instruments",
+    history:`Don Buchla va rebutjar el format de teclat i va apostar per superfícies tàctils i seqüenciadors, definint una "escola de la costa oest" alternativa a Moog i ARP, fonamental per a compositors com Morton Subotnick i Suzanne Ciani.`,
+    historyEn:`Don Buchla rejected the keyboard format in favour of touch plates and sequencers, defining an alternative "West Coast school" to Moog and ARP, foundational for composers such as Morton Subotnick and Suzanne Ciani.`},
+  {id:"s8", name:"Yamaha CS-80", manufacturer:"Yamaha", city:"Hamamatsu", country:"Japó", cityEn:"Hamamatsu", countryEn:"Japan", year:1976, lat:34.7108, lng:137.7261, wikiTitle:"Yamaha CS-80",
+    history:`Polifònic, pesant i amb resposta a la pressió i la velocitat de les tecles, va portar l'expressivitat a la síntesi analògica japonesa i es convertiria en l'instrument distintiu de Vangelis a la banda sonora de "Blade Runner".`,
+    historyEn:`Polyphonic, heavy and responsive to key pressure and velocity, it brought expressiveness to Japanese analogue synthesis and would become Vangelis's signature instrument on the "Blade Runner" score.`},
+  {id:"s9", name:"Roland System-700", manufacturer:"Roland Corporation", city:"Osaka", country:"Japó", cityEn:"Osaka", countryEn:"Japan", year:1976, lat:34.6937, lng:135.5023, wikiTitle:"Roland System 700",
+    history:`El primer gran sistema modular japonès, dissenyat per competir amb els Moog i ARP nord-americans, oferia una qualitat de fabricació i una potència sonora que el van fer servir des de Vangelis fins als primers grups industrials britànics.`,
+    historyEn:`The first major Japanese modular system, designed to compete with the American Moog and ARP systems, offered a build quality and sonic power used by artists from Vangelis to early British industrial groups.`},
+  {id:"s10", name:"Sintetitzador ANS", manufacturer:"Evgeni Murzin", city:"Moscou", country:"Rússia", cityEn:"Moscow", countryEn:"Russia", year:1958, lat:55.7558, lng:37.6173, wikiTitle:"ANS synthesizer",
+    history:`Instrument fotoelèctric soviètic que sintetitza el so a partir de patrons dibuixats sobre plaques de vidre cobertes de resina. Únic en el seu gènere, Eduard Artemyev el va fer servir per compondre la banda sonora de "Solaris" (1972) d'Andrei Tarkovski.`,
+    historyEn:`A Soviet photoelectric instrument that synthesises sound from patterns drawn onto resin-coated glass plates. Unique of its kind, it was used by Eduard Artemyev to compose the score for Andrei Tarkovsky's "Solaris" (1972).`}
+];
+
 /* ================= STATE ================= */
 var state = {
   search:"",
@@ -1502,7 +1565,8 @@ var state = {
   activeId:null,
   playing:false,
   discoverSample:[],
-  focusReturnEl:null
+  focusReturnEl:null,
+  synthsVisible:false
 };
 
 /* ================= DOM REFS ================= */
@@ -1575,6 +1639,8 @@ wakeBtn.addEventListener("click", checkPlayer);
 var MAP_W = 1000, MAP_H = 560;
 var svgNS = "http://www.w3.org/2000/svg";
 var projection = null; // set once the world atlas has loaded
+var synthMarkersLayer = null; // triangle markers for the synthesizers overlay
+var stationMarkersLayer = null; // radio station markers, hidden while synths overlay is active
 var zoomBehavior = null;
 var mapReady = false;
 
@@ -1590,6 +1656,8 @@ function buildMap(){
     var graticuleLayer = zoomLayer.append("g").attr("id","graticuleLayer");
     var countriesLayer = zoomLayer.append("g").attr("id","countriesLayer");
     var markersLayer = zoomLayer.append("g").attr("id","markersGroup");
+    stationMarkersLayer = markersLayer;
+    synthMarkersLayer = zoomLayer.append("g").attr("id","synthMarkersGroup");
 
     projection = d3.geoEquirectangular()
       .translate([MAP_W/2, MAP_H/2 + 25])
@@ -1632,6 +1700,29 @@ function buildMap(){
         });
     }
 
+    function placeSynthMarkers(){
+      var synthSel = synthMarkersLayer.selectAll("g.synth-marker").data(SYNTHS, function(s){return s.id;});
+      var synthEnter = synthSel.enter().append("g")
+        .attr("class","synth-marker")
+        .attr("data-id", function(s){return s.id;})
+        .attr("tabindex","0")
+        .attr("role","button")
+        .attr("aria-label", function(s){return "Obre la fitxa del sintetitzador "+s.name;});
+
+      synthEnter.append("polygon").attr("points","0,-7 6,4 -6,4");
+      synthEnter.append("text").attr("x",8).attr("y",4).text(function(s){return s.year;});
+
+      synthEnter.merge(synthSel)
+        .attr("transform", function(s){
+          var p = projection([s.lng, s.lat]);
+          return "translate("+p[0]+","+p[1]+")";
+        })
+        .on("click", function(event, s){ openSynthCard(s, event.currentTarget); })
+        .on("keydown", function(event, s){
+          if(event.key==="Enter" || event.key===" "){ event.preventDefault(); openSynthCard(s, event.currentTarget); }
+        });
+    }
+
     // Load real-world country geometry (Natural Earth, via world-atlas topojson)
     d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(function(world){
       var countries = topojson.feature(world, world.objects.countries).features;
@@ -1641,11 +1732,13 @@ function buildMap(){
         .attr("class","country")
         .attr("d", pathGen);
       placeMarkers();
+      placeSynthMarkers();
       mapReady = true;
       resolve();
     }).catch(function(){
       // Offline fallback: no country shapes, but graticule + working markers still render
       placeMarkers();
+      placeSynthMarkers();
       mapReady = true;
       resolve();
     });
@@ -2191,6 +2284,48 @@ function openReference(id, triggerEl){
   modalClose.focus();
 }
 
+function openSynthCard(synth, triggerEl){
+  state.focusReturnEl = triggerEl || document.activeElement;
+  var t = UI_TEXT[currentLang];
+  var city = currentLang==="en" ? synth.cityEn : synth.city;
+  var country = currentLang==="en" ? synth.countryEn : synth.country;
+  var history = currentLang==="en" ? synth.historyEn : synth.history;
+  var wikiUrl = "https://en.wikipedia.org/wiki/"+encodeURIComponent(synth.wikiTitle.replace(/ /g,"_"));
+
+  var html = '';
+  html += '<p class="ref-kicker" id="modalTitleTarget">'+t.synthKicker+'</p>';
+  html += '<h3 class="ref-title">'+synth.name+'</h3>';
+  html += '<p class="ref-subline">'+synth.manufacturer+' · '+city+', '+country+' · '+synth.year+'</p>';
+  html += '<img class="synth-card-img" id="synthCardImg" alt="'+synth.name+'" style="display:none;">';
+  html += '<p class="synth-card-meta" id="synthCardImgStatus">'+t.synthLoading+'</p>';
+  html += '<div class="ref-section"><h4>'+t.synthHistory+'</h4><p>'+history+'</p></div>';
+  html += '<p><a class="link-ext" href="'+wikiUrl+'" target="_blank" rel="noopener">'+t.synthWiki+'</a></p>';
+
+  modalContent.innerHTML = html;
+  modalVeil.classList.add("open");
+  modalPanel.scrollTop = 0;
+  modalClose.focus();
+
+  // Fetch a real photo + notice from Wikipedia's public summary API (no hardcoded image URLs).
+  var apiUrl = "https://en.wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent(synth.wikiTitle.replace(/ /g,"_"));
+  fetch(apiUrl).then(function(r){ return r.ok ? r.json() : Promise.reject(); }).then(function(data){
+    var img = $('#synthCardImg');
+    var status = $('#synthCardImgStatus');
+    if(!img || !status) return; // modal may have been closed/replaced already
+    if(data && data.thumbnail && data.thumbnail.source){
+      img.src = data.thumbnail.source;
+      img.style.display = "block";
+      status.remove();
+    } else {
+      status.remove();
+    }
+  }).catch(function(){
+    var status = $('#synthCardImgStatus');
+    if(status) status.remove();
+  });
+}
+
+
 function closeModal(){
   modalVeil.classList.remove("open");
   modalContent.innerHTML = '';
@@ -2206,6 +2341,25 @@ modalVeil.addEventListener("click", function(e){
 document.addEventListener("keydown", function(e){
   if(e.key==="Escape" && modalVeil.classList.contains("open")) closeModal();
 });
+
+/* ================= SYNTHESIZERS TOGGLE ================= */
+var synthToggleBtn = $('#synthToggleBtn');
+synthToggleBtn.addEventListener("click", function(){
+  state.synthsVisible = !state.synthsVisible;
+  synthToggleBtn.classList.toggle("active", state.synthsVisible);
+  synthToggleBtn.setAttribute("aria-pressed", state.synthsVisible ? "true" : "false");
+  if(synthMarkersLayer){
+    synthMarkersLayer.classed("visible", state.synthsVisible);
+  }
+  if(stationMarkersLayer){
+    // Only hides the station markers visually; playback (audioEl) is untouched,
+    // so a station already tuned in keeps playing in the background.
+    stationMarkersLayer.classed("hidden", state.synthsVisible);
+  }
+  var t = UI_TEXT[currentLang];
+  $('#synthToggleLabel').textContent = state.synthsVisible ? t.synthToggleOn : t.synthToggle;
+});
+
 modalContent.addEventListener("click", function(e){
   var chip = e.target.closest(".chip.link");
   if(chip){ openReference(chip.getAttribute("data-ref"), chip); }
@@ -2351,7 +2505,7 @@ var DOSSIER_WIKI = {
   "eimert":"https://en.wikipedia.org/wiki/Herbert_Eimert",
   "stockhausen":"https://en.wikipedia.org/wiki/Karlheinz_Stockhausen",
   "wendy-carlos":"https://en.wikipedia.org/wiki/Wendy_Carlos",
-  "buchla-200":"https://en.wikipedia.org/wiki/Buchla_Electronic_Musical_Instrument",
+  "buchla-200":"https://en.wikipedia.org/wiki/Buchla_Electronic_Musical_Instruments",
   "morton-subotnick":"https://en.wikipedia.org/wiki/Morton_Subotnick",
   "sf-tape-music-center":"https://en.wikipedia.org/wiki/San_Francisco_Tape_Music_Center",
   "ems-vcs3":"https://en.wikipedia.org/wiki/EMS_VCS_3",
@@ -2452,7 +2606,9 @@ var UI_TEXT = {
     play:"Reproduir", pause:"Pausa", ready:"LLEST PER EMETRE", connecting:"CONNECTANT…", onAir:"EN ANTENA",
     paused:"EN PAUSA", error:"SENYAL NO DISPONIBLE", retry:"Reintenta", addFav:"Afegir a preferits", inFav:"★ Als preferits",
     wait:"EN ESPERA", noMatch:"Cap emissora coincideix amb la cerca actual.", allGenres:"Tots els gèneres",
-    since:"DES DE", sourceSoma:"Senyal en directe via SomaFM — ", sourceCaprice:"Senyal en directe via Radio Caprice — "
+    since:"DES DE", sourceSoma:"Senyal en directe via SomaFM — ", sourceCaprice:"Senyal en directe via Radio Caprice — ",
+    synthToggle:"Sintetitzadors", synthToggleOn:"Amaga els sintetitzadors", synthKicker:"Sintetitzador de referència",
+    synthHistory:"Història", synthWiki:"Amplia informació a la Viquipèdia ↗", synthLoading:"Carregant imatge…"
   },
   en:{
     live:"LIVE", about:"About the project", title:"World Atlas of 1970s Electronic Radio",
@@ -2469,7 +2625,9 @@ var UI_TEXT = {
     play:"Play", pause:"Pause", ready:"READY", connecting:"CONNECTING…", onAir:"ON AIR",
     paused:"PAUSED", error:"SIGNAL UNAVAILABLE", retry:"RETRY", addFav:"Add to favorites", inFav:"★ In favorites",
     wait:"STANDBY", noMatch:"No station matches the current search.", allGenres:"All genres",
-    since:"SINCE", sourceSoma:"Live signal via SomaFM — ", sourceCaprice:"Live signal via Radio Caprice — "
+    since:"SINCE", sourceSoma:"Live signal via SomaFM — ", sourceCaprice:"Live signal via Radio Caprice — ",
+    synthToggle:"Synthesizers", synthToggleOn:"Hide synthesizers", synthKicker:"Featured synthesizer",
+    synthHistory:"History", synthWiki:"Read more on Wikipedia ↗", synthLoading:"Loading image…"
   }
 };
 
@@ -2497,6 +2655,7 @@ function applyLanguage(lang){
   $('.segment.discover').childNodes[0].nodeValue = t.discover;
   $('.map-caption span:first-child').textContent = t.mapCaption;
   $('.player-label').textContent = t.now;
+  $('#synthToggleLabel').textContent = state.synthsVisible ? t.synthToggleOn : t.synthToggle;
 
   document.querySelectorAll(".lang-switch button").forEach(function(b){
     b.classList.toggle("active", (b.textContent.trim()==="EN") === (currentLang==="en"));
