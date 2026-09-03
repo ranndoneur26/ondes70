@@ -6,7 +6,7 @@
 // block it receives, and returns it as JSON. No persistent Node server is needed.
 
 const CAPRICE_STREAMS = Object.freeze({
-  'radcap-space': 'http://79.111.119.111:8000/spacemusic',
+  'radcap-space': 'http://79.111.119.111:9105/',
   'radcap-traditional': 'http://79.111.14.76:9069/',
   'radcap-concrete': 'http://79.111.119.111:9109/',
   'radcap-retrowave': 'http://79.120.39.202:9125/'
