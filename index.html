@@ -238,8 +238,21 @@
   }
   .synth-toggle-btn:hover{background:var(--red-glow);}
   .synth-toggle-btn.active{background:var(--red);border-color:var(--red);color:var(--cream-3);}
+  .synth-toggle-btn:disabled{opacity:0.35;cursor:not-allowed;}
   .synth-toggle-icon{font-size:13px;line-height:1;}
   @media (max-width:640px){.synth-toggle-btn{margin-left:0;width:100%;justify-content:center;}}
+
+  /* ---------- VIDEO TOGGLE (afegit) ---------- */
+  .video-toggle-btn{
+    font-family:var(--mono);font-size:12px;letter-spacing:0.04em;padding:9px 15px;
+    border:1px solid var(--ink);border-radius:999px;color:var(--ink);
+    display:flex;align-items:center;gap:7px;transition:background .15s,color .15s;
+    white-space:nowrap;margin-left:8px;
+  }
+  .video-toggle-btn:hover{background:rgba(28,23,18,0.08);}
+  .video-toggle-btn.active{background:var(--ink);border-color:var(--ink);color:var(--cream-3);}
+  .video-toggle-icon{font-size:13px;line-height:1;}
+  @media (max-width:640px){.video-toggle-btn{margin-left:0;width:100%;justify-content:center;}}
 
   /* ---------- SYNTH MARKERS (triangles) ---------- */
   #synthMarkersGroup{display:none;}
@@ -250,6 +263,15 @@
   .synth-marker:hover polygon,.synth-marker:focus-visible polygon{fill:var(--red-dark);}
   .synth-marker text{font-family:var(--mono);font-size:6.5px;fill:var(--red-dark);paint-order:stroke;stroke:var(--cream-3);stroke-width:2px;}
   .synth-toggle-icon,.synth-marker polygon{color:var(--red);}
+
+  /* ---------- VIDEO MARKERS (pentàgons) — afegit ---------- */
+  #videoMarkersGroup{display:none;}
+  #videoMarkersGroup.visible{display:block;}
+  .video-marker{cursor:pointer;}
+  .video-marker polygon{fill:var(--ink);stroke:var(--cream-3);stroke-width:1;transition:fill .15s;}
+  .video-marker:hover polygon,.video-marker:focus-visible polygon{fill:var(--red);}
+  .video-marker text{font-family:var(--mono);font-size:6.5px;fill:var(--ink-soft);paint-order:stroke;stroke:var(--cream-3);stroke-width:2px;}
+  .video-toggle-icon{color:var(--ink);}
 
   /* ---------- SYNTH POPUP CONTENT ---------- */
   .synth-card-img{width:100%;max-width:320px;border-radius:3px;display:block;margin:0 0 14px;border:1px solid var(--line-strong);}
@@ -504,6 +526,10 @@
     <button class="synth-toggle-btn" id="synthToggleBtn" type="button" aria-pressed="false">
       <span class="synth-toggle-icon" aria-hidden="true">△</span>
       <span id="synthToggleLabel">Sintetitzadors</span>
+    </button>
+    <button class="video-toggle-btn" id="videoToggleBtn" type="button" aria-pressed="false">
+      <span class="video-toggle-icon" aria-hidden="true">⬠</span>
+      <span id="videoToggleLabel">Vídeos</span>
     </button>
   </section>
 
@@ -1588,6 +1614,33 @@ var SYNTHS = [
     historyEn:`A Soviet photoelectric instrument that synthesises sound from patterns drawn onto resin-coated glass plates. Unique of its kind, it was used by Eduard Artemyev to compose the score for Andrei Tarkovsky's "Solaris" (1972).`}
 ];
 
+/* ================= VIDEOS (pentàgons) — afegit =================
+   URLs verificades manualment (setembre 2026) contra resultats de cerca
+   actuals; es prioritzen pujades oficials de segell/artista, més estables
+   en el temps que altres còpies de tercers. */
+var VIDEOS = [
+  {id:1, title:"Autobahn", artist:"Kraftwerk", year:1974, lat:51.2277, lng:6.7735, youtubeUrl:"https://www.youtube.com/watch?v=FLoqr70JvVU"},
+  {id:2, title:"Phaedra", artist:"Tangerine Dream", year:1974, lat:52.5200, lng:13.4050, youtubeUrl:"https://www.youtube.com/watch?v=HIQ0dd7B_FU"},
+  {id:3, title:"Oxygène (Part IV)", artist:"Jean-Michel Jarre", year:1976, lat:48.8566, lng:2.3522, youtubeUrl:"https://www.youtube.com/watch?v=kSIMVnPA994"},
+  {id:4, title:"I Feel Love", artist:"Giorgio Moroder / Donna Summer", year:1977, lat:48.1371, lng:11.5761, youtubeUrl:"https://www.youtube.com/watch?v=yEbaeLv-aOo"},
+  {id:5, title:"Bayreuth Return", artist:"Klaus Schulze", year:1975, lat:52.6333, lng:9.9833, youtubeUrl:"https://www.youtube.com/watch?v=tcqVCMIYjn8"},
+  {id:6, title:"Trans Europe Express", artist:"Kraftwerk", year:1977, lat:51.2198, lng:6.7942, youtubeUrl:"https://www.youtube.com/watch?v=zwkgI2dSjfA"},
+  {id:7, title:"Discreet Music", artist:"Brian Eno", year:1975, lat:51.5074, lng:-0.1278, youtubeUrl:"https://www.youtube.com/watch?v=jl_z5JvrKlc"},
+  {id:8, title:"Hallogallo", artist:"Neu!", year:1972, lat:50.9375, lng:6.9603, youtubeUrl:"https://www.youtube.com/watch?v=8Oex3RhxHQk"},
+  {id:9, title:"Are 'Friends' Electric?", artist:"Tubeway Army / Gary Numan", year:1979, lat:51.5150, lng:-0.1410, youtubeUrl:"https://www.youtube.com/watch?v=1snv-0jCiWY"},
+  {id:10, title:"Computer Game / Firecracker", artist:"Yellow Magic Orchestra", year:1978, lat:35.6762, lng:139.6503, youtubeUrl:"https://www.youtube.com/watch?v=K_WrJAyRlLE"},
+  {id:11, title:"Ghost Rider", artist:"Suicide", year:1977, lat:40.7128, lng:-74.0060, youtubeUrl:"https://www.youtube.com/watch?v=Qn0_fDjvI_s"},
+  {id:12, title:"Spiral", artist:"Vangelis", year:1977, lat:51.4988, lng:-0.1749, youtubeUrl:"https://www.youtube.com/watch?v=I-0Z5D7eRh8"},
+  {id:13, title:"Magic Fly", artist:"Space", year:1977, lat:48.8667, lng:2.3333, youtubeUrl:"https://www.youtube.com/watch?v=k0nm9Vs_mjA"},
+  {id:14, title:"Buchla Concerts", artist:"Suzanne Ciani", year:1975, lat:37.7749, lng:-122.4194, youtubeUrl:"https://www.youtube.com/watch?v=nJWk7jiASP0"},
+  {id:15, title:"Snowflakes Are Dancing", artist:"Isao Tomita", year:1974, lat:35.6895, lng:139.6917, youtubeUrl:"https://www.youtube.com/watch?v=hWlSenLsXCI"},
+  {id:16, title:"Watussi", artist:"Harmonia", year:1974, lat:51.8483, lng:9.4752, youtubeUrl:"https://www.youtube.com/watch?v=py4dIm6-b6k"},
+  {id:17, title:"Being Boiled", artist:"The Human League", year:1978, lat:53.3811, lng:-1.4701, youtubeUrl:"https://www.youtube.com/watch?v=keaQ-50Z01w"},
+  {id:18, title:"Sowiesoso", artist:"Cluster", year:1976, lat:51.8483, lng:9.4752, youtubeUrl:"https://www.youtube.com/watch?v=MD3Q3PaxMa4"},
+  {id:19, title:"Quasar 2C361", artist:"Neuronium", year:1977, lat:41.3851, lng:2.1734, youtubeUrl:"https://www.youtube.com/watch?v=y8wWu3lkoDI"},
+  {id:20, title:"The Expanding Universe", artist:"Laurie Spiegel", year:1975, lat:40.6806, lng:-74.4011, youtubeUrl:"https://www.youtube.com/watch?v=IKfLPXItwAM"}
+];
+
 /* ================= STATE ================= */
 var state = {
   search:"",
@@ -1598,7 +1651,8 @@ var state = {
   playing:false,
   discoverSample:[],
   focusReturnEl:null,
-  synthsVisible:false
+  synthsVisible:false,
+  videosVisible:false
 };
 
 /* ================= DOM REFS ================= */
@@ -1673,6 +1727,7 @@ var svgNS = "http://www.w3.org/2000/svg";
 var projection = null; // set once the world atlas has loaded
 var synthMarkersLayer = null; // triangle markers for the synthesizers overlay
 var stationMarkersLayer = null; // radio station markers, hidden while synths overlay is active
+var videoMarkersLayer = null; // pentagon markers for the videos overlay — afegit
 var zoomBehavior = null;
 var mapReady = false;
 
@@ -1690,6 +1745,7 @@ function buildMap(){
     var markersLayer = zoomLayer.append("g").attr("id","markersGroup");
     stationMarkersLayer = markersLayer;
     synthMarkersLayer = zoomLayer.append("g").attr("id","synthMarkersGroup");
+    videoMarkersLayer = zoomLayer.append("g").attr("id","videoMarkersGroup"); // afegit
 
     projection = d3.geoEquirectangular()
       .translate([MAP_W/2, MAP_H/2 + 25])
@@ -1755,6 +1811,37 @@ function buildMap(){
         });
     }
 
+    // ===== VIDEO MARKERS (pentàgons) — afegit =====
+    // Pentàgon regular apuntant cap amunt, radi ~7 (mateixa escala visual
+    // que els punts d'emissora i els triangles de sintetitzador).
+    var PENTAGON_POINTS = "0,-7 6.66,-2.16 4.11,5.66 -4.11,5.66 -6.66,-2.16";
+    function placeVideoMarkers(){
+      var videoSel = videoMarkersLayer.selectAll("g.video-marker").data(VIDEOS, function(v){return v.id;});
+      var videoEnter = videoSel.enter().append("g")
+        .attr("class","video-marker")
+        .attr("data-id", function(v){return v.id;})
+        .attr("tabindex","0")
+        .attr("role","button")
+        .attr("aria-label", function(v){return "Mira el vídeo de "+v.title+" ("+v.artist+") a YouTube";});
+
+      videoEnter.append("polygon").attr("points", PENTAGON_POINTS);
+      videoEnter.append("text").attr("x",8).attr("y",4).text(function(v){return v.year;});
+
+      function openVideo(v){
+        window.open(v.youtubeUrl, "_blank", "noopener,noreferrer");
+      }
+
+      videoEnter.merge(videoSel)
+        .attr("transform", function(v){
+          var p = projection([v.lng, v.lat]);
+          return "translate("+p[0]+","+p[1]+")";
+        })
+        .on("click", function(event, v){ openVideo(v); })
+        .on("keydown", function(event, v){
+          if(event.key==="Enter" || event.key===" "){ event.preventDefault(); openVideo(v); }
+        });
+    }
+
     // Load real-world country geometry (Natural Earth, via world-atlas topojson)
     d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(function(world){
       var countries = topojson.feature(world, world.objects.countries).features;
@@ -1765,12 +1852,14 @@ function buildMap(){
         .attr("d", pathGen);
       placeMarkers();
       placeSynthMarkers();
+      placeVideoMarkers();
       mapReady = true;
       resolve();
     }).catch(function(){
       // Offline fallback: no country shapes, but graticule + working markers still render
       placeMarkers();
       placeSynthMarkers();
+      placeVideoMarkers();
       mapReady = true;
       resolve();
     });
@@ -1793,6 +1882,11 @@ function buildMap(){
         });
         synthMarkersLayer.selectAll("g.synth-marker").attr("transform", function(s){
           var p = projection([s.lng, s.lat]);
+          return "translate("+p[0]+","+p[1]+") scale("+inv+")";
+        });
+        // Pentàgons de vídeo — afegit: mateixa contra-escala per mantenir mida fixa.
+        videoMarkersLayer.selectAll("g.video-marker").attr("transform", function(v){
+          var p = projection([v.lng, v.lat]);
           return "translate("+p[0]+","+p[1]+") scale("+inv+")";
         });
       });
@@ -2406,6 +2500,33 @@ synthToggleBtn.addEventListener("click", function(){
   $('#synthToggleLabel').textContent = state.synthsVisible ? t.synthToggleOn : t.synthToggle;
 });
 
+/* ================= VIDEOS TOGGLE (pentàgons) — afegit ================= */
+var videoToggleBtn = $('#videoToggleBtn');
+videoToggleBtn.addEventListener("click", function(){
+  state.videosVisible = !state.videosVisible;
+  videoToggleBtn.classList.toggle("active", state.videosVisible);
+  videoToggleBtn.setAttribute("aria-pressed", state.videosVisible ? "true" : "false");
+
+  // Mentre els vídeos són visibles, es desactiva el botó de sintetitzadors
+  // per evitar que dues capes de marcadors s'activin alhora sobre el mapa.
+  synthToggleBtn.disabled = state.videosVisible;
+
+  if(videoMarkersLayer){
+    videoMarkersLayer.classed("visible", state.videosVisible);
+  }
+  if(stationMarkersLayer){
+    // Els punts d'emissora queden ocults tant si els vídeos com si els
+    // sintetitzadors estan actius; la reproducció en curs no es veu afectada.
+    stationMarkersLayer.classed("hidden", state.videosVisible || state.synthsVisible);
+  }
+  if(synthMarkersLayer){
+    synthMarkersLayer.classed("visible", !state.videosVisible && state.synthsVisible);
+  }
+
+  var tv = UI_TEXT[currentLang];
+  $('#videoToggleLabel').textContent = state.videosVisible ? tv.videoToggleOn : tv.videoToggle;
+});
+
 modalContent.addEventListener("click", function(e){
   var chip = e.target.closest(".chip.link");
   if(chip){ openReference(chip.getAttribute("data-ref"), chip); }
@@ -2654,7 +2775,8 @@ var UI_TEXT = {
     wait:"EN ESPERA", noMatch:"Cap emissora coincideix amb la cerca actual.", allGenres:"Tots els gèneres",
     since:"DES DE", sourceSoma:"Senyal en directe via SomaFM — ", sourceCaprice:"Senyal en directe via Radio Caprice — ",
     synthToggle:"Sintetitzadors", synthToggleOn:"Amaga els sintetitzadors", synthKicker:"Sintetitzador de referència",
-    synthHistory:"Història", synthWiki:"Amplia informació a la Viquipèdia ↗", synthLoading:"Carregant imatge…"
+    synthHistory:"Història", synthWiki:"Amplia informació a la Viquipèdia ↗", synthLoading:"Carregant imatge…",
+    videoToggle:"Vídeos", videoToggleOn:"Amaga els vídeos"
   },
   en:{
     live:"LIVE", about:"About the project", title:"World Atlas of 1970s Electronic Radio",
@@ -2673,7 +2795,8 @@ var UI_TEXT = {
     wait:"STANDBY", noMatch:"No station matches the current search.", allGenres:"All genres",
     since:"SINCE", sourceSoma:"Live signal via SomaFM — ", sourceCaprice:"Live signal via Radio Caprice — ",
     synthToggle:"Synthesizers", synthToggleOn:"Hide synthesizers", synthKicker:"Featured synthesizer",
-    synthHistory:"History", synthWiki:"Read more on Wikipedia ↗", synthLoading:"Loading image…"
+    synthHistory:"History", synthWiki:"Read more on Wikipedia ↗", synthLoading:"Loading image…",
+    videoToggle:"Videos", videoToggleOn:"Hide videos"
   }
 };
 
@@ -2702,6 +2825,7 @@ function applyLanguage(lang){
   $('.map-caption span:first-child').textContent = t.mapCaption;
   $('.player-label').textContent = t.now;
   $('#synthToggleLabel').textContent = state.synthsVisible ? t.synthToggleOn : t.synthToggle;
+  $('#videoToggleLabel').textContent = state.videosVisible ? t.videoToggleOn : t.videoToggle;
 
   document.querySelectorAll(".lang-switch button").forEach(function(b){
     b.classList.toggle("active", (b.textContent.trim()==="EN") === (currentLang==="en"));
