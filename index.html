@@ -10,7 +10,9 @@
 <meta name="keywords" content="música electrònica anys 70, Krautrock, Berlin School, música concreta, ambient, cosmic disco, sintetitzador modular, Tangerine Dream, Kraftwerk, Klaus Schulze, Neuronium, ràdio electrònica en directe, atles sonor 70s, música electrónica de los 70, 1970s electronic music, space music, musique concrète">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="author" content="Marc Xicola - Vandecul">
+<meta name="theme-color" content="#EFE7D8">
 <link rel="canonical" href="https://www.marcxicola.com/ondes70">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23EFE7D8'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%23B4321F' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23B4321F'/%3E%3C/svg%3E">
 
 <!-- ============ HREFLANG (idiomes reals del lloc: CA i EN) ============ -->
 <link rel="alternate" hreflang="ca" href="https://www.marcxicola.com/ondes70" />
@@ -26,12 +28,17 @@
 <meta property="og:title" content="ONDES 70 — Atles mundial de la ràdio electrònica dels anys 70">
 <meta property="og:description" content="Sintonitza en directe 36 emissores de Krautrock, Berlin School, música concreta i ambient dels anys 70 en un mapamundi interactiu.">
 <meta property="og:image" content="https://www.marcxicola.com/ondes70/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Mapamundi interactiu d'ONDES 70 amb les 36 emissores de ràdio de música electrònica dels anys 70">
 
 <!-- ============ TWITTER CARD ============ -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ONDES 70 — World Atlas of 1970s Electronic Radio">
 <meta name="twitter:description" content="Interactive world map streaming 36 stations of 1970s electronic music: Krautrock, Berlin School, musique concrète and ambient.">
 <meta name="twitter:image" content="https://www.marcxicola.com/ondes70/og-image.jpg">
+<meta name="twitter:image:alt" content="Interactive world map of ONDES 70 with 36 1970s electronic music radio stations">
 
 <!-- ============ DADES ESTRUCTURADES (Schema.org / GEO per a cercadors amb IA) ============ -->
 <script type="application/ld+json">
@@ -54,6 +61,31 @@
         "name": "Marc Xicola",
         "url": "https://www.marcxicola.com"
       }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.marcxicola.com/ondes70#website",
+      "url": "https://www.marcxicola.com/ondes70",
+      "name": "ONDES 70",
+      "inLanguage": ["ca", "en"],
+      "publisher": { "@type": "Person", "name": "Marc Xicola" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Marc Xicola",
+          "item": "https://www.marcxicola.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ONDES 70",
+          "item": "https://www.marcxicola.com/ondes70"
+        }
+      ]
     },
     {
       "@type": "MusicPlaylist",
@@ -1744,11 +1776,25 @@ function buildMap(){
     });
 
     // Zoom & pan
+    // Els marcadors (punts d'emissora i triangles de sintetitzador) es
+    // contra-escalen amb 1/k perquè mantinguin una mida visual constant
+    // en pantalla independentment del nivell de zoom del mapa; així no
+    // taquen països petits ni se superposen entre ells en ampliar.
     zoomBehavior = d3.zoom()
       .scaleExtent([1,8])
       .translateExtent([[0,0],[MAP_W,MAP_H]])
       .on("zoom", function(event){
         zoomLayer.attr("transform", event.transform);
+        var k = event.transform.k;
+        var inv = 1/k;
+        markersLayer.selectAll("g.marker").attr("transform", function(s){
+          var p = projection([s.lng, s.lat]);
+          return "translate("+p[0]+","+p[1]+") scale("+inv+")";
+        });
+        synthMarkersLayer.selectAll("g.synth-marker").attr("transform", function(s){
+          var p = projection([s.lng, s.lat]);
+          return "translate("+p[0]+","+p[1]+") scale("+inv+")";
+        });
       });
     svg.call(zoomBehavior);
 
