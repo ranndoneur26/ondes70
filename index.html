@@ -1232,7 +1232,7 @@ var RADIO_CAPRICE_STREAMS = {
 // navegador no pot llegir aquests headers cross-origin, així que ONDES 70
 // els demana al petit proxy /api/icy del servidor que acompanya aquest HTML.
 var SOMAFM_METADATA_BASE = "https://somafm.com/songs/";
-var CAPRICE_METADATA_PROXY = "/api/icy?stream=";
+var CAPRICE_METADATA_PROXY = CAPRICE_AUDIO_PROXY + "/metadata?stream=";
 var metadataCache = Object.create(null);
 var metadataRequests = Object.create(null);
 var metadataTimer = null;
