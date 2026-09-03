@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONDES 70 — Atlas mundial de la ràdio electrònica dels anys 70</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600;9..144,700;9..144,900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#EFE7D8;
+    --cream-2:#E4D8BE;
+    --cream-3:#F7F2E7;
+    --ink:#1C1712;
+    --ink-soft:#4A4136;
+    --red:#B4321F;
+    --red-dark:#7C2116;
+    --red-glow:rgba(180,50,31,0.22);
+    --grey:#8A7F6E;
+    --line:rgba(28,23,18,0.16);
+    --line-strong:rgba(28,23,18,0.32);
+    --serif:'Space Grotesk', sans-serif;
+    --sans:'Space Grotesk', sans-serif;
+    --mono:'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.4;
+  }
+  button{font-family:inherit;cursor:pointer;background:none;border:none;color:inherit;}
+  input,select{font-family:inherit;}
+  ::selection{background:var(--red);color:var(--cream-3);}
+  :focus-visible{outline:2px solid var(--red);outline-offset:2px;}
+
+  .app{max-width:1400px;margin:0 auto;padding:0 clamp(16px,3vw,40px) 140px;}
+
+  /* ---------- MASTHEAD ---------- */
+  .masthead{padding-top:28px;}
+  .masthead-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:baseline;gap:14px;}
+  .brand-name{font-family:var(--serif);font-weight:900;font-size:clamp(24px,3vw,32px);letter-spacing:0.01em;}
+  .live-tag{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--red);display:inline-flex;align-items:center;gap:6px;}
+  .live-dot{width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block;animation:pulse 1.8s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+  .credit-line{font-family:var(--mono);font-size:9px;letter-spacing:0.04em;color:var(--grey);margin:2px 0 0;}
+  .credit-line a{color:var(--grey);text-decoration:underline;text-underline-offset:2px;}
+  .credit-line a:hover{color:var(--red);}
+  .masthead-actions{display:flex;align-items:center;gap:18px;}
+  .lang-switch{display:flex;border:1px solid var(--line-strong);border-radius:999px;overflow:hidden;font-family:var(--mono);font-size:12px;}
+  .lang-switch button{padding:6px 14px;letter-spacing:0.05em;color:var(--ink-soft);}
+  .lang-switch button.active{background:var(--ink);color:var(--cream-3);}
+  .about-btn{font-family:var(--mono);font-size:12px;letter-spacing:0.04em;text-decoration:underline;text-underline-offset:3px;color:var(--ink-soft);}
+  .about-btn:hover{color:var(--red);}
+
+  /* ---------- WAKE SERVERS ---------- */
+  .wake-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:2px 0 16px;}
+  .wake-btn{
+    font-family:var(--mono);font-size:12px;letter-spacing:0.05em;padding:9px 16px;
+    border:1px solid var(--red);border-radius:999px;color:var(--red);
+    display:inline-flex;align-items:center;gap:7px;transition:background .15s,color .15s;text-transform:uppercase;
+  }
+  .wake-btn:hover{background:var(--red);color:var(--cream-3);}
+  .wake-btn:disabled{opacity:0.55;cursor:default;background:none;color:var(--red);}
+  .wake-dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block;}
+  .wake-btn.checking .wake-dot{animation:pulse 0.9s ease-in-out infinite;}
+  .wake-status{font-family:var(--mono);font-size:11px;letter-spacing:0.03em;color:var(--grey);}
+  .wake-status.ok{color:#3f7a4a;}
+  .wake-status.fail{color:var(--red-dark);}
+  .rule{border:none;border-top:1px solid var(--line-strong);margin:18px 0;}
+  .masthead-title{font-family:var(--serif);font-weight:600;font-size:clamp(22px,4.4vw,46px);letter-spacing:0.005em;margin:0 0 30px;max-width:16ch;text-transform:uppercase;}
+
+  /* ---------- INTRO ---------- */
+  .intro{padding:6px 0 26px;border-bottom:1px solid var(--line);}
+  .intro h2{font-family:var(--serif);font-weight:600;font-size:clamp(20px,2.4vw,26px);margin:0 0 10px;}
+  .intro-instruction{font-family:var(--mono);font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--red);margin:0 0 6px;}
+  .intro-en{font-size:13px;color:var(--grey);font-style:italic;margin:0 0 12px;}
+  .intro-desc{max-width:62ch;color:var(--ink-soft);margin:0;font-size:15px;}
+
+  /* ---------- FEATURE: SEVENTIES DOSSIER ---------- */
+  .feature-link{padding:22px 0 4px;}
+  .feature-card{
+    display:block;width:100%;text-align:left;background:var(--cream-3);
+    border:1px solid var(--line-strong);border-radius:3px;padding:22px 24px;
+    transition:border-color .15s,background .15s;
+  }
+  .feature-card:hover{border-color:var(--red);background:var(--cream-2);}
+  .feature-kicker{display:block;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);margin:0 0 8px;}
+  .feature-title{font-family:var(--serif);font-weight:700;font-size:clamp(20px,2.6vw,28px);margin:0 0 8px;}
+  .feature-sub{font-size:14px;color:var(--ink-soft);margin:0 0 14px;max-width:66ch;}
+  .feature-cta{font-family:var(--mono);font-size:12px;letter-spacing:0.05em;color:var(--red-dark);text-decoration:underline;text-underline-offset:3px;}
+
+  /* ---------- TOOLBAR ---------- */
+  .toolbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:22px 0;}
+  #searchInput{
+    flex:1 1 260px;min-width:200px;background:var(--cream-3);border:1px solid var(--line-strong);
+    padding:11px 14px;font-size:14px;color:var(--ink);border-radius:2px;
+  }
+  #searchInput::placeholder{color:var(--grey);}
+  #genreSelect{
+    background:var(--cream-3);border:1px solid var(--line-strong);padding:11px 14px;font-size:13px;
+    color:var(--ink-soft);border-radius:2px;min-width:180px;
+  }
+  .segments{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap;}
+  .segment{
+    font-family:var(--mono);font-size:12px;letter-spacing:0.04em;padding:9px 15px;
+    border:1px solid var(--line-strong);border-radius:999px;color:var(--ink-soft);
+    display:flex;align-items:center;gap:6px;transition:background .15s,color .15s,border-color .15s;
+    white-space:nowrap;
+  }
+  .segment span{font-family:var(--mono);opacity:0.7;}
+  .segment.active{background:var(--ink);border-color:var(--ink);color:var(--cream-3);}
+  .segment.active span{opacity:1;color:var(--cream-2);}
+  .segment.discover{color:var(--red);border-color:var(--red);}
+  .segment.discover.active{background:var(--red);border-color:var(--red);color:var(--cream-3);}
+  .segment:hover:not(.active){border-color:var(--ink);}
+
+  /* ---------- LAYOUT ---------- */
+  .layout{display:grid;grid-template-columns:1.25fr 1fr;gap:26px;align-items:start;}
+  @media (max-width:960px){.layout{grid-template-columns:1fr;}}
+
+  .map-pane{
+    background:var(--cream-3);border:1px solid var(--line-strong);border-radius:3px;
+    padding:10px;position:sticky;top:16px;
+  }
+  @media (max-width:960px){.map-pane{position:static;}}
+  .map-frame{position:relative;}
+  #worldMap{width:100%;height:auto;display:block;cursor:grab;touch-action:none;}
+  #worldMap:active{cursor:grabbing;}
+  .map-bg{fill:var(--cream-3);}
+  .country{fill:var(--cream-2);stroke:var(--line-strong);stroke-width:0.6;}
+  .graticule{fill:none;stroke:rgba(28,23,18,0.10);stroke-width:0.5;}
+  .sphere-outline{fill:none;stroke:var(--red);stroke-width:1;opacity:0.4;stroke-dasharray:2 3;}
+  .zoom-controls{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:1px;border:1px solid var(--line-strong);border-radius:4px;overflow:hidden;background:var(--cream-3);}
+  .zoom-controls button{width:30px;height:30px;font-family:var(--mono);font-size:15px;color:var(--ink-soft);border-bottom:1px solid var(--line);}
+  .zoom-controls button:last-child{border-bottom:none;font-size:12px;}
+  .zoom-controls button:hover{background:var(--red);color:var(--cream-3);}
+  .marker{cursor:pointer;}
+  .marker.dim{opacity:0.22;pointer-events:none;}
+  .marker circle.ring{fill:none;stroke:var(--red);stroke-width:1;opacity:0;}
+  .marker.playing circle.ring{opacity:0.9;animation:ringPulse 1.8s ease-out infinite;}
+  @keyframes ringPulse{
+    0%{r:7;opacity:0.9;stroke-width:1.4;}
+    100%{r:22;opacity:0;stroke-width:0.4;}
+  }
+  .marker circle.dot{fill:var(--ink);stroke:var(--cream-3);stroke-width:1.2;}
+  .marker.active circle.dot{fill:var(--red);}
+  .marker text{font-family:var(--mono);font-size:6.5px;fill:var(--ink-soft);paint-order:stroke;stroke:var(--cream-3);stroke-width:2px;}
+  .marker.active text{fill:var(--red-dark);font-weight:700;}
+  .map-caption{font-family:var(--mono);font-size:10px;color:var(--grey);padding:8px 6px 2px;display:flex;justify-content:space-between;gap:10px;letter-spacing:0.02em;flex-wrap:wrap;}
+  .player-source{margin:3px 0 0;font-family:var(--mono);font-size:10.5px;color:var(--grey);letter-spacing:0.02em;}
+
+  /* ---------- CATALOG ---------- */
+  .catalog-pane{max-height:none;}
+  .catalog-count{font-family:var(--mono);font-size:11px;color:var(--grey);letter-spacing:0.05em;margin-bottom:10px;text-transform:uppercase;}
+  .catalog-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line-strong);}
+  .card{
+    border-bottom:1px solid var(--line);padding:16px 8px;cursor:pointer;
+    display:grid;grid-template-columns:1fr auto;gap:6px 14px;transition:background .15s;position:relative;
+  }
+  .card:hover{background:var(--cream-2);}
+  .card.selected{background:var(--red);color:var(--cream-3);}
+  .card.selected .card-meta,.card.selected .card-desc,.card.selected .card-since,.card.selected .card-freq{color:var(--cream-2);}
+  .card.selected .fav-toggle{color:var(--cream-3);border-color:var(--cream-3);}
+  .card-name{font-family:var(--serif);font-weight:600;font-size:17px;grid-column:1/2;display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .onair-badge{font-family:var(--mono);font-size:9.5px;letter-spacing:0.06em;padding:3px 8px;border-radius:999px;display:inline-flex;align-items:center;gap:5px;vertical-align:middle;white-space:nowrap;}
+  .onair-badge.on-air{background:var(--red);color:var(--cream-3);}
+  .onair-badge.connecting{background:var(--ink-soft);color:var(--cream-3);opacity:0.85;}
+  .onair-dot{width:5px;height:5px;border-radius:50%;background:var(--cream-3);display:inline-block;animation:pulse 1.2s ease-in-out infinite;}
+  .card.selected .onair-badge.on-air{background:var(--cream-3);color:var(--red-dark);}
+  .card.selected .onair-badge.on-air .onair-dot{background:var(--red-dark);}
+  .card.selected .onair-badge.connecting{background:var(--cream-2);color:var(--ink);}
+  .card-freq{font-family:var(--mono);font-size:13px;color:var(--red-dark);grid-column:2/3;text-align:right;white-space:nowrap;}
+  .card.selected .card-freq{color:var(--cream-3);}
+  .card-meta{font-family:var(--mono);font-size:11px;color:var(--grey);letter-spacing:0.03em;grid-column:1/3;text-transform:uppercase;}
+  .card-desc{font-size:13.5px;color:var(--ink-soft);grid-column:1/3;max-width:56ch;}
+  .card-desc .ref-link{color:var(--red-dark);text-decoration:underline;text-underline-offset:2px;font-weight:600;}
+  .card.selected .card-desc .ref-link{color:var(--cream-3);}
+  .card-footer{grid-column:1/3;display:flex;justify-content:space-between;align-items:center;margin-top:2px;}
+  .card-since{font-family:var(--mono);font-size:10.5px;color:var(--grey);}
+  .card.selected .card-since{color:var(--cream-2);}
+  .fav-toggle{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:0.04em;border:1px solid var(--line-strong);
+    border-radius:999px;padding:5px 11px;color:var(--ink-soft);white-space:nowrap;
+  }
+  .fav-toggle.is-fav{background:var(--ink);color:var(--cream-3);border-color:var(--ink);}
+  .card.selected .fav-toggle.is-fav{background:var(--cream-3);color:var(--red-dark);border-color:var(--cream-3);}
+  .empty-state{padding:40px 10px;text-align:center;color:var(--grey);font-family:var(--mono);font-size:13px;}
+
+  /* ---------- PLAYER BAR ---------- */
+  .player-bar{
+    position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:var(--cream-3);
+    border-top:1px solid var(--line-strong);z-index:40;
+  }
+  .player-inner{
+    max-width:1400px;margin:0 auto;padding:14px clamp(16px,3vw,40px);
+    display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+  }
+  .player-label{font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;color:var(--red);flex:0 0 auto;}
+  .player-station{min-width:0;flex:1 1 220px;}
+  .player-empty-title{margin:0;font-family:var(--serif);font-size:15px;color:var(--cream-2);}
+  .player-empty-sub{margin:2px 0 0;font-size:12px;color:var(--grey);}
+  .player-name{margin:0;font-family:var(--serif);font-weight:600;font-size:16px;}
+  .player-sub{margin:2px 0 0;font-family:var(--mono);font-size:11px;color:var(--cream-2);letter-spacing:0.03em;}
+  .player-controls{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .play-btn{
+    font-family:var(--mono);font-size:12px;letter-spacing:0.05em;background:var(--red);color:var(--cream-3);
+    padding:10px 18px;border-radius:999px;transition:background .15s;
+  }
+  .play-btn:hover{background:var(--red-dark);}
+  .play-btn:disabled{background:var(--ink-soft);opacity:0.4;cursor:not-allowed;}
+  .volume{display:flex;align-items:center;gap:8px;}
+  .volume label{font-family:var(--mono);font-size:10px;color:var(--grey);letter-spacing:0.05em;}
+  .volume input[type=range]{accent-color:var(--red);width:90px;}
+  .player-status{font-family:var(--mono);font-size:10.5px;letter-spacing:0.08em;color:var(--grey);border:1px solid var(--line-strong);padding:5px 10px;border-radius:999px;white-space:nowrap;}
+  .player-status.on{color:var(--red);border-color:var(--red);}
+  .fav-btn{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:0.03em;border:1px solid var(--cream-2);
+    padding:9px 14px;border-radius:999px;color:var(--cream-2);white-space:nowrap;
+  }
+  .fav-btn:disabled{opacity:0.35;cursor:not-allowed;}
+  .fav-btn.is-fav{background:var(--red);border-color:var(--red);color:var(--cream-3);}
+
+  /* ---------- MODAL ---------- */
+  .modal-veil{
+    position:fixed;inset:0;background:rgba(20,16,12,0.62);backdrop-filter:blur(1.5px);
+    display:none;align-items:center;justify-content:center;z-index:100;padding:24px;
+  }
+  .modal-veil.open{display:flex;}
+  .modal-panel{
+    background:var(--cream-3);max-width:640px;width:100%;max-height:82vh;overflow-y:auto;
+    border:1px solid var(--line-strong);border-radius:4px;position:relative;padding:36px 34px 30px;
+    box-shadow:0 30px 70px rgba(0,0,0,0.35);
+  }
+  .modal-close{
+    position:sticky;top:0;float:right;margin:-16px -14px 0 0;font-size:16px;color:var(--ink-soft);
+    width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line-strong);
+    border-radius:50%;background:var(--cream-3);
+  }
+  .modal-close:hover{color:var(--red);border-color:var(--red);}
+  .ref-kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--red);text-transform:uppercase;margin:0 0 8px;}
+  .ref-title{font-family:var(--serif);font-weight:700;font-size:clamp(24px,3vw,30px);margin:0 0 6px;clear:both;}
+  .ref-subline{font-family:var(--mono);font-size:12px;color:var(--grey);margin:0 0 22px;letter-spacing:0.02em;}
+  .ref-summary{font-size:15.5px;color:var(--ink);margin:0 0 20px;font-family:var(--serif);font-style:italic;line-height:1.5;}
+  .ref-section{margin-bottom:20px;}
+  .ref-section h4{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-soft);margin:0 0 8px;border-top:1px solid var(--line);padding-top:14px;}
+  .ref-section p{margin:0;font-size:14px;color:var(--ink-soft);line-height:1.65;}
+  .ref-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;}
+  .chip{font-family:var(--mono);font-size:11px;border:1px solid var(--line-strong);border-radius:999px;padding:5px 11px;color:var(--ink-soft);}
+  .chip.link{color:var(--red-dark);border-color:var(--red);cursor:pointer;}
+  .chip.link:hover{background:var(--red);color:var(--cream-3);}
+  .chip.link-ext{color:var(--ink-soft);border-color:var(--line-strong);text-decoration:none;display:inline-flex;align-items:center;gap:4px;}
+  .chip.link-ext:hover{border-color:var(--ink);color:var(--ink);}
+  .ref-section p.lede{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink);}
+  .ref-subsection{margin:0 0 14px;}
+  .ref-subsection h5{font-family:var(--mono);font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--red-dark);margin:0 0 6px;}
+  .ref-subsection p{margin:0 0 8px;}
+  .ref-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px;}
+  .tag{font-family:var(--mono);font-size:10px;letter-spacing:0.04em;background:var(--cream-2);padding:4px 9px;border-radius:2px;color:var(--ink-soft);text-transform:uppercase;}
+
+  /* about modal */
+  .about-body p{font-size:14px;color:var(--ink-soft);line-height:1.7;margin:0 0 14px;}
+
+  @media (max-width:640px){
+    .modal-veil{padding:0;align-items:flex-end;}
+    .modal-panel{max-width:none;width:100%;max-height:92vh;border-radius:14px 14px 0 0;padding:28px 20px 26px;}
+    .player-inner{gap:12px;}
+    .player-controls{width:100%;justify-content:space-between;}
+    .segments{width:100%;margin-left:0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <header class="masthead">
+    <div class="masthead-top">
+      <div class="brand">
+        <span class="brand-name">ONDES 70</span>
+        <span class="live-tag"><span class="live-dot"></span>EN DIRECTE</span>
+      </div>
+      <div class="masthead-actions">
+        <div class="lang-switch">
+          <button class="active" type="button">CA</button>
+          <button type="button" id="langEnBtn">EN</button>
+        </div>
+        <button class="about-btn" id="aboutBtn" type="button">Sobre el projecte</button>
+      </div>
+    </div>
+    <p class="credit-line">projecte creat per <a href="https://www.marcxicola.com" target="_blank" rel="noopener">www.marcxicola.com</a> by Vandecul © 2026</p>
+    <hr class="rule">
+    <h1 class="masthead-title">Atlas mundial de la ràdio electrònica dels anys 70</h1>
+  </header>
+
+  <section class="intro">
+    <h2>Cartografia d'emissores</h2>
+    <p class="intro-instruction">Fes clic en un punt per sintonitzar l'emissora</p>
+    <p class="intro-en">World map of 1970s electronic radio stations</p>
+    <p class="intro-desc">Emissores especialitzades en sintetitzadors, Krautrock, Berlin School i ambient dels anys 70.</p>
+    <div class="wake-bar">
+      <button class="wake-btn" id="wakeBtn" type="button"><span class="wake-dot"></span>Comprova el reproductor</button>
+      <span class="wake-status" id="wakeStatus">Toca aquí abans de sintonitzar si el so no arrenca</span>
+    </div>
+  </section>
+
+  <section class="feature-link">
+    <button class="feature-card" id="synthEraBtn" type="button">
+      <span class="feature-kicker">Dossier especial</span>
+      <h2 class="feature-title">Música electrónica de los años 70</h2>
+      <p class="feature-sub">Del estudio académico a la pista de baile: el renacimiento, desarrollo y consolidación del sonido sintético en la década que inventó el futuro. Grupos, sintetizadores y pioneros, con enlaces a Wikipedia.</p>
+      <span class="feature-cta">Leer el dossier completo →</span>
+    </button>
+  </section>
+
+  <section class="toolbar">
+    <input type="search" id="searchInput" placeholder="Cerca emissora, ciutat, país o gènere…">
+    <select id="genreSelect"></select>
+    <div class="segments">
+      <button class="segment active" data-segment="all" type="button">Totes <span id="countAll">36</span></button>
+      <button class="segment" data-segment="favorites" type="button">Preferits <span id="countFav">0</span></button>
+      <button class="segment discover" data-segment="discover" type="button">Descobreix</button>
+    </div>
+  </section>
+
+  <main class="layout">
+    <div class="map-pane">
+      <div class="map-frame">
+        <svg id="worldMap" viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg"></svg>
+        <div class="zoom-controls">
+          <button type="button" id="zoomInBtn" aria-label="Amplia el mapa">+</button>
+          <button type="button" id="zoomOutBtn" aria-label="Redueix el mapa">−</button>
+          <button type="button" id="zoomResetBtn" aria-label="Restableix la vista">⤢</button>
+        </div>
+      </div>
+      <div class="map-caption"><span>PROJECCIÓ EQUIRECTANGULAR · FES SCROLL O ELS BOTONS PER AMPLIAR</span><span id="mapCount">32 emissores</span></div>
+    </div>
+    <div class="catalog-pane">
+      <div class="catalog-count" id="catalogCount">32 emissores trobades</div>
+      <div class="catalog-list" id="catalogList"></div>
+    </div>
+  </main>
+</div>
+
+<footer class="player-bar">
+  <div class="player-inner">
+    <span class="player-label">SONANT ARA</span>
+    <div class="player-station" id="playerStation">
+      <p class="player-empty-title">Cap emissora seleccionada</p>
+      <p class="player-empty-sub">Tria un punt del mapa per començar</p>
+    </div>
+    <audio id="radioAudio" preload="none"></audio>
+    <div class="player-controls">
+      <button class="play-btn" id="playBtn" disabled>Reproduir</button>
+      <div class="volume">
+        <label for="volumeSlider">VOL</label>
+        <input type="range" id="volumeSlider" min="0" max="100" value="70">
+      </div>
+      <span class="player-status" id="playerStatus">EN ESPERA</span>
+      <button class="fav-btn" id="favBtn" disabled>Afegir a preferits</button>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-veil" id="modalVeil">
+  <div class="modal-panel" id="modalPanel" role="dialog" aria-modal="true" aria-labelledby="modalTitleTarget">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Tanca la fitxa">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+<script>
+(function(){
+"use strict";
+
+/* ================= HELPERS ================= */
+function ref(id, label){
+  return '<button class="ref-link" type="button" data-ref="'+id+'">'+label+'</button>';
+}
+function wikiLink(label, url){
+  return '<a class="link-ext" href="'+url+'" target="_blank" rel="noopener" aria-label="Wikipedia: '+label+'">'+label+' ↗</a>';
+}
+
+/* ================= REFERENCE / ARCHIVE DATA ================= */
+var REFERENCES = {
+
+"tangerine-dream": {
+  name:"Tangerine Dream", type:"Grup", origin:"Berlín, Alemanya", years:"1967 — actiu",
+  summary:`El grup que va convertir el sintetitzador modular en instrument de narració, definint el so flotant de la Berlin School.`,
+  long_description:`Fundats a Berlín Oest per Edgar Froese, Tangerine Dream van passar d'un rock psicodèlic incipient a seqüències electròniques hipnòtiques construïdes amb sintetitzadors modulars i seqüenciadors analògics. Discos com "Phaedra" (1974) o "Rubycon" (1975) van establir una manera d'esculpir el temps musical a base de capes en moviment constant.`,
+  historical_context:`El seu contracte amb el segell britànic Virgin va portar la música electrònica alemanya a públics massius fora d'Alemanya, i el seu treball per a bandes sonores de cinema als 80 va perllongar la influència de la Berlin School durant dècades.`,
+  related:["klaus-schulze","ash-ra-tempel","manuel-gottsching"],
+  tags:["Berlin School","Sintetitzador modular","Seqüenciador"],
+  equipment:["Moog modular","EMS Synthi A","Mellotron"],
+  key_works:["Phaedra (1974)","Rubycon (1975)","Stratosfear (1976)"]
+},
+"klaus-schulze": {
+  name:"Klaus Schulze", type:"Músic / compositor", origin:"Berlín, Alemanya", years:"1947 — 2022",
+  summary:`Bateria reconvertit en arquitecte de paisatges electrònics d'una durada quasi geològica.`,
+  long_description:`Antic bateria d'Ash Ra Tempel i membre fundador de Tangerine Dream, Schulze es va decantar en solitari per composicions llarguíssimes construïdes amb sintetitzadors i seqüències repetitives que avancen mil·límetre a mil·límetre. El seu disc "Irrlicht" (1972) sovint es considera un dels primers monuments de la música electrònica europea de concert.`,
+  historical_context:`La seva obra va influir directament l'estètica ambiental i meditativa que després adoptarien projectes d'arreu d'Europa, i el seu ús pioner del seqüenciador com a element compositiu —no només rítmic— és una de les seves aportacions més citades.`,
+  related:["tangerine-dream","ash-ra-tempel","manuel-gottsching"],
+  tags:["Berlin School","Ambient","Seqüenciador"],
+  equipment:["Synthi A","EMS Synthi 100","Moog modular"],
+  key_works:["Irrlicht (1972)","Cyborg (1973)","Timewind (1975)"]
+},
+"ash-ra-tempel": {
+  name:"Ash Ra Tempel", type:"Grup", origin:"Berlín, Alemanya", years:"1970 — 1976",
+  summary:`Trio de guitarra còsmica i electrònica improvisada, frontissa entre el Krautrock i la Berlin School.`,
+  long_description:`Formats al voltant del guitarrista Manuel Göttsching, Ash Ra Tempel van fusionar l'improvisació de guitarra elèctrica amb electrònica primitiva en llargues peces hipnòtiques gravades gairebé sempre en una sola presa. El seu disc de 1973 amb el psiquiatre Timothy Leary, "Seven Up", els va vincular a l'imaginari psicodèlic internacional.`,
+  historical_context:`El grup va servir de pont directe cap a la carrera en solitari de Göttsching i cap al llenguatge que consolidaria la Berlin School durant la dècada.`,
+  related:["manuel-gottsching","klaus-schulze","tangerine-dream"],
+  tags:["Krautrock","Berlin School","Improvisació"],
+  key_works:["Ash Ra Tempel (1971)","Join Inn (1973)","Seven Up (1973)"]
+},
+"manuel-gottsching": {
+  name:"Manuel Göttsching", type:"Músic / compositor", origin:"Berlín, Alemanya", years:"1952 — 2022",
+  summary:`Guitarrista i pioner de la seqüenciació electrònica, autor d'una de les peces fundacionals del so cíclic.`,
+  long_description:`Sortint d'Ash Ra Tempel, Göttsching va desenvolupar un llenguatge propi basat en guitarres processades i seqüències de sintetitzador que es repeteixen i evolucionen lentament. El seu disc "E2-E4" (1984, enregistrat el 1981) es considera avui un precedent directe del techno i el house per la seva estructura d'un sol acord en moviment continu durant seixanta minuts.`,
+  historical_context:`Tot i publicat més tard, "E2-E4" prové directament de l'experimentació amb seqüenciadors dels anys 70 i n'és, en certa manera, la seva culminació lògica.`,
+  related:["ash-ra-tempel","klaus-schulze","tangerine-dream"],
+  tags:["Berlin School","Seqüenciador","Guitarra processada"],
+  key_works:["New Age of Earth (1976)","E2-E4 (1984)"]
+},
+"kraftwerk": {
+  name:"Kraftwerk", type:"Grup", origin:"Düsseldorf, Alemanya", years:"1970 — actiu",
+  summary:`El quartet que va convertir la màquina en subjecte, no en eina, de la música popular.`,
+  long_description:`Sortits de l'escena experimental de Düsseldorf, Ralf Hütter i Florian Schneider van anar despullant el seu so fins a reduir-lo a veus robotitzades, ritmes de caixa de ritmes i melodies de sintetitzador de gran precisió. Discos com "Autobahn" (1974) i "Trans-Europe Express" (1977) van definir una estètica —el cos com a màquina, la carretera com a partitura— que travessaria dècades de música electrònica posterior.`,
+  historical_context:`El seu Kling Klang Studio a Düsseldorf va funcionar com a laboratori tancat on es va gestar bona part del vocabulari sonor del synth-pop, l'electro i el techno.`,
+  related:["neu","musicland-studios"],
+  tags:["Krautrock","Electro","Robot pop"],
+  equipment:["Vocoder","Synthanorma sequencer","ARP Odyssey"],
+  key_works:["Autobahn (1974)","Trans-Europe Express (1977)","The Man-Machine (1978)"]
+},
+"wdr-studio": {
+  name:"WDR Studio für elektronische Musik", type:"Estudi / Institució", origin:"Colònia, Alemanya", years:"1951 — actiu",
+  summary:`El primer estudi del món dedicat exclusivament a la composició amb so purament electrònic.`,
+  long_description:`Creat a la ràdio pública alemanya de Colònia, aquest estudi va reunir teòrics del so i compositors amb l'objectiu de generar música a partir de senyals purament electrònics —oscil·ladors i generadors de soroll— enlloc de gravacions del món real. Va esdevenir el referent institucional de la música electrònica acadèmica europea durant dues dècades.`,
+  historical_context:`El seu prestigi va atreure compositors de tot el continent i va establir un mètode de treball —planificació serial del timbre— que influiria fins i tot en músics allunyats de l'acadèmia.`,
+  related:["stockhausen","eimert"],
+  tags:["Estudi acadèmic","Música electrònica pura","Sèrie"],
+  key_works:["Studie I i II (Stockhausen, 1953-54)","Gesang der Jünglinge (1956)"]
+},
+"stockhausen": {
+  name:"Karlheinz Stockhausen", type:"Músic / compositor", origin:"Alemanya", years:"1928 — 2007",
+  summary:`Compositor central de l'avantguarda europea i figura clau en la legitimació acadèmica del so electrònic.`,
+  long_description:`Vinculat des de ben aviat al WDR Studio für elektronische Musik de Colònia, Stockhausen va explorar la síntesi del timbre, l'espacialització del so en diversos altaveus i la integració entre veu i electrònica en obres com "Gesang der Jünglinge". El seu pensament sobre la forma musical com a procés obert va marcar generacions de compositors i, indirectament, músics de rock experimental.`,
+  historical_context:`La seva imatge —fins i tot la seva aparició a la coberta de "Sgt. Pepper's" dels Beatles— va convertir-lo en el pont més visible entre l'acadèmia electrònica i la cultura popular dels anys setanta.`,
+  related:["wdr-studio","eimert"],
+  tags:["Avantguarda","Espacialització","Serialisme"],
+  key_works:["Gesang der Jünglinge (1956)","Kontakte (1960)","Hymnen (1967)"]
+},
+"eimert": {
+  name:"Herbert Eimert", type:"Músic / teòric", origin:"Alemanya", years:"1897 — 1972",
+  summary:`Teòric i fundador del WDR Studio für elektronische Musik, arquitecte institucional de la música electrònica alemanya.`,
+  long_description:`Musicòleg de formació, Eimert va defensar des dels anys quaranta una música construïda exclusivament amb mitjans electrònics, allunyada de qualsevol referència instrumental. La seva tasca com a fundador i director de l'estudi de Colònia va ser tan decisiva com la dels compositors que hi van treballar.`,
+  historical_context:`Va editar també la revista "die Reihe", plataforma teòrica essencial per difondre els principis de la composició electrònica serial per tot Europa.`,
+  related:["wdr-studio","stockhausen"],
+  tags:["Teoria musical","Estudi de Colònia"],
+  key_works:["Glockenspiel (1953)","Etude über Tongemische (1952)"]
+},
+"giorgio-moroder": {
+  name:"Giorgio Moroder", type:"Productor / músic", origin:"Ortisei (Itàlia)", years:"1940 — actiu",
+  summary:`El productor que va soldar el sintetitzador al ritme de ball, inventant la disco electrònica moderna.`,
+  long_description:`Instal·lat a Munic, Moroder va desenvolupar juntament amb Pete Bellotte una producció basada en línies de baix de sintetitzador polsants i caixes de ritmes programades, culminant amb "I Feel Love" (1977) de Donna Summer, considerada la pedra fundacional de la música de ball electrònica.`,
+  historical_context:`Els seus mètodes de producció, gestats als Musicland Studios de Munic, van ser estudiats i imitats per productors d'arreu del món i van obrir el camí cap al synth-pop i el techno de la dècada següent.`,
+  related:["musicland-studios"],
+  tags:["Euro-disco","Sintetitzador","Producció"],
+  equipment:["Moog modular","Sintetitzador Moog System 55"],
+  key_works:["I Feel Love (1977)","From Here to Eternity (1977)"]
+},
+"musicland-studios": {
+  name:"Musicland Studios", type:"Estudi", origin:"Munic, Alemanya", years:"1969 — 1993",
+  summary:`L'estudi subterrani de Munic on es va enregistrar bona part de la revolució electrònica de ball dels 70.`,
+  long_description:`Situat al soterrani de l'Arabella Haus de Munic, Musicland es va convertir en el laboratori de Giorgio Moroder i en un destí habitual d'artistes internacionals atrets per la seva tecnologia de sintetitzadors i la flexibilitat del seu equip tècnic.`,
+  historical_context:`La seva reputació el va convertir també en refugi de grups de rock que buscaven distància dels focus mediàtics, tot coincidint amb sessions de producció electrònica pionera.`,
+  related:["giorgio-moroder"],
+  tags:["Estudi de gravació","Munic","Euro-disco"]
+},
+"pierre-henry": {
+  name:"Pierre Henry", type:"Compositor", origin:"França", years:"1927 — 2017",
+  summary:`Pare, junt amb Pierre Schaeffer, de la musique concrète, l'art de compondre amb sons enregistrats.`,
+  long_description:`Henry va desenvolupar tècniques de manipulació de cinta magnètica —talls, bucles, inversions, velocitats variables— per transformar sons quotidians en material musical abstracte. La seva "Symphonie pour un homme seul" (1950, amb Schaeffer) i posteriorment "Messe pour le temps présent" (1967) el van convertir en referent obligat de tota experimentació sonora europea.`,
+  historical_context:`Als anys setanta la seva obra va dialogar amb el rock progressiu i la música de ball, demostrant que la musique concrète podia travessar els circuits acadèmics cap a la cultura popular.`,
+  tags:["Musique concrète","Cinta magnètica","Muntatge sonor"],
+  key_works:["Symphonie pour un homme seul (1950)","Messe pour le temps présent (1967)"]
+},
+"space-band": {
+  name:"Space", type:"Grup", origin:"França", years:"1977 — 1979",
+  summary:`Projecte de disco-electrònica còsmica darrere del qual hi havia Didier Marouani, símbol del so galàctic francès.`,
+  long_description:`Amagats sota cascos i vestuari espacial, Space van popularitzar una disco instrumental amb sintetitzadors i melodies senzilles i memorables, amb l'èxit "Magic Fly" (1977) com a peça central del seu imaginari.`,
+  historical_context:`Formen part, junt amb Cerrone i Droids, d'una petita constel·lació francesa que va portar el sintetitzador a les pistes de ball europees a finals de la dècada.`,
+  related:["droids","cerrone"],
+  tags:["Cosmic disco","Sintetitzador","Disco instrumental"],
+  key_works:["Magic Fly (1977)"]
+},
+"droids": {
+  name:"Droids", type:"Grup", origin:"França", years:"1977 — 1981",
+  summary:`Duet francès que va portar la iconografia robòtica a la disco electrònica de finals dels setanta.`,
+  long_description:`Amb sintetitzadors i vocoder com a eines centrals, Droids van construir peces instrumentals de ball inspirades en la ciència-ficció, en la mateixa òrbita estètica que Space, amb qui van compartir influències i públic.`,
+  historical_context:`El seu treball exemplifica com la disco francesa dels 70 va absorbir el vocabulari de la ciència-ficció popular per crear un imaginari "cosmic" propi.`,
+  related:["space-band"],
+  tags:["Cosmic disco","Vocoder"],
+  key_works:["Star Peace (1979)"]
+},
+"cerrone": {
+  name:"Cerrone", type:"Músic / productor", origin:"França", years:"1946 — actiu",
+  summary:`Bateria i productor darrere d'algunes de les produccions disco més orquestrals i sintètiques d'Europa.`,
+  long_description:`Jean-Marc Cerrone va combinar arranjaments orquestrals amb línies de sintetitzador i ritmes de disco de llarga durada, amb peces com "Supernature" (1977) que integraven maquinària electrònica dins d'una estructura de ball massiva.`,
+  historical_context:`La seva influència arriba fins a la música house i electrònica posterior gràcies a la seva manera de tractar el ritme com una superfície contínua i hipnòtica.`,
+  tags:["Disco","Orquestració electrònica"],
+  key_works:["Love in C Minor (1976)","Supernature (1977)"]
+},
+"ems-synthi-100": {
+  name:"EMS Synthi 100", type:"Instrument", origin:"Regne Unit", years:"1971",
+  summary:`Sintetitzador modular monumental conegut popularment com "The Delaware", instal·lat en pocs estudis d'elit europeus.`,
+  long_description:`Fabricat per Electronic Music Studios (Londres), el Synthi 100 combinava tres oscil·ladors independents, una matriu de connexions per patchpins i un seqüenciador digital pioner en una consola d'enormes dimensions, pensada per a estudis institucionals més que per a músics individuals.`,
+  historical_context:`Pocs exemplars van arribar a estudis com el de la BBC o diversos centres de ràdio pública europeus, on van esdevenir eina fonamental per a la investigació tímbrica dels anys setanta.`,
+  related:["ems-vcs3","bbc-radiophonic-workshop"],
+  tags:["Sintetitzador modular","Matriu de pins","Seqüenciador digital"]
+},
+"bbc-radiophonic-workshop": {
+  name:"BBC Radiophonic Workshop", type:"Estudi / Institució", origin:"Londres, Regne Unit", years:"1958 — 1998",
+  summary:`El departament de la BBC que va convertir efectes de ràdio i televisió en un laboratori de música electrònica.`,
+  long_description:`Nascut per resoldre necessitats sonores de drama radiofònic, el Workshop es va convertir en un espai d'experimentació amb cinta magnètica, generadors i, més tard, sintetitzadors, produint tant efectes com composicions independents de gran influència.`,
+  historical_context:`La sintonia de "Doctor Who" (1963), creada íntegrament amb tècniques de cinta, és probablement la peça de música electrònica més escoltada de la història de la televisió britànica.`,
+  related:["delia-derbyshire","ems-vcs3"],
+  tags:["Ràdio pública","Cinta magnètica","Efectes sonors"]
+},
+"delia-derbyshire": {
+  name:"Delia Derbyshire", type:"Compositora", origin:"Regne Unit", years:"1937 — 2001",
+  summary:`Pionera de l'electrònica britànica, autora de la realització sonora de la sintonia de "Doctor Who".`,
+  long_description:`Treballant al BBC Radiophonic Workshop amb generadors de tons i cinta magnètica —abans que existissin sintetitzadors comercials—, Derbyshire va construir textures i melodies d'una sofisticació tímbrica excepcional per a l'època, sovint sense signatura pública fins dècades després.`,
+  historical_context:`La reivindicació tardana de la seva figura ha convertit Derbyshire en referent central de la història de dones a l'electrònica, i la seva metodologia manual anticipa processos que després farien els sintetitzadors i seqüenciadors.`,
+  related:["bbc-radiophonic-workshop","ems-vcs3"],
+  tags:["Cinta magnètica","Ràdio pública","Pionera"],
+  key_works:["Doctor Who theme (1963)"]
+},
+"ems-vcs3": {
+  name:"EMS VCS3", type:"Instrument", origin:"Regne Unit", years:"1969",
+  summary:`Sintetitzador compacte de matriu de pins que va democratitzar l'accés a la síntesi modular a Europa.`,
+  long_description:`Dissenyat per Peter Zinovieff, David Cockerell i Tristram Cary, el VCS3 substituïa els cables de connexió habituals dels sintetitzadors modulars per una matriu de pins compacta dins d'una maleta de fusta, fent-lo assequible i portàtil per a estudis mitjans i músics de rock progressiu.`,
+  historical_context:`Va ser adoptat tant per estudis acadèmics com pel BBC Radiophonic Workshop i per grups de rock com Pink Floyd o Roxy Music, esdevenint un dels sintetitzadors més versàtils i reconeixibles de la dècada.`,
+  related:["bbc-radiophonic-workshop","delia-derbyshire","ems-synthi-100"],
+  tags:["Sintetitzador","Matriu de pins","Portàtil"]
+},
+"cabaret-voltaire": {
+  name:"Cabaret Voltaire", type:"Grup", origin:"Sheffield, Regne Unit", years:"1973 — 1994",
+  summary:`Trio pioner del so industrial britànic, construït amb cintes, sintetitzadors casolans i col·lages sonors.`,
+  long_description:`Prenent el nom del cabaret dadaista de Zúric, el grup va combinar ritmes repetitius, veus distorsionades i material trobat de ràdio i televisió per crear una electrònica hostil i experimental, allunyada de qualsevol lògica pop convencional.`,
+  historical_context:`Juntament amb Throbbing Gristle, van establir Sheffield i el nord d'Anglaterra com a epicentre d'un so industrial que anticipa l'electrònica de ball més fosca de la dècada següent.`,
+  related:["throbbing-gristle"],
+  tags:["Industrial","Col·lage sonor","Cinta"]
+},
+"throbbing-gristle": {
+  name:"Throbbing Gristle", type:"Grup / Col·lectiu", origin:"Regne Unit", years:"1975 — 1981",
+  summary:`Col·lectiu que va encunyar el terme "industrial" per descriure una música construïda amb soroll, sintetitzadors i provocació.`,
+  long_description:`Formats a partir del col·lectiu artístic COUM Transmissions, Throbbing Gristle van fer servir sintetitzadors modificats, cintes i tècniques de dissonància per qüestionar frontalment la idea de música com a entreteniment, fundant el seu propi segell, Industrial Records.`,
+  historical_context:`El seu llegat és directe en tota l'electrònica experimental i industrial posterior, així com en l'estètica de fer-ho-tu-mateix aplicada a la tecnologia electrònica.`,
+  related:["cabaret-voltaire"],
+  tags:["Industrial","Segell independent","Provocació"]
+},
+"brian-eno": {
+  name:"Brian Eno", type:"Músic / productor", origin:"Regne Unit", years:"1948 — actiu",
+  summary:`Teòric i practicant de l'ambient, va redefinir la música electrònica com a atmosfera més que com a narració.`,
+  long_description:`Després de la seva etapa a Roxy Music, Eno va desenvolupar el concepte de "música ambiental" amb discos com "Discreet Music" (1975) i "Music for Airports" (1978), utilitzant bucles de cinta, sintetitzadors i sistemes generatius per crear entorns sonors pensats per escoltar-se sense atenció exclusiva.`,
+  historical_context:`La seva col·laboració amb Harold Budd i el seu treball com a productor per a Bowie o Talking Heads van estendre el vocabulari ambiental molt més enllà del cercle experimental original.`,
+  related:["harold-budd"],
+  tags:["Ambient","Música generativa","Cinta en bucle"],
+  key_works:["Discreet Music (1975)","Music for Airports (1978)"]
+},
+"harold-budd": {
+  name:"Harold Budd", type:"Compositor", origin:"Estats Units", years:"1936 — 2020",
+  summary:`Pianista minimalista que va aportar a l'ambient un llenguatge harmònic proper i pictòric.`,
+  long_description:`Format en el minimalisme californià, Budd va desenvolupar un piano "suau" —tocat amb pedals sostinguts i reverberació espaciosa— que Brian Eno va ajudar a difondre internacionalment a través de la sèrie de discos "Ambient".`,
+  historical_context:`La seva col·laboració amb Eno a "The Pavilion of Dreams" (1978) va consolidar un pont entre el minimalisme acadèmic nord-americà i l'ambient electrònic britànic.`,
+  related:["brian-eno"],
+  tags:["Ambient","Piano preparat","Minimalisme"],
+  key_works:["The Pavilion of Dreams (1978)"]
+},
+"neuronium": {
+  name:"Neuronium", type:"Grup", origin:"Barcelona, Espanya", years:"1977 — actiu",
+  summary:`Projecte capdavanter de l'electrònica catalana, liderat per Michel Huygen, en diàleg directe amb la Berlin School.`,
+  long_description:`Neuronium van importar el llenguatge dels sintetitzadors modulars i els seqüenciadors alemanys a l'escena catalana, construint paisatges sonors expansius amb un fort component visual i cinematogràfic.`,
+  historical_context:`El seu debut "Quasar 2C361" (1977) és sovint citat com la porta d'entrada de la música electrònica catalana als circuits internacionals de l'electrònica de sintetitzador, en ser el primer disc de "música còsmica" editat a l'Estat espanyol.`,
+  related:["michel-huygen","phonos","suck-electronic"],
+  tags:["Electrònica catalana","Berlin School","Sintetitzador modular"],
+  key_works:["Quasar 2C361 (1977)","Vuelo químico (1978)"]
+},
+"michel-huygen": {
+  name:"Michel Huygen", type:"Músic", origin:"Barcelona, Espanya", years:"1954 — actiu",
+  summary:`Fundador de Neuronium i figura clau en la introducció del sintetitzador modular a Catalunya.`,
+  long_description:`Autodidacta i col·leccionista d'equip analògic, Huygen va desenvolupar un mètode de composició basat en capes de seqüències i textures ambientals que emmarcarien l'electrònica catalana dins del context europeu de l'època.`,
+  historical_context:`El seu vincle amb Phonos, el laboratori sonor de Barcelona, li va donar accés a tecnologia i a una comunitat d'experimentació poc habitual a l'Estat espanyol dels anys setanta.`,
+  related:["neuronium","phonos","suck-electronic"],
+  tags:["Sintetitzador modular","Electrònica catalana"]
+},
+"phonos": {
+  name:"Phonos", type:"Institució", origin:"Barcelona, Espanya", years:"1974 — actiu",
+  summary:`Primer laboratori de música electroacústica de l'Estat espanyol, motor de l'experimentació sonora a Barcelona.`,
+  long_description:`Fundat per un grup de músics i enginyers barcelonins, Phonos va oferir accés a sintetitzadors, gravadores multipista i formació tècnica a una generació de compositors i músics interessats en el so electrònic, en un context on aquests recursos eren pràcticament inexistents.`,
+  historical_context:`Va ser punt de trobada entre l'acadèmia, l'art sonor i músics propers al rock i la música popular, incloent figures que després formarien part de l'escena electrònica catalana.`,
+  related:["neuronium","michel-huygen"],
+  tags:["Laboratori de so","Barcelona","Electroacústica"]
+},
+"suck-electronic": {
+  name:"Suck Electrònic Enciclopèdic", type:"Col·lectiu", origin:"Barcelona, Espanya", years:"1975 — 1982 (intermitent)",
+  summary:`Col·lectiu experimental barceloní de formació variable, pioner del rock electrònic fet amb sintetitzadors autoconstruïts a l'Estat espanyol.`,
+  long_description:`Impulsat per Jordi García i Manel Rubiales als darrers anys del franquisme, el col·lectiu —pel qual van passar més de vint-i-cinc músics— va combinar sintetitzadors construïts per ells mateixos amb un espectacle visual i pirotècnic poc habitual a l'escena barcelonina de mitjans dels setanta.`,
+  historical_context:`Formen part, junt amb Neuronium i Macromassa, del nucli fundacional de la música electrònica catalana i espanyola dels anys setanta; diversos dels seus membres passarien després per altres projectes de l'època, com el mateix Neuronium.`,
+  related:["neuronium","michel-huygen","phonos"],
+  tags:["Electrònica experimental","Barcelona"]
+},
+"luis-delgado": {
+  name:"Luis Delgado", type:"Músic", origin:"Espanya", years:"1947 — actiu",
+  summary:`Multiinstrumentista i explorador de músiques del món, connector entre la tradició acústica i la síntesi electrònica.`,
+  long_description:`La seva curiositat per instruments tradicionals d'Àsia i el Magrib, combinada amb sintetitzadors i efectes de cinta, el va portar a construir un llenguatge híbrid poc habitual a l'Espanya dels setanta, embrió del so que definiria Finis Africae als vuitanta.`,
+  historical_context:`La seva trajectòria connecta l'etnomusicologia amb l'electrònica experimental, un encreuament rar en el context ibèric de l'època.`,
+  related:["finis-africae"],
+  tags:["Música del món","Electrònica experimental"]
+},
+"finis-africae": {
+  name:"Finis Africae", type:"Grup", origin:"Madrid, Espanya", years:"Finals dels 70 — 1990",
+  summary:`Projecte pioner de fusió entre instruments tradicionals no europeus i sintetitzadors, gestat en l'òrbita madrilenya de finals de la dècada.`,
+  long_description:`Sortint de l'entorn de Luis Delgado, Finis Africae va combinar koras, flautes i percussions amb sintetitzadors i efectes electrònics per crear un dels sons més singulars de l'electrònica ibèrica.`,
+  historical_context:`Encara que la seva consolidació discogràfica arriba als vuitanta, les seves arrels i el seu cercle es formen directament en l'experimentació madrilenya de finals dels setanta.`,
+  related:["luis-delgado"],
+  tags:["Fusió","Electrònica experimental","Instruments del món"]
+},
+"goblin": {
+  name:"Goblin", type:"Grup", origin:"Itàlia", years:"1972 — actiu (intermitent)",
+  summary:`Banda de rock progressiu convertida en referent de bandes sonores de terror gràcies al seu ús del sintetitzador.`,
+  long_description:`Estretament vinculats al cinema de gènere italià, Goblin van combinar orgues, sintetitzadors Moog i ritmes progressius per crear atmosferes inquietants, amb la banda sonora de "Suspiria" (1977, Dario Argento) com a punt culminant.`,
+  historical_context:`El seu treball va establir un estàndard per a la banda sonora electrònica de terror que encara avui es reconeix com a marca pròpia del cinema italià dels setanta.`,
+  related:["fabio-frizzi","alessandro-alessandroni"],
+  tags:["Banda sonora","Terror","Rock progressiu"],
+  key_works:["Profondo Rosso (1975)","Suspiria (1977)"]
+},
+"fabio-frizzi": {
+  name:"Fabio Frizzi", type:"Compositor", origin:"Itàlia", years:"1951 — actiu",
+  summary:`Compositor de bandes sonores especialitzat en atmosferes electròniques per al cinema de terror italià.`,
+  long_description:`Frizzi va combinar orquestracions amb sintetitzadors i ritmes hipnòtics per a pel·lícules de Lucio Fulci, creant un so distintiu dins de la tradició de la "library music" italiana dels setanta.`,
+  historical_context:`El seu treball, juntament amb el de Goblin, forma part d'una escola italiana de banda sonora que va exportar el sintetitzador com a llenguatge de terror a tot el món.`,
+  related:["goblin","alessandro-alessandroni"],
+  tags:["Banda sonora","Terror italià"],
+  key_works:["Zombi 2 (1979)"]
+},
+"alessandro-alessandroni": {
+  name:"Alessandro Alessandroni", type:"Músic", origin:"Itàlia", years:"1925 — 2017",
+  summary:`Multiinstrumentista i xiulador conegut per les seves bandes sonores de western i el seu paper en la library music italiana.`,
+  long_description:`Cèlebre pels seus xiulets a les bandes sonores de Ennio Morricone, Alessandroni va treballar també intensament en el terreny de la música de llibreria italiana, integrant guitarres, cors i, progressivament, sintetitzadors.`,
+  historical_context:`La seva versatilitat exemplifica com la indústria italiana de bandes sonores i library music dels setanta va absorbir ràpidament el llenguatge electrònic emergent.`,
+  related:["goblin","fabio-frizzi"],
+  tags:["Library music","Banda sonora","Western"]
+},
+"institut-sonologia": {
+  name:"Institut de Sonologia", type:"Institució", origin:"Utrecht, Països Baixos", years:"1960 — actiu",
+  summary:`Centre de referència europeu en investigació sobre síntesi de so i composició assistida per ordinador.`,
+  long_description:`Vinculat a la Universitat d'Utrecht, l'Institut va combinar sintetitzadors analògics amb els primers sistemes de síntesi digital, formant compositors i tècnics que exportarien aquest coneixement a estudis de tot Europa.`,
+  historical_context:`El seu enfocament rigorosament tècnic el va convertir en un dels pocs centres capaços de fer la transició de l'electrònica analògica a la digital durant la dècada dels setanta.`,
+  related:["dick-raaijmakers"],
+  tags:["Síntesi digital","Recerca acadèmica"]
+},
+"dick-raaijmakers": {
+  name:"Dick Raaijmakers", type:"Compositor", origin:"Països Baixos", years:"1930 — 2013",
+  summary:`Enginyer de so i compositor pioner de l'electrònica neerlandesa, figura clau del Studio voor Elektronische Muziek de Philips.`,
+  long_description:`Format com a enginyer, Raaijmakers va aplicar un pensament gairebé escultòric al so electrònic, treballant tant en composició pura com en teatre musical i instal·lació sonora.`,
+  historical_context:`El seu doble perfil, entre la indústria (Philips) i l'acadèmia (Institut de Sonologia), va ajudar a consolidar els Països Baixos com a node important de la investigació electrònica europea.`,
+  related:["institut-sonologia"],
+  tags:["Electrònica acadèmica","Teatre musical"]
+},
+"ipem": {
+  name:"IPEM", type:"Institució", origin:"Gant, Bèlgica", years:"1963 — actiu",
+  summary:`Institut per a la Investigació Psicoacústica i Música Electrònica, centre pioner belga en electroacústica.`,
+  long_description:`Fundat a la Universitat de Gant, l'IPEM va combinar investigació científica sobre percepció sonora amb producció de música electrònica i electroacústica, formant compositors belgues durant tota la dècada dels setanta.`,
+  historical_context:`El seu enfocament interdisciplinari —entre psicoacústica i composició— el distingeix d'altres estudis europeus més centrats exclusivament en la pràctica compositiva.`,
+  tags:["Psicoacústica","Electroacústica","Bèlgica"]
+},
+"ralph-lundsten": {
+  name:"Ralph Lundsten", type:"Músic", origin:"Suècia", years:"1936 — 2023",
+  summary:`Pioner suec de la música electrònica, creador d'un dels primers estudis privats d'Escandinàvia.`,
+  long_description:`Autodidacta, Lundsten va construir el seu propi estudi —anomenat Andromeda— on va desenvolupar composicions electròniques d'ambient còsmic, sovint amb finalitats educatives i de divulgació científica.`,
+  historical_context:`La seva obra va portar l'electrònica a públics infantils i familiars a través de la televisió sueca, un ús pedagògic poc habitual en la resta d'Europa.`,
+  related:["ems-stockholm"],
+  tags:["Electrònica sueca","Estudi privat","Divulgació"]
+},
+"ems-stockholm": {
+  name:"EMS (Elektronmusikstudion)", type:"Estudi / Institució", origin:"Estocolm, Suècia", years:"1964 — actiu",
+  summary:`Estudi nacional suec de música electrònica, punt de trobada entre compositors acadèmics i tecnologia pròpia.`,
+  long_description:`Finançat per la ràdio pública sueca, EMS va desenvolupar tecnologia pròpia de síntesi i va acollir compositors internacionals en residència, esdevenint un dels centres electroacústics més ben equipats del nord d'Europa.`,
+  historical_context:`El seu paper com a node de la xarxa europea d'estudis electrònics va facilitar l'intercanvi de tècniques entre països nòrdics i la resta del continent.`,
+  related:["ralph-lundsten"],
+  tags:["Estudi nacional","Suècia","Electroacústica"]
+},
+"bruno-spoerri": {
+  name:"Bruno Spoerri", type:"Músic", origin:"Suïssa", years:"1935 — actiu",
+  summary:`Saxofonista de jazz reconvertit en pioner de l'electrònica suïssa i de la fusió entre jazz i sintetitzador.`,
+  long_description:`Provinent del jazz, Spoerri va incorporar sintetitzadors modulars als seus grups en directe, creant un dels ponts més primerencs entre la improvisació jazzística i l'oscil·lador electrònic a Europa central.`,
+  historical_context:`El seu doble perfil de músic i enginyer de so el va portar a assessorar estudis i a formar altres músics suïssos interessats en la síntesi.`,
+  tags:["Jazz electrònic","Suïssa","Sintetitzador modular"]
+},
+"krzysztof-penderecki": {
+  name:"Krzysztof Penderecki", type:"Compositor", origin:"Polònia", years:"1933 — 2020",
+  summary:`Compositor d'avantguarda conegut per les seves textures orquestrals extremes, sovint properes a l'estètica electrònica.`,
+  long_description:`Tot i treballar principalment amb instruments acústics, Penderecki va desenvolupar tècniques de clúster i textura massiva —com a "Threnody to the Victims of Hiroshima" (1960)— que dialoguen directament amb l'estètica sonora que altres compositors buscaven per mitjans electrònics.`,
+  historical_context:`La seva influència sobre l'imaginari sonor "inquietant" del cinema i la ràdio europea dels setanta el converteix en referència obligada tot i el seu origen instrumental.`,
+  tags:["Avantguarda","Textura orquestral","Polònia"]
+},
+"polish-radio-studio": {
+  name:"Polish Radio Experimental Studio", type:"Estudi / Institució", origin:"Varsòvia, Polònia", years:"1957 — actiu",
+  summary:`Estudi pioner a l'Europa de l'Est, refugi de composició electrònica sota el context del bloc soviètic.`,
+  long_description:`Creat a la ràdio nacional polonesa, l'estudi va oferir a compositors i tècnics accés a generadors i cintes magnètiques en un context on la música electrònica sovint era vista amb recel polític, esdevenint un oasi de llibertat creativa.`,
+  historical_context:`La seva situació geogràfica el va convertir en un dels pocs punts de contacte entre l'experimentació sonora occidental i els països del bloc de l'Est durant la Guerra Freda.`,
+  related:["eugeniusz-rudnik"],
+  tags:["Bloc de l'Est","Estudi de ràdio","Cinta magnètica"]
+},
+"eugeniusz-rudnik": {
+  name:"Eugeniusz Rudnik", type:"Músic / tècnic", origin:"Polònia", years:"1932 — 2016",
+  summary:`Tècnic i compositor central del Polish Radio Experimental Studio, mestre del muntatge de cinta.`,
+  long_description:`Format inicialment com a tècnic de so, Rudnik va desenvolupar una sensibilitat compositiva pròpia a partir del tall i muntatge de cinta magnètica, produint peces de gran força tímbrica malgrat els mitjans limitats disponibles a Polònia.`,
+  historical_context:`La seva figura reivindica el paper del tècnic com a autor en la història de la música electrònica, sovint eclipsat pels noms dels compositors "oficials".`,
+  related:["polish-radio-studio"],
+  tags:["Muntatge de cinta","Bloc de l'Est"]
+},
+"ans-synth": {
+  name:"ANS", type:"Instrument", origin:"URSS", years:"1958",
+  summary:`Sintetitzador fotoòptic soviètic que generava so a partir de dibuixos gravats directament sobre plaques de vidre.`,
+  long_description:`Desenvolupat per l'enginyer Evgeny Murzin, l'ANS convertia patrons òptics dibuixats sobre plaques en so mitjançant cèl·lules fotoelèctriques, permetent una composició "gràfica" totalment aliena als teclats convencionals.`,
+  historical_context:`El seu ús per part de compositors com Eduard Artemyev el va convertir en eina central de la ciència-ficció sonora soviètica, incloent bandes sonores de cinema de gran repercussió.`,
+  related:["eduard-artemyev"],
+  tags:["Síntesi fotoòptica","URSS","Instrument experimental"]
+},
+"eduard-artemyev": {
+  name:"Eduard Artemyev", type:"Compositor", origin:"URSS / Rússia", years:"1937 — 2022",
+  summary:`Compositor soviètic de bandes sonores de ciència-ficció, usuari pioner del sintetitzador ANS.`,
+  long_description:`Artemyev va combinar el sintetitzador ANS amb orquestració convencional per crear les atmosferes de pel·lícules com "Solaris" (1972) i "Stalker" (1979) d'Andrei Tarkovski, fusionant tecnologia experimental amb narrativa cinematogràfica.`,
+  historical_context:`El seu treball demostra com la música electrònica soviètica va desenvolupar-se en paral·lel a l'occidental, sovint amb tecnologia pròpia i aïllada de la resta del món.`,
+  related:["ans-synth"],
+  tags:["Banda sonora","Ciència-ficció","URSS"],
+  key_works:["Solaris (1972)","Stalker (1979)"]
+},
+"isao-tomita": {
+  name:"Isao Tomita", type:"Músic", origin:"Japó", years:"1932 — 2016",
+  summary:`Pioner japonès del sintetitzador Moog, conegut per les seves orquestracions electròniques de repertori clàssic.`,
+  long_description:`Tomita va reinterpretar obres de Debussy, Holst o Mussorgsky íntegrament amb sintetitzadors Moog multipista, amb una atenció al detall tímbric que va sorprendre el públic occidental i el va convertir en un dels músics electrònics japonesos més coneguts internacionalment.`,
+  historical_context:`El seu èxit comercial als Estats Units i Europa va obrir la porta a l'atenció internacional cap a l'escena electrònica japonesa emergent, incloent Yellow Magic Orchestra pocs anys després.`,
+  related:["yellow-magic-orchestra"],
+  tags:["Sintetitzador Moog","Orquestració electrònica","Japó"],
+  key_works:["Snowflakes are Dancing (1974)"]
+},
+"yellow-magic-orchestra": {
+  name:"Yellow Magic Orchestra", type:"Grup", origin:"Japó", years:"1978 — 2012 (intermitent)",
+  summary:`Trio japonès que va portar el sintetitzador i la programació a l'estètica pop, sembrant el synth-pop dels vuitanta.`,
+  long_description:`Formats per Ryuichi Sakamoto, Haruomi Hosono i Yukihiro Takahashi, YMO van combinar tecnopop, sintetitzadors programables i referències a la cultura de videojocs per crear un so que ràpidament va traspassar fronteres.`,
+  historical_context:`Tot i que la seva consolidació arriba just després de la dècada, les seves arrels es troben directament en l'escena electrònica japonesa dels últims anys setanta, incloent la influència de Tomita.`,
+  related:["isao-tomita","toshi-ichiyanagi"],
+  tags:["Tecnopop","Sintetitzador programable","Japó"]
+},
+"toshi-ichiyanagi": {
+  name:"Toshi Ichiyanagi", type:"Compositor", origin:"Japó", years:"1933 — 2022",
+  summary:`Compositor d'avantguarda japonès, pont entre l'experimentalisme nord-americà i l'escena electrònica de Tòquio i Osaka.`,
+  long_description:`Format als Estats Units en contacte amb John Cage, Ichiyanagi va introduir a Japó tècniques d'atzar i electrònica experimental, influint en tota una generació d'artistes sonors de "denshi ongaku" (música electrònica japonesa).`,
+  historical_context:`El seu paper com a connector internacional va facilitar que l'escena japonesa no es desenvolupés de manera aïllada, sinó en diàleg constant amb Europa i Amèrica del Nord.`,
+  tags:["Denshi ongaku","Avantguarda","Japó"]
+},
+"buchla-200": {
+  name:"Buchla 200", type:"Instrument", origin:"Estats Units", years:"1970",
+  summary:`Sistema modular de la costa oest nord-americana, pensat per a la composició tímbrica més que per a l'execució en teclat.`,
+  long_description:`Dissenyat per Don Buchla, el sistema 200 prescindia deliberadament d'un teclat convencional a favor de superfícies tàctils i seqüenciadors, reflectint una filosofia compositiva allunyada del llenguatge pianístic tradicional.`,
+  historical_context:`Va convertir-se en l'eina central del San Francisco Tape Music Center i de compositores com Suzanne Ciani, consolidant la "costa oest" com a escola diferenciada de la síntesi modular respecte de Moog a la costa est.`,
+  related:["sf-tape-music-center","suzanne-ciani"],
+  tags:["Sintetitzador modular","Costa oest","Sense teclat"]
+},
+"sf-tape-music-center": {
+  name:"San Francisco Tape Music Center", type:"Institució", origin:"San Francisco, Estats Units", years:"1962 — actiu (traslladat a Mills College)",
+  summary:`Nucli fundacional de la música electrònica i minimalista de la costa oest nord-americana.`,
+  long_description:`Fundat per Morton Subotnick i Ramon Sender, el centre va reunir compositors interessats en cinta magnètica i, més tard, en els primers sintetitzadors Buchla, esdevenint bressol tant del minimalisme com de la música electrònica experimental californiana.`,
+  historical_context:`Terry Riley hi va estrenar el 1964 "In C", una de les obres fundacionals del minimalisme, en un context directament connectat amb la investigació electrònica del centre.`,
+  related:["buchla-200","terry-riley","morton-subotnick","suzanne-ciani"],
+  tags:["Minimalisme","Cinta magnètica","Costa oest"]
+},
+"suzanne-ciani": {
+  name:"Suzanne Ciani", type:"Músic / compositora", origin:"Estats Units", years:"1946 — actiu",
+  summary:`Pionera del sintetitzador Buchla, va portar la síntesi modular des dels estudis experimentals fins a la publicitat i el disc comercial.`,
+  long_description:`Formada en composició clàssica, Ciani va adoptar el sistema Buchla per crear efectes de so per a publicitat, videojocs pinball i, més endavant, discos en solitari, demostrant la versatilitat comercial i artística de la síntesi modular.`,
+  historical_context:`La seva carrera desafia la separació habitual entre "música seriosa" i "so comercial", mostrant com la investigació electrònica dels setanta es va infiltrar en la cultura de masses.`,
+  related:["buchla-200","sf-tape-music-center"],
+  tags:["Sintetitzador Buchla","So comercial","Pionera"]
+},
+"terry-riley": {
+  name:"Terry Riley", type:"Compositor", origin:"Estats Units", years:"1935 — actiu",
+  summary:`Compositor minimalista l'obra del qual, basada en patrons repetitius, va influir directament l'estètica electrònica cíclica europea.`,
+  long_description:`La seva peça "In C" (1964), basada en mòduls melòdics curts repetits lliurement pels intèrprets, va establir un mètode compositiu que ressonaria tant en el minimalisme acadèmic com en les seqüències electròniques de la Berlin School anys després.`,
+  historical_context:`El seu ús posterior d'orgues elèctrics i efectes de retard el va acostar encara més a l'estètica electrònica, difuminant la frontera entre minimalisme acústic i electrònic.`,
+  related:["sf-tape-music-center","steve-reich","philip-glass"],
+  tags:["Minimalisme","Repetició","Costa oest"],
+  key_works:["In C (1964)","A Rainbow in Curved Air (1969)"]
+},
+"steve-reich": {
+  name:"Steve Reich", type:"Compositor", origin:"Estats Units", years:"1936 — actiu",
+  summary:`Compositor minimalista pioner de la tècnica de "phasing", la desincronització gradual de patrons idèntics.`,
+  long_description:`Utilitzant magnetòfons i, posteriorment, ensembles instrumentals, Reich va desenvolupar processos on dos patrons idèntics es desfasen lentament fins a crear textures complexes, un mètode que dialoga directament amb la lògica dels seqüenciadors electrònics.`,
+  historical_context:`La seva obra dels lofts novaiorquesos dels setanta és inseparable de l'escena minimalista que compartia espais i públic amb la primera electrònica experimental de la ciutat.`,
+  related:["philip-glass","terry-riley"],
+  tags:["Minimalisme","Phasing","Nova York"],
+  key_works:["Drumming (1971)","Music for 18 Musicians (1976)"]
+},
+"philip-glass": {
+  name:"Philip Glass", type:"Compositor", origin:"Estats Units", years:"1937 — actiu",
+  summary:`Compositor minimalista d'estructures repetitives i additives, figura central de l'escena de lofts novaiorquesa.`,
+  long_description:`Amb el seu propi ensemble amplificat, Glass va desenvolupar un llenguatge de figures rítmiques additives que, tot i tocar-se amb instruments acústics amplificats, comparteix lògica formal amb la música de seqüenciador electrònic contemporània.`,
+  historical_context:`Les seves actuacions en lofts de Manhattan als setanta van consolidar un circuit alternatiu de música experimental al marge de les sales de concert convencionals.`,
+  related:["steve-reich","terry-riley"],
+  tags:["Minimalisme","Ensemble amplificat","Nova York"],
+  key_works:["Music in Twelve Parts (1974)"]
+},
+"wendy-carlos": {
+  name:"Wendy Carlos", type:"Músic / compositora", origin:"Estats Units", years:"1939 — actiu",
+  summary:`Pionera del sintetitzador Moog aplicat al repertori clàssic i, després, a la banda sonora de cinema.`,
+  long_description:`El seu disc "Switched-On Bach" (1968) va demostrar que un sintetitzador Moog podia interpretar amb precisió repertori barroc, obrint la porta a la seva adopció posterior a Hollywood, incloent les bandes sonores electròniques de "A Clockwork Orange" (1971) i "Tron" (1982).`,
+  historical_context:`El seu èxit comercial va ser decisiu perquè els estudis de Moog es tornessin instruments habituals en la indústria del cinema nord-americà dels setanta.`,
+  tags:["Sintetitzador Moog","Banda sonora","Repertori clàssic"],
+  key_works:["Switched-On Bach (1968)","A Clockwork Orange (1971)"]
+},
+"morton-subotnick": {
+  name:"Morton Subotnick", type:"Compositor", origin:"Estats Units", years:"1933 — actiu",
+  summary:`Cofundador del San Francisco Tape Music Center i encarregant original del primer sintetitzador Buchla.`,
+  long_description:`Subotnick va encarregar a Don Buchla el disseny d'un sistema de síntesi pensat específicament per a composició, resultant en el primer Buchla i en el seu propi disc "Silver Apples of the Moon" (1967), considerat pioner de l'electrònica de concert nord-americana.`,
+  historical_context:`El seu paper com a "client" i col·laborador tècnic il·lustra com la investigació electrònica de la costa oest va néixer d'una relació estreta entre compositors i enginyers.`,
+  related:["sf-tape-music-center","buchla-200"],
+  tags:["Sintetitzador Buchla","Costa oest","Música de concert"],
+  key_works:["Silver Apples of the Moon (1967)"]
+},
+"tropicalia": {
+  name:"Tropicàlia", type:"Corrent / moviment", origin:"Brasil", years:"1967 — 1972",
+  summary:`Moviment cultural brasiler que va fusionar tradició, pop internacional i experimentació sonora, obrint la porta a la fusió amb l'electrònica.`,
+  long_description:`Impulsat per músics com Caetano Veloso, Gilberto Gil i Os Mutantes, el moviment Tropicàlia va combinar ritmes brasilers amb psicodèlia, col·lage sonor i instrumentació no convencional, incloent primers usos d'efectes electrònics i cinta.`,
+  historical_context:`La seva obertura estètica va facilitar, ja avançada la dècada dels setanta, la incorporació de sintetitzadors per part de músics com Hermeto Pascoal dins d'un context de fusió llatinoamericana.`,
+  related:["hermeto-pascoal"],
+  tags:["Fusió","Brasil","Col·lage cultural"]
+},
+"hermeto-pascoal": {
+  name:"Hermeto Pascoal", type:"Músic", origin:"Brasil", years:"1936 — actiu",
+  summary:`Multiinstrumentista brasiler d'un eclecticisme radical, integrador d'objectes quotidians i sintetitzadors en el seu llenguatge musical.`,
+  long_description:`Conegut per convertir qualsevol objecte en instrument, Pascoal va incorporar progressivament sintetitzadors i efectes electrònics al seu univers sonor, sense abandonar mai l'arrel del jazz i la música popular brasilera.`,
+  historical_context:`La seva llibertat estilística el converteix en un pont natural entre l'herència de la Tropicàlia i les possibilitats tímbriques que oferia l'electrònica dels setanta.`,
+  related:["tropicalia"],
+  tags:["Fusió","Multiinstrumentista","Brasil"]
+},
+"vangelis": {
+  name:"Vangelis", type:"Músic / compositor", origin:"Grècia", years:"1943 — 2022",
+  summary:`Compositor grec de paisatges sintètics grandiosos, pont entre l'electrònica europea i la banda sonora de gran format.`,
+  long_description:`Amb un ús intensiu de sintetitzadors polifònics i texturals, Vangelis va desenvolupar un llenguatge orquestral electrònic propi que, tot i consolidar-se plenament als vuitanta amb "Blade Runner" i "Chariots of Fire", arrenca de la seva experimentació en solitari durant els setanta.`,
+  historical_context:`La seva obra representa la vessant més "còsmica" i orquestral de l'electrònica europea, en diàleg llunyà però evident amb la Berlin School alemanya.`,
+  tags:["Sintetitzador","Banda sonora","Grècia"]
+}
+};
+
+/* ================= STATION DATA ================= */
+var STATIONS = [
+{id:33,name:"Radio Caprice · Space Music",city:"Moscou",country:"Rússia",freq:"RADCAP",genre:"Berlin School / Cosmic",since:2000,lat:55.7558,lng:37.6173,stream:"radcap-space",streamLabel:"Radio Caprice · Space Music",
+ desc:`Canal especialitzat en música espacial i electrònica còsmica, una porta directa cap a les atmosferes de ${ref('tangerine-dream','Tangerine Dream')}, ${ref('klaus-schulze','Klaus Schulze')} i la tradició de la Berlin School.`,radioCapriceUrl:"http://radcap.ru/spacemusic.html",radioCapriceStream:"http://79.111.119.111:8000/spacemusic"},
+{id:34,name:"Radio Caprice · Traditional Electronic",city:"Moscou",country:"Rússia",freq:"RADCAP",genre:"Traditional Electronic",since:2000,lat:55.7558,lng:37.6173,stream:"radcap-traditional",streamLabel:"Radio Caprice · Traditional Electronic",
+ desc:`Canal dedicat a l’electrònica tradicional i als sons de sintetitzador que connecten la recerca dels anys setanta amb l’escolta contemporània.`,radioCapriceUrl:"http://radcap.ru/tradelectronic.html",radioCapriceStream:"http://79.111.14.76:9069/"},
+{id:35,name:"Radio Caprice · Experimental / Concrete",city:"Moscou",country:"Rússia",freq:"RADCAP",genre:"Experimental / Avant-garde",since:2000,lat:55.7558,lng:37.6173,stream:"radcap-concrete",streamLabel:"Radio Caprice · Experimental / Avant-garde",
+ desc:`Canal de la xarxa Radio Caprice orientat a l’experimentació, l’avantguarda i la música concreta, en sintonia amb la genealogia dels estudis electrònics europeus.`,radioCapriceUrl:"http://radcap.ru/concrete.html",radioCapriceStream:"http://79.111.119.111:9109/"},
+{id:36,name:"Radio Caprice · Retrowave",city:"Moscou",country:"Rússia",freq:"RADCAP",genre:"Retrowave",since:2000,lat:55.7558,lng:37.6173,stream:"radcap-retrowave",streamLabel:"Radio Caprice · Retrowave",
+ desc:`Canal especialitzat en retrowave i estètiques de síntesi retro. Funciona com a pont entre l’herència dels sintetitzadors dels setanta i la seva reinterpretació posterior.`,radioCapriceUrl:"http://radcap.ru/retrowave.html",radioCapriceStream:"http://79.120.39.202:9125/"},
+{id:1,name:"Kosmische Radio Berlin",city:"Berlín",country:"Alemanya",freq:"94.2 MHz",genre:"Berlin School",since:1971,lat:52.52,lng:13.405,stream:"synphaera",streamLabel:"Synphaera Radio",
+ desc:`Dedicada a les seqüències analògiques de ${ref('tangerine-dream','Tangerine Dream')}, ${ref('klaus-schulze','Klaus Schulze')}, ${ref('ash-ra-tempel','Ash Ra Tempel')} i ${ref('manuel-gottsching','Manuel Göttsching')}, la ràdio que va batejar l'anomenada Berlin School.`},
+{id:2,name:"KlingKlang FM Düsseldorf",city:"Düsseldorf",country:"Alemanya",freq:"98.7 MHz",genre:"Krautrock",since:1974,lat:51.2277,lng:6.7735,stream:"u80s",streamLabel:"Underground 80s",
+ desc:`Batejada en honor a l'estudi de ${ref('kraftwerk','Kraftwerk')}, transmet el pols robòtic que va definir el Krautrock elèctric de Düsseldorf.`},
+{id:3,name:"Studio Elektronische Köln",city:"Colònia",country:"Alemanya",freq:"89.4 MHz",genre:"Musique concrète",since:1970,lat:50.9375,lng:6.9603,stream:"dronezone",streamLabel:"Drone Zone",
+ desc:`Hereva directa del ${ref('wdr-studio','WDR Studio für elektronische Musik')}, on ${ref('stockhausen','Stockhausen')} i ${ref('eimert','Eimert')} van fundar la música electrònica europea.`},
+{id:4,name:"Munich Machine Radio",city:"Munic",country:"Alemanya",freq:"102.1 MHz",genre:"Euro-disco",since:1975,lat:48.1351,lng:11.582,stream:"thetrip",streamLabel:"The Trip",
+ desc:`Celebra el so de sintetitzador que ${ref('giorgio-moroder','Giorgio Moroder')} va forjar als ${ref('musicland-studios','Musicland Studios')}, bressol de l'Euro-disco electrònic.`},
+{id:5,name:"Ondes Électroniques Paris",city:"París",country:"França",freq:"101.4 MHz",genre:"Musique concrète",since:1972,lat:48.8566,lng:2.3522,stream:"dronezone",streamLabel:"Drone Zone",
+ desc:`Un homenatge a la tradició concreta de ${ref('pierre-henry','Pierre Henry')} i a les seqüències minimalistes de ${ref('space-band','Space')} i ${ref('droids','Droids')}.`},
+{id:6,name:"Cosmic Groove Lyon",city:"Lió",country:"França",freq:"97.6 MHz",genre:"Cosmic disco",since:1976,lat:45.764,lng:4.8357,stream:"spacestation",streamLabel:"Space Station Soma",
+ desc:`Especialitzada en la maquinària còsmica de ${ref('cerrone','Cerrone')} i en les textures de l'${ref('ems-synthi-100','EMS Synthi 100')}, el sintetitzador modular més ambiciós de l'època.`},
+{id:7,name:"Radiophonic London 70s",city:"Londres",country:"Regne Unit",freq:"91.8 MHz",genre:"Radiophonic",since:1970,lat:51.5074,lng:-0.1278,stream:"secretagent",streamLabel:"Secret Agent",
+ desc:`Nascuda a l'ombra del ${ref('bbc-radiophonic-workshop','BBC Radiophonic Workshop')} i del treball pioner de ${ref('delia-derbyshire','Delia Derbyshire')} amb l'${ref('ems-vcs3','EMS VCS3')}.`},
+{id:8,name:"Circuit Sheffield",city:"Sheffield",country:"Regne Unit",freq:"95.2 MHz",genre:"Industrial",since:1977,lat:53.3811,lng:-1.4701,stream:"digitalis",streamLabel:"Digitalis",
+ desc:`Retransmet les distorsions de ${ref('cabaret-voltaire','Cabaret Voltaire')} i ${ref('throbbing-gristle','Throbbing Gristle')}, precursors del so industrial britànic.`},
+{id:9,name:"Oblique Manchester",city:"Manchester",country:"Regne Unit",freq:"90.6 MHz",genre:"Ambient",since:1975,lat:53.4808,lng:-2.2426,stream:"groovesalad",streamLabel:"Groove Salad",
+ desc:`Dedicada als paisatges suspesos de ${ref('brian-eno','Brian Eno')} i ${ref('harold-budd','Harold Budd')}, mestres de l'ambient generatiu.`},
+{id:10,name:"Ona Electrònica Barcelona",city:"Barcelona",country:"Espanya",freq:"104.5 MHz",genre:"Electrònica experimental",since:1974,lat:41.3851,lng:2.1734,stream:"deepspaceone",streamLabel:"Deep Space One",
+ desc:`Sintonitza l'obra de ${ref('neuronium','Neuronium')} i ${ref('michel-huygen','Michel Huygen')}, les investigacions sonores nascudes a ${ref('phonos','Phonos')}, i l'esperit pioner de ${ref('suck-electronic','Suck Electrònic')}.`},
+{id:11,name:"Cósmico Madrid",city:"Madrid",country:"Espanya",freq:"93.9 MHz",genre:"Electrònica experimental",since:1976,lat:40.4168,lng:-3.7038,stream:"suburbsofgoa",streamLabel:"Suburbs of Goa",
+ desc:`Ret homenatge a l'obra de ${ref('luis-delgado','Luis Delgado')} i ${ref('finis-africae','Finis Africae')}, viatgers del so entre continents.`},
+{id:12,name:"Cine-Synth Roma",city:"Roma",country:"Itàlia",freq:"96.3 MHz",genre:"Library / Soundtrack",since:1975,lat:41.9028,lng:12.4964,stream:"sfinsf",streamLabel:"SF in SF",
+ desc:`Dedicada a les bandes sonores de ${ref('goblin','Goblin')} i ${ref('fabio-frizzi','Fabio Frizzi')}, i als xiulets electrònics d'${ref('alessandro-alessandroni','Alessandro Alessandroni')}.`},
+{id:13,name:"Libreria Sonora Milano",city:"Milà",country:"Itàlia",freq:"99.1 MHz",genre:"Library / Soundtrack",since:1973,lat:45.4642,lng:9.19,stream:"insound",streamLabel:"The In-Sound",
+ desc:`Un arxiu en directe de música de llibreria italiana, deutora de la mateixa generació que ${ref('goblin','Goblin')} i ${ref('alessandro-alessandroni','Alessandro Alessandroni')}.`},
+{id:14,name:"Modulair Amsterdam",city:"Amsterdam",country:"Països Baixos",freq:"88.9 MHz",genre:"Electroacoustic",since:1971,lat:52.3676,lng:4.9041,stream:"deepspaceone",streamLabel:"Deep Space One",
+ desc:`Emet des de l'esperit de l'${ref('institut-sonologia','Institut de Sonologia')} i el treball pioner de ${ref('dick-raaijmakers','Dick Raaijmakers')}.`},
+{id:15,name:"Musique Concrète Bruxelles",city:"Brussel·les",country:"Bèlgica",freq:"92.4 MHz",genre:"Musique concrète",since:1970,lat:50.8503,lng:4.3517,stream:"dronezone",streamLabel:"Drone Zone",
+ desc:`Vinculada a l'${ref('ipem','IPEM')} de Gant i a la investigació belga sobre la composició electroacústica.`},
+{id:16,name:"EMS Stockholm Elektron",city:"Estocolm",country:"Suècia",freq:"103.3 MHz",genre:"Electroacoustic",since:1972,lat:59.3293,lng:18.0686,stream:"synphaera",streamLabel:"Synphaera Radio",
+ desc:`Explora els paisatges sintètics de ${ref('ralph-lundsten','Ralph Lundsten')} i les eines modulars sorgides de l'${ref('ems-stockholm','EMS (Elektronmusikstudion)')}.`},
+{id:17,name:"Nordisk Kosmos København",city:"Copenhaguen",country:"Dinamarca",freq:"100.7 MHz",genre:"Cosmic",since:1975,lat:55.6761,lng:12.5683,stream:"spacestation",streamLabel:"Space Station Soma",
+ desc:`Sintonitza les derives electroacústiques nòrdiques i la influència suïssa de ${ref('bruno-spoerri','Bruno Spoerri')}.`},
+{id:18,name:"Elektro Wien",city:"Viena",country:"Àustria",freq:"94.9 MHz",genre:"Electroacoustic",since:1973,lat:48.2082,lng:16.3738,stream:"gsclassic",streamLabel:"Groove Salad Classic",
+ desc:`Hereva de la tradició vienesa d'electroacústica i propera a l'univers textural de ${ref('krzysztof-penderecki','Krzysztof Penderecki')}.`},
+{id:19,name:"Oszillator Zürich",city:"Zúric",country:"Suïssa",freq:"98.2 MHz",genre:"Electronic jazz",since:1974,lat:47.3769,lng:8.5417,stream:"sonicuniverse",streamLabel:"Sonic Universe",
+ desc:`Dedicada íntegrament a l'obra pionera de ${ref('bruno-spoerri','Bruno Spoerri')} i als seus oscil·ladors de jazz electrònic.`},
+{id:20,name:"Eksperymentalne Warszawa",city:"Varsòvia",country:"Polònia",freq:"91.1 MHz",genre:"Musique concrète",since:1971,lat:52.2297,lng:21.0122,stream:"dronezone",streamLabel:"Drone Zone",
+ desc:`Transmet des del llegat del ${ref('polish-radio-studio','Polish Radio Experimental Studio')} i les cintes tallades d'${ref('eugeniusz-rudnik','Eugeniusz Rudnik')}.`},
+{id:21,name:"ANS Radio Moskva",city:"Moscou",country:"Rússia",freq:"87.9 MHz",genre:"Soundtrack",since:1972,lat:55.7558,lng:37.6173,stream:"sfinsf",streamLabel:"SF in SF",
+ desc:`Dedicada al sintetitzador fotoòptic ${ref('ans-synth','ANS')} i a les bandes sonores còsmiques d'${ref('eduard-artemyev','Eduard Artemyev')}.`},
+{id:22,name:"Tomita & YMO Radio Tokyo",city:"Tòquio",country:"Japó",freq:"80.0 MHz",genre:"Synth-pop",since:1976,lat:35.6762,lng:139.6503,stream:"poptron",streamLabel:"PopTron",
+ desc:`Celebra les orquestracions sintètiques d'${ref('isao-tomita','Isao Tomita')} i el naixement tecnopop de ${ref('yellow-magic-orchestra','Yellow Magic Orchestra')}.`},
+{id:23,name:"Denshi Ongaku Osaka",city:"Osaka",country:"Japó",freq:"82.5 MHz",genre:"Denshi ongaku",since:1974,lat:34.6937,lng:135.5023,stream:"deepspaceone",streamLabel:"Deep Space One",
+ desc:`Arxiu de la denshi ongaku japonesa, propera a les exploracions d'atzar i electrònica de ${ref('toshi-ichiyanagi','Toshi Ichiyanagi')}.`},
+{id:24,name:"Buchla Modular SF",city:"San Francisco",country:"Estats Units",freq:"89.5 MHz",genre:"Modular / West coast",since:1970,lat:37.7749,lng:-122.4194,stream:"missioncontrol",streamLabel:"Mission Control",
+ desc:`Emesa des del ${ref('sf-tape-music-center','San Francisco Tape Music Center')}, on el ${ref('buchla-200','Buchla 200')} va donar veu a ${ref('suzanne-ciani','Suzanne Ciani')} i ${ref('terry-riley','Terry Riley')}.`},
+{id:25,name:"Loft Minimal New York",city:"Nova York",country:"Estats Units",freq:"88.1 MHz",genre:"Minimalisme",since:1971,lat:40.7128,lng:-74.006,stream:"sonicuniverse",streamLabel:"Sonic Universe",
+ desc:`Retransmet els bucles de ${ref('steve-reich','Steve Reich')} i ${ref('philip-glass','Philip Glass')} des dels lofts minimalistes de Manhattan.`},
+{id:26,name:"Proto-Electro Detroit",city:"Detroit",country:"Estats Units",freq:"105.9 MHz",genre:"Proto-electro",since:1977,lat:42.3314,lng:-83.0458,stream:"defcon",streamLabel:"DEF CON Radio",
+ desc:`Sintonitza les arrels que anticipen el techno, entre el funk de màquines i l'herència directa de ${ref('kraftwerk','Kraftwerk')}.`},
+{id:27,name:"Hollywood Moog LA",city:"Los Angeles",country:"Estats Units",freq:"106.7 MHz",genre:"Film synth",since:1973,lat:34.0522,lng:-118.2437,stream:"thetrip",streamLabel:"The Trip",
+ desc:`Dedicada a la síntesi cinematogràfica de ${ref('wendy-carlos','Wendy Carlos')} i a l'espectre sonor de ${ref('morton-subotnick','Morton Subotnick')}.`},
+{id:28,name:"Électroacoustique Montréal",city:"Mont-real",country:"Canadà",freq:"90.3 MHz",genre:"Electroacoustic",since:1972,lat:45.5017,lng:-73.5673,stream:"dronezone",streamLabel:"Drone Zone",
+ desc:`Emet des de la tradició electroacústica francòfona, en diàleg constant amb l'obra de ${ref('pierre-henry','Pierre Henry')}.`},
+{id:29,name:"Eletrônica Tropical São Paulo",city:"São Paulo",country:"Brasil",freq:"92.7 MHz",genre:"Tropicàlia electrònica",since:1975,lat:-23.5505,lng:-46.6333,stream:"suburbsofgoa",streamLabel:"Suburbs of Goa",
+ desc:`Fusiona l'herència de la ${ref('tropicalia','Tropicàlia')} amb sintetitzadors, en l'esperit lliure d'${ref('hermeto-pascoal','Hermeto Pascoal')}.`},
+{id:30,name:"Cósmica Buenos Aires",city:"Buenos Aires",country:"Argentina",freq:"97.1 MHz",genre:"Cosmic",since:1976,lat:-34.6037,lng:-58.3816,stream:"spacestation",streamLabel:"Space Station Soma",
+ desc:`Explora les derives còsmiques sud-americanes, hereves de l'òrbita sintètica de ${ref('vangelis','Vangelis')}.`},
+{id:31,name:"Oscillate Sydney",city:"Sydney",country:"Austràlia",freq:"102.9 MHz",genre:"Ambient",since:1974,lat:-33.8688,lng:151.2093,stream:"groovesalad",streamLabel:"Groove Salad",
+ desc:`Dedicada a les atmosferes suspeses que dialoguen amb ${ref('brian-eno','Brian Eno')} i ${ref('harold-budd','Harold Budd')} des de l'hemisferi sud.`},
+{id:32,name:"Elektro Kaap Town",city:"Ciutat del Cap",country:"Sud-àfrica",freq:"93.1 MHz",genre:"Electroacoustic",since:1975,lat:-33.9249,lng:18.4241,stream:"dronezone",streamLabel:"Drone Zone",
+ desc:`Un far experimental que connecta l'Àfrica austral amb els laboratoris sonors de ${ref('stockhausen','Stockhausen')} i l'escola europea.`}
+];
+
+/* ================= STATE ================= */
+var state = {
+  search:"",
+  genre:"all",
+  segment:"all",
+  favorites:new Set(),
+  activeId:null,
+  playing:false,
+  discoverSample:[],
+  focusReturnEl:null
+};
+
+/* ================= DOM REFS ================= */
+var $ = function(sel){ return document.querySelector(sel); };
+var searchInput = $('#searchInput');
+var genreSelect = $('#genreSelect');
+var catalogList = $('#catalogList');
+var catalogCount = $('#catalogCount');
+var mapCount = $('#mapCount');
+var worldMap = $('#worldMap');
+var countAll = $('#countAll');
+var countFav = $('#countFav');
+var playerStation = $('#playerStation');
+var playBtn = $('#playBtn');
+var favBtn = $('#favBtn');
+var playerStatus = $('#playerStatus');
+var volumeSlider = $('#volumeSlider');
+var modalVeil = $('#modalVeil');
+var modalPanel = $('#modalPanel');
+var modalContent = $('#modalContent');
+var modalClose = $('#modalClose');
+var audioEl = $('#radioAudio');
+audioEl.volume = 0.7;
+var wakeBtn = $('#wakeBtn');
+var wakeStatus = $('#wakeStatus');
+
+/* ================= COMPROVA EL REPRODUCTOR ================= */
+// Aquesta app no té backend propi: cada emissora sintonitza en directe un
+// canal real de SomaFM, així que no hi ha cap "servidor" que calgui
+// despertar en el sentit d'un backend adormit — i una comprovació via
+// fetch(no-cors) tampoc pot confirmar si un senyal es reprodueix de
+// veritat (una resposta opaca no exposa el codi d'estat real). Per això
+// aquest botó no pretén "verificar servidors": només fa dues coses reals
+// i honestes: (1) obre connexió anticipada amb el proveïdor de streaming
+// per escurçar la latència de la primera sintonia, i (2) desbloqueja la
+// reproducció d'àudio amb un gest d'usuari explícit, cosa que alguns
+// navegadors (sobretot mòbils) exigeixen abans de permetre qualsevol
+// reproducció posterior disparada per JavaScript.
+function preconnectStreams(){
+  ["https://ice.somafm.com","https://ice1.somafm.com","https://ice2.somafm.com","https://ice4.somafm.com"].forEach(function(host){
+    var key = 'link[data-preconnect="'+host+'"]';
+    if(!document.querySelector(key)){
+      var l = document.createElement("link");
+      l.rel = "preconnect"; l.href = host; l.crossOrigin = "anonymous";
+      l.setAttribute("data-preconnect", host);
+      document.head.appendChild(l);
+    }
+  });
+}
+function unlockAudioElement(){
+  // Reproduir/aturar en silenci, dins del mateix gest de clic, desbloqueja
+  // l'element <audio> per a reproduccions futures disparades per JS.
+  try{
+    var prevMuted = audioEl.muted;
+    audioEl.muted = true;
+    var p = audioEl.play();
+    if(p && p.catch){ p.catch(function(){}); }
+    setTimeout(function(){ audioEl.pause(); audioEl.muted = prevMuted; }, 60);
+  }catch(e){}
+}
+function checkPlayer(){
+  preconnectStreams();
+  unlockAudioElement();
+  wakeStatus.className = "wake-status ok";
+  wakeStatus.textContent = "Reproductor llest. Fes clic en una emissora del mapa per sintonitzar.";
+}
+wakeBtn.addEventListener("click", checkPlayer);
+
+/* ================= MAP PROJECTION (real geography via d3 + topojson) ================= */
+var MAP_W = 1000, MAP_H = 560;
+var svgNS = "http://www.w3.org/2000/svg";
+var projection = null; // set once the world atlas has loaded
+var zoomBehavior = null;
+var mapReady = false;
+
+function buildMap(){
+  return new Promise(function(resolve){
+    var svg = d3.select("#worldMap").attr("viewBox","0 0 "+MAP_W+" "+MAP_H);
+
+    svg.append("rect")
+      .attr("class","map-bg")
+      .attr("x",0).attr("y",0).attr("width",MAP_W).attr("height",MAP_H);
+
+    var zoomLayer = svg.append("g").attr("id","zoomLayer");
+    var graticuleLayer = zoomLayer.append("g").attr("id","graticuleLayer");
+    var countriesLayer = zoomLayer.append("g").attr("id","countriesLayer");
+    var markersLayer = zoomLayer.append("g").attr("id","markersGroup");
+
+    projection = d3.geoEquirectangular()
+      .translate([MAP_W/2, MAP_H/2 + 25])
+      .scale(MAP_W/6.3);
+
+    var pathGen = d3.geoPath(projection);
+
+    // graticule (lat/lng grid) — drawn even before data loads
+    var graticule = d3.geoGraticule().step([20,20]);
+    graticuleLayer.append("path")
+      .datum(graticule)
+      .attr("class","graticule")
+      .attr("d", pathGen);
+    graticuleLayer.append("path")
+      .datum({type:"Sphere"})
+      .attr("class","sphere-outline")
+      .attr("d", pathGen);
+
+    function placeMarkers(){
+      var markerSel = markersLayer.selectAll("g.marker").data(STATIONS, function(s){return s.id;});
+      var markerEnter = markerSel.enter().append("g")
+        .attr("class","marker")
+        .attr("data-id", function(s){return s.id;})
+        .attr("tabindex","0")
+        .attr("role","button")
+        .attr("aria-label", function(s){return "Sintonitza "+s.name;});
+
+      markerEnter.append("circle").attr("class","ring").attr("cx",0).attr("cy",0).attr("r",7);
+      markerEnter.append("circle").attr("class","dot").attr("cx",0).attr("cy",0).attr("r",4.2);
+      markerEnter.append("text").attr("x",6.5).attr("y",-6).text(function(s){return s.freq.replace(" MHz","");});
+
+      markerEnter.merge(markerSel)
+        .attr("transform", function(s){
+          var p = projection([s.lng, s.lat]);
+          return "translate("+p[0]+","+p[1]+")";
+        })
+        .on("click", function(event, s){ selectStation(s.id); })
+        .on("keydown", function(event, s){
+          if(event.key==="Enter" || event.key===" "){ event.preventDefault(); selectStation(s.id); }
+        });
+    }
+
+    // Load real-world country geometry (Natural Earth, via world-atlas topojson)
+    d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json").then(function(world){
+      var countries = topojson.feature(world, world.objects.countries).features;
+      countriesLayer.selectAll("path.country")
+        .data(countries)
+        .enter().append("path")
+        .attr("class","country")
+        .attr("d", pathGen);
+      placeMarkers();
+      mapReady = true;
+      resolve();
+    }).catch(function(){
+      // Offline fallback: no country shapes, but graticule + working markers still render
+      placeMarkers();
+      mapReady = true;
+      resolve();
+    });
+
+    // Zoom & pan
+    zoomBehavior = d3.zoom()
+      .scaleExtent([1,8])
+      .translateExtent([[0,0],[MAP_W,MAP_H]])
+      .on("zoom", function(event){
+        zoomLayer.attr("transform", event.transform);
+      });
+    svg.call(zoomBehavior);
+
+    $('#zoomInBtn').addEventListener("click", function(){
+      svg.transition().duration(250).call(zoomBehavior.scaleBy, 1.5);
+    });
+    $('#zoomOutBtn').addEventListener("click", function(){
+      svg.transition().duration(250).call(zoomBehavior.scaleBy, 0.67);
+    });
+    $('#zoomResetBtn').addEventListener("click", function(){
+      svg.transition().duration(350).call(zoomBehavior.transform, d3.zoomIdentity);
+    });
+  });
+}
+
+function updateMapMarkers(visibleIds){
+  var nodes = document.querySelectorAll('#markersGroup .marker');
+  nodes.forEach(function(n){
+    var id = parseInt(n.getAttribute("data-id"),10);
+    n.classList.toggle("dim", visibleIds.indexOf(id)===-1);
+    n.classList.toggle("active", id===state.activeId);
+    n.classList.toggle("playing", id===state.activeId && state.playing);
+  });
+}
+
+/* ================= GENRE OPTIONS ================= */
+function buildGenreOptions(){
+  var genres = Array.from(new Set(STATIONS.map(function(s){return s.genre;}))).sort();
+  var t = UI_TEXT[currentLang];
+  var html = '<option value="all">'+t.allGenres+'</option>';
+  genres.forEach(function(g){ html += '<option value="'+g+'">'+g+'</option>'; });
+  genreSelect.innerHTML = html;
+}
+
+/* ================= FILTERING ================= */
+function getBaseList(){
+  if(state.segment==="favorites"){
+    return STATIONS.filter(function(s){ return state.favorites.has(s.id); });
+  }
+  if(state.segment==="discover"){
+    var ids = state.discoverSample;
+    return STATIONS.filter(function(s){ return ids.indexOf(s.id)!==-1; });
+  }
+  return STATIONS.slice();
+}
+
+function getFilteredList(){
+  var list = getBaseList();
+  var q = state.search.trim().toLowerCase();
+  if(q){
+    list = list.filter(function(s){
+      return s.name.toLowerCase().indexOf(q)!==-1 ||
+             s.city.toLowerCase().indexOf(q)!==-1 ||
+             s.country.toLowerCase().indexOf(q)!==-1 ||
+             s.genre.toLowerCase().indexOf(q)!==-1;
+    });
+  }
+  if(state.genre!=="all"){
+    list = list.filter(function(s){ return s.genre===state.genre; });
+  }
+  return list;
+}
+
+/* ================= RENDER CATALOG ================= */
+function renderCatalog(){
+  var list = getFilteredList();
+  var t = UI_TEXT[currentLang];
+  catalogCount.textContent = list.length + " " + (list.length===1 ? t.foundOne : t.foundMany);
+  mapCount.textContent = list.length + " " + t.stations;
+
+  if(list.length===0){
+    catalogList.innerHTML = '<div class="empty-state">'+UI_TEXT[currentLang].noMatch+'</div>';
+  } else {
+    catalogList.innerHTML = list.map(function(s){
+      var isFav = state.favorites.has(s.id);
+      var isSel = state.activeId===s.id;
+      var isOnAir = isSel && streamState==="on-air";
+      var isConnecting = isSel && streamState==="connecting";
+      var badge = isOnAir ? '<span class="onair-badge on-air"><span class="onair-dot"></span>EN ANTENA</span>'
+                : isConnecting ? '<span class="onair-badge connecting">CONNECTANT…</span>' : '';
+      return '<div class="card'+(isSel?' selected':'')+'" data-id="'+s.id+'" tabindex="0" role="button" aria-pressed="'+isSel+'">'+
+        '<span class="card-name">'+s.name+badge+'</span>'+
+        '<span class="card-freq">'+s.freq+'</span>'+
+        '<span class="card-meta">'+s.city+' · '+s.country+' · '+s.genre+'</span>'+
+        '<span class="card-desc">'+s.desc+'</span>'+
+        '<span class="card-footer">'+
+          '<span class="card-since">DES DE '+s.since+' · '+s.lat.toFixed(2)+', '+s.lng.toFixed(2)+'</span>'+
+          '<button class="fav-toggle'+(isFav?' is-fav':'')+'" data-fav="'+s.id+'" type="button">'+(isFav?'★ A preferits':'Afegir a preferits')+'</button>'+
+        '</span>'+
+      '</div>';
+    }).join('');
+  }
+
+  updateMapMarkers(list.map(function(s){return s.id;}));
+}
+
+/* ================= AUDIO ENGINE ================= */
+// Cada emissora fictícia sintonitza un senyal real d'electrònica/ambient (SomaFM)
+// que fa de "portador" sonor de l'atles — no és àudio sintetitzat, és ràdio de veritat.
+var streamState = "idle"; // idle | connecting | on-air | paused | error
+
+// SomaFM serveix cada canal des de diversos nodes (ice1/ice2/ice4…) com a
+// mirralls del host principal ice.somafm.com. Als nodes numerats cal
+// especificar el mountpoint exacte "<id>-<bitrate>-mp3", i el bitrate no és
+// el mateix per a tots els canals (la majoria són 128, però els canals
+// "flagship" — dronezone, groovesalad, u80s, defcon, synphaera, digitalis,
+// sonicuniverse, insound — es serveixen a 256). Aquest mapa reflecteix el
+// bitrate real de cada canal segons el catàleg oficial de SomaFM.
+var STREAM_BITRATE = {
+  dronezone:256, deepspaceone:128, spacestation:128, thetrip:128,
+  secretagent:128, digitalis:256, groovesalad:256, sonicuniverse:256,
+  gsclassic:128, synphaera:256, u80s:256, poptron:128, suburbsofgoa:128,
+  sfinsf:128, insound:256, missioncontrol:128, defcon:256
+};
+
+var RADIO_CAPRICE_STREAMS = {
+  "radcap-space": ["http://79.111.119.111:8000/spacemusic"],
+  "radcap-traditional": ["http://79.111.14.76:9069/"],
+  "radcap-concrete": ["http://79.111.119.111:9109/"],
+  "radcap-retrowave": ["http://79.120.39.202:9125/"]
+};
+
+/* ================= NOW PLAYING METADATA ================= */
+// SomaFM publica el tema actual en JSON. El cache és per canal real, no per
+// emissora fictícia: si diverses fitxes comparteixen el mateix canal, només
+// es fa una consulta i totes reben el mateix "now playing".
+// Radio Caprice, en canvi, publica el tema mitjançant ICY/SHOUTcast; el
+// navegador no pot llegir aquests headers cross-origin, així que ONDES 70
+// els demana al petit proxy /api/icy del servidor que acompanya aquest HTML.
+var SOMAFM_METADATA_BASE = "https://somafm.com/songs/";
+var CAPRICE_METADATA_PROXY = "/api/icy?stream=";
+var metadataCache = Object.create(null);
+var metadataRequests = Object.create(null);
+var metadataTimer = null;
+var previousRenderedMetadataKey = "";
+
+function metadataChannelFor(st){
+  if(!st || !st.stream) return null;
+  return st.stream;
+}
+
+function parseSomaMetadata(data){
+  var song = data && Array.isArray(data.songs) ? data.songs[0] : null;
+  if(!song) return null;
+  var artist = String(song.artist || "").trim();
+  var title = String(song.title || "").trim();
+  var album = String(song.album || "").trim();
+  if(!artist && !title) return null;
+  return {artist:artist, title:title, album:album, key:(artist+"\u0000"+title+"\u0000"+album)};
+}
+
+function parseCapriceMetadata(data){
+  if(!data) return null;
+  var artist = String(data.artist || "").trim();
+  var title = String(data.title || "").trim();
+  var album = String(data.album || "").trim();
+  var raw = String(data.streamTitle || data.StreamTitle || "").trim();
+  if((!artist && !title) && raw){
+    var sep = raw.indexOf(" - ");
+    if(sep > 0){ artist = raw.slice(0,sep).trim(); title = raw.slice(sep+3).trim(); }
+    else { title = raw; }
+  }
+  if(!artist && !title) return null;
+  return {artist:artist, title:title, album:album, key:(artist+"\u0000"+title+"\u0000"+album)};
+}
+
+function fetchSomaMetadata(channel){
+  if(!channel) return Promise.resolve(null);
+  if(metadataRequests[channel]) return metadataRequests[channel];
+  var url = SOMAFM_METADATA_BASE + encodeURIComponent(channel) + ".json?ts=" + Date.now();
+  metadataRequests[channel] = fetch(url, {cache:"no-store", headers:{"Accept":"application/json"}})
+    .then(function(res){ if(!res.ok) throw new Error("metadata "+res.status); return res.json(); })
+    .then(function(data){
+      var meta = parseSomaMetadata(data);
+      if(meta) metadataCache[channel] = meta;
+      return meta;
+    })
+    .catch(function(){ return metadataCache[channel] || null; })
+    .finally(function(){ delete metadataRequests[channel]; });
+  return metadataRequests[channel];
+}
+
+function fetchCapriceMetadata(channel){
+  if(!channel) return Promise.resolve(null);
+  if(metadataRequests[channel]) return metadataRequests[channel];
+  var url = CAPRICE_METADATA_PROXY + encodeURIComponent(channel) + "&ts=" + Date.now();
+  metadataRequests[channel] = fetch(url, {cache:"no-store", headers:{"Accept":"application/json"}})
+    .then(function(res){ if(!res.ok) throw new Error("caprice metadata "+res.status); return res.json(); })
+    .then(function(data){
+      var meta = parseCapriceMetadata(data);
+      if(meta) metadataCache[channel] = meta;
+      return meta;
+    })
+    .catch(function(){ return metadataCache[channel] || null; })
+    .finally(function(){ delete metadataRequests[channel]; });
+  return metadataRequests[channel];
+}
+
+function applyMetadataToStations(channel, meta){
+  if(!channel || !meta) return;
+  STATIONS.forEach(function(st){
+    if(st.stream===channel) st.nowPlaying = meta;
+  });
+}
+
+function updateNowPlayingFor(st){
+  var channel = metadataChannelFor(st);
+  if(!channel){ renderPlayer(); return; }
+  var request = channel.indexOf("radcap-")===0 ? fetchCapriceMetadata(channel) : fetchSomaMetadata(channel);
+  request.then(function(meta){
+    if(meta) applyMetadataToStations(channel, meta);
+    if(state.activeId===st.id) renderPlayer();
+  });
+}
+
+function startMetadataPolling(){
+  if(metadataTimer) clearInterval(metadataTimer);
+  var poll = function(){
+    var st = STATIONS.find(function(s){ return s.id===state.activeId; });
+    if(st) updateNowPlayingFor(st);
+  };
+  poll();
+  metadataTimer = setInterval(poll, 15000);
+}
+
+function streamUrlsFor(st){
+  if(RADIO_CAPRICE_STREAMS[st.stream]){
+    return RADIO_CAPRICE_STREAMS[st.stream].slice();
+  }
+  var id = encodeURIComponent(st.stream);
+  var bitrate = STREAM_BITRATE[st.stream] || 128;
+  var mount = id + "-" + bitrate + "-mp3";
+  return [
+    "https://ice.somafm.com/" + id,        // host principal, ja balancejat per SomaFM
+    "https://ice1.somafm.com/" + mount,     // nodes concrets com a reserva
+    "https://ice4.somafm.com/" + mount,
+    "https://ice2.somafm.com/" + mount
+  ];
+}
+
+var activeStreamUrls = [];
+var activeStreamIndex = 0;
+var streamAdvancing = false; // evita que 'error' i el catch() de play() avancin dos cops pel mateix intent
+
+function tuneAndPlay(st){
+  previousRenderedMetadataKey = "";
+  activeStreamUrls = streamUrlsFor(st);
+  activeStreamIndex = 0;
+  playStreamAt(activeStreamIndex);
+  updateNowPlayingFor(st);
+}
+
+function playStreamAt(index){
+  streamAdvancing = false;
+  if(index >= activeStreamUrls.length){
+    streamState = "error";
+    state.playing = false;
+    refreshOnAirUI();
+    return;
+  }
+  var url = activeStreamUrls[index];
+  streamState = "connecting";
+  state.playing = false;
+  audioEl.pause();
+  audioEl.removeAttribute("src");
+  audioEl.load();
+  audioEl.setAttribute("data-current", url);
+  audioEl.src = url;
+  audioEl.load();
+  refreshOnAirUI();
+  var p = audioEl.play();
+  if(p && p.catch){
+    p.catch(function(){ tryNextStream(); });
+  }
+}
+
+function tryNextStream(){
+  if(streamAdvancing) return;
+  streamAdvancing = true;
+  if(activeStreamIndex < activeStreamUrls.length - 1){
+    activeStreamIndex += 1;
+    playStreamAt(activeStreamIndex);
+  } else {
+    streamState = "error";
+    state.playing = false;
+    refreshOnAirUI();
+  }
+}
+
+function pausePlayback(){
+  audioEl.pause();
+}
+
+function refreshOnAirUI(){
+  renderPlayer();
+  renderCatalog();
+}
+
+audioEl.addEventListener("playing", function(){
+  streamState = "on-air";
+  state.playing = true;
+  refreshOnAirUI();
+});
+audioEl.addEventListener("waiting", function(){
+  if(streamState!=="error"){ streamState = "connecting"; refreshOnAirUI(); }
+});
+audioEl.addEventListener("pause", function(){
+  if(streamState!=="error"){ streamState = "paused"; }
+  state.playing = false;
+  refreshOnAirUI();
+});
+audioEl.addEventListener("error", function(){
+  // Si encara queden nodes de reserva per provar, ho intentem abans de
+  // donar el senyal per perdut.
+  if(activeStreamUrls.length && activeStreamIndex < activeStreamUrls.length - 1){
+    tryNextStream();
+    return;
+  }
+  streamState = "error";
+  state.playing = false;
+  refreshOnAirUI();
+});
+
+/* ================= PLAYER ================= */
+function renderPlayer(){
+  var st = STATIONS.find(function(s){ return s.id===state.activeId; });
+  if(!st){
+    playerStation.innerHTML = '<p class="player-empty-title">Cap emissora seleccionada</p><p class="player-empty-sub">Tria un punt del mapa per començar</p>';
+    playBtn.textContent = "Reproduir";
+    playBtn.disabled = true;
+    favBtn.disabled = true;
+    favBtn.classList.remove("is-fav");
+    favBtn.textContent = UI_TEXT[currentLang].addFav;
+    playerStatus.textContent = UI_TEXT[currentLang].wait;
+    playerStatus.classList.remove("on");
+    return;
+  }
+  var sourceText = st.stream.indexOf("radcap-")===0 ? "Senyal en directe via Radio Caprice — "+st.streamLabel : "Senyal en directe via SomaFM — "+st.streamLabel;
+  var sourceLine = '<p class="player-source">'+sourceText+'</p>';
+  var meta = st.nowPlaying;
+  var metadataLine = '';
+  if(meta && (meta.artist || meta.title)){
+    metadataLine = '<p class="player-source" data-now-playing="1">♫ '+(meta.artist || '—')+' — '+(meta.title || '—')+(meta.album ? ' · '+meta.album : '')+'</p>';
+  }
+  playerStation.innerHTML = '<p class="player-name">'+st.name+'</p><p class="player-sub">'+st.city+', '+st.country+' · '+st.freq+'</p>'+sourceLine+metadataLine;
+  var metadataEl = playerStation.querySelector('[data-now-playing="1"]');
+  var currentMetadataKey = meta && meta.key ? meta.key : "";
+  if(metadataEl && currentMetadataKey && currentMetadataKey!==previousRenderedMetadataKey && previousRenderedMetadataKey){
+    if(metadataEl.animate){
+      try{ metadataEl.animate([{opacity:0.25},{opacity:1}], {duration:220, easing:"ease-out"}); }catch(e){}
+    }
+  }
+  previousRenderedMetadataKey = currentMetadataKey;
+  playBtn.disabled = false;
+  favBtn.disabled = false;
+
+  var statusText = "LLEST PER EMETRE";
+  var isOn = false;
+  if(streamState==="connecting"){ statusText = "CONNECTANT…"; }
+  else if(streamState==="on-air"){ statusText = "EN ANTENA"; isOn = true; }
+  else if(streamState==="paused"){ statusText = "EN PAUSA"; }
+  else if(streamState==="error"){ statusText = "SENYAL NO DISPONIBLE"; }
+
+  playBtn.textContent = streamState==="on-air" || streamState==="connecting" ? "Pausa" : (streamState==="error" ? "Reintenta" : "Reproduir");
+  playerStatus.textContent = statusText;
+  playerStatus.classList.toggle("on", isOn);
+  var isFav = state.favorites.has(st.id);
+  favBtn.classList.toggle("is-fav", isFav);
+  favBtn.textContent = isFav ? UI_TEXT[currentLang].inFav : UI_TEXT[currentLang].addFav;
+}
+
+/* ================= COUNTS ================= */
+function renderCounts(){
+  countAll.textContent = STATIONS.length;
+  countFav.textContent = state.favorites.size;
+}
+
+/* ================= SELECTION ================= */
+function selectStation(id){
+  state.activeId = id;
+  var st = STATIONS.find(function(s){ return s.id===id; });
+  renderCatalog();
+  if(st){ tuneAndPlay(st); } // "fes clic per sintonitzar" — sintonitzar de veritat
+}
+
+/* ================= EVENTS: TOOLBAR ================= */
+searchInput.addEventListener("input", function(e){
+  state.search = e.target.value;
+  renderCatalog();
+});
+genreSelect.addEventListener("change", function(e){
+  state.genre = e.target.value;
+  renderCatalog();
+});
+document.querySelectorAll(".segment").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    var seg = btn.getAttribute("data-segment");
+    if(seg==="discover"){
+      var pool = STATIONS.map(function(s){return s.id;});
+      shuffle(pool);
+      state.discoverSample = pool.slice(0,8);
+    }
+    state.segment = seg;
+    document.querySelectorAll(".segment").forEach(function(b){ b.classList.toggle("active", b===btn); });
+    renderCatalog();
+  });
+});
+function shuffle(arr){
+  for(var i=arr.length-1;i>0;i--){
+    var j = Math.floor(Math.random()*(i+1));
+    var tmp = arr[i]; arr[i]=arr[j]; arr[j]=tmp;
+  }
+  return arr;
+}
+
+/* ================= EVENTS: CATALOG (delegated) ================= */
+catalogList.addEventListener("click", function(e){
+  var favBtnEl = e.target.closest("[data-fav]");
+  if(favBtnEl){
+    e.stopPropagation();
+    var fid = parseInt(favBtnEl.getAttribute("data-fav"),10);
+    toggleFavorite(fid);
+    return;
+  }
+  var refEl = e.target.closest(".ref-link");
+  if(refEl){
+    e.stopPropagation();
+    openReference(refEl.getAttribute("data-ref"), refEl);
+    return;
+  }
+  var card = e.target.closest(".card");
+  if(card){
+    selectStation(parseInt(card.getAttribute("data-id"),10));
+  }
+});
+catalogList.addEventListener("keydown", function(e){
+  var card = e.target.closest(".card");
+  if(card && (e.key==="Enter" || e.key===" ")){
+    e.preventDefault();
+    selectStation(parseInt(card.getAttribute("data-id"),10));
+  }
+});
+
+function toggleFavorite(id){
+  if(state.favorites.has(id)) state.favorites.delete(id);
+  else state.favorites.add(id);
+  renderCounts();
+  renderCatalog();
+  renderPlayer();
+}
+
+/* ================= PLAYER EVENTS ================= */
+playBtn.addEventListener("click", function(){
+  if(state.activeId==null) return;
+  var st = STATIONS.find(function(s){ return s.id===state.activeId; });
+  if(streamState==="on-air" || streamState==="connecting"){
+    pausePlayback();
+  } else {
+    tuneAndPlay(st);
+  }
+});
+favBtn.addEventListener("click", function(){
+  if(state.activeId==null) return;
+  toggleFavorite(state.activeId);
+});
+volumeSlider.addEventListener("input", function(e){
+  audioEl.volume = parseInt(e.target.value,10)/100;
+});
+
+/* ================= REFERENCE MODAL ================= */
+function openReference(id, triggerEl){
+  var entry = REFERENCES[id];
+  if(!entry) return;
+  state.focusReturnEl = triggerEl || document.activeElement;
+
+  var relatedStations = STATIONS.filter(function(s){
+    return s.desc.indexOf('data-ref="'+id+'"')!==-1;
+  });
+
+  var relatedChips = (entry.related||[]).filter(function(rid){return REFERENCES[rid];}).map(function(rid){
+    return '<button class="chip link" type="button" data-ref="'+rid+'">'+REFERENCES[rid].name+'</button>';
+  }).join('');
+
+  var stationChips = relatedStations.map(function(s){
+    return '<span class="chip">'+s.name+'</span>';
+  }).join('');
+
+  var tagsHtml = (entry.tags||[]).map(function(t){return '<span class="tag">'+t+'</span>';}).join('');
+  var equipmentHtml = (entry.equipment||[]).map(function(t){return '<span class="tag">'+t+'</span>';}).join('');
+  var keyWorksHtml = (entry.key_works||[]).map(function(t){return '<span class="chip">'+t+'</span>';}).join('');
+
+  var html = '';
+  html += '<p class="ref-kicker" id="modalTitleTarget">'+entry.type+'</p>';
+  html += '<h3 class="ref-title">'+entry.name+'</h3>';
+  html += '<p class="ref-subline">'+entry.origin+' · '+entry.years+'</p>';
+  html += '<p class="ref-summary">'+entry.summary+'</p>';
+  var rt = currentLang==="en" ? {
+    desc:"Description", context:"Historical context", works:"Key works & milestones",
+    equipment:"Associated equipment", related:"Connections to other entities",
+    stations:"Related stations", tags:"Tags"
+  } : {
+    desc:"Descripció", context:"Context històric", works:"Obres i fites clau",
+    equipment:"Equipament associat", related:"Connexions amb altres entitats",
+    stations:"Relacionat amb aquestes emissores", tags:"Etiquetes"
+  };
+  html += '<div class="ref-section"><h4>'+rt.desc+'</h4><p>'+entry.long_description+'</p></div>';
+  html += '<div class="ref-section"><h4>'+rt.context+'</h4><p>'+entry.historical_context+'</p></div>';
+  if(keyWorksHtml){ html += '<div class="ref-section"><h4>'+rt.works+'</h4><div class="ref-list">'+keyWorksHtml+'</div></div>'; }
+  if(equipmentHtml){ html += '<div class="ref-section"><h4>'+rt.equipment+'</h4><div class="ref-tags">'+equipmentHtml+'</div></div>'; }
+  if(relatedChips){ html += '<div class="ref-section"><h4>'+rt.related+'</h4><div class="ref-list">'+relatedChips+'</div></div>'; }
+  if(stationChips){ html += '<div class="ref-section"><h4>'+rt.stations+'</h4><div class="ref-list">'+stationChips+'</div></div>'; }
+  if(tagsHtml){ html += '<div class="ref-section"><h4>'+rt.tags+'</h4><div class="ref-tags">'+tagsHtml+'</div></div>'; }
+
+  modalContent.innerHTML = html;
+  modalVeil.classList.add("open");
+  modalPanel.scrollTop = 0;
+  modalClose.focus();
+}
+
+function closeModal(){
+  modalVeil.classList.remove("open");
+  modalContent.innerHTML = '';
+  if(state.focusReturnEl && document.body.contains(state.focusReturnEl)){
+    state.focusReturnEl.focus();
+  }
+}
+
+modalClose.addEventListener("click", closeModal);
+modalVeil.addEventListener("click", function(e){
+  if(e.target===modalVeil) closeModal();
+});
+document.addEventListener("keydown", function(e){
+  if(e.key==="Escape" && modalVeil.classList.contains("open")) closeModal();
+});
+modalContent.addEventListener("click", function(e){
+  var chip = e.target.closest(".chip.link");
+  if(chip){ openReference(chip.getAttribute("data-ref"), chip); }
+});
+
+/* ================= ABOUT MODAL ================= */
+$('#aboutBtn').addEventListener("click", function(){
+  state.focusReturnEl = document.activeElement;
+  var t = UI_TEXT[currentLang];
+  modalContent.innerHTML =
+    '<p class="ref-kicker" id="modalTitleTarget">'+t.about+'</p>'+
+    '<h3 class="ref-title">ONDES 70</h3>'+
+    '<div class="about-body">'+
+    (currentLang==="en" ?
+      '<p>ONDES 70 is an imagined atlas: fictional radio stations dedicated to 1970s electronic music, distributed across a world map and built from real people, places, technologies and historical connections from that decade.</p>'+
+      '<p>Each station profile contains documentary references — musicians, studios, synthesizers and movements — that can be explored through the extended reference cards. The aim is to map, with editorial freedom, a worldwide network that never existed as such but reflects real historical links between distant scenes.</p>'+
+      '<p>This is an editorial and cultural project, not a real radio network. The fictional stations use real contemporary streams from SomaFM and Radio Caprice as sonic carriers chosen for affinity with their historical profiles.</p>'
+      :
+      '<p>ONDES 70 és un atles imaginat: emissores de ràdio fictícies dedicades a la música electrònica dels anys setanta, distribuïdes per un mapa mundial i construïdes a partir de persones, llocs, tecnologies i connexions històriques reals d’aquella dècada.</p>'+
+      '<p>Cada fitxa conté referències documentals —músics, estudis, sintetitzadors i corrents— que es poden explorar a través de les fitxes ampliades. L’objectiu és cartografiar, amb llibertat editorial, una xarxa mundial que mai no va existir com a tal però que reflecteix connexions històriques reals entre escenes molt allunyades.</p>'+
+      '<p>És un projecte editorial i cultural, no una xarxa de ràdio real. Les emissores fictícies utilitzen senyals contemporanis reals de SomaFM i Radio Caprice com a portadors sonors triats per afinitat amb els seus perfils històrics.</p>')+
+    '</div>';
+  modalVeil.classList.add("open");
+  modalPanel.scrollTop = 0;
+  modalClose.focus();
+});
+
+/* ================= FEATURE: SEVENTIES DOSSIER MODAL ================= */
+var DOSSIER = {
+  ca: {
+    kicker:"Dossier especial",
+    title:"Música electrònica dels anys 70",
+    subline:"Del laboratori acadèmic a la cultura de masses · 1968 — 1983",
+    summary:"Els anys setanta són la dècada en què la música electrònica deixa de ser principalment una pràctica experimental vinculada a laboratoris de ràdio, universitats i estudis d’avantguarda i es converteix en una infraestructura creativa: una manera de compondre, produir, enregistrar i imaginar el futur. El canvi no és només musical. És tecnològic, industrial, mediàtic i cultural. Els oscil·ladors, els filtres, els seqüenciadors, les cintes multipista i els primers sistemes polifònics passen del laboratori a l’estudi de gravació, al cinema, a la televisió, a la publicitat i finalment a la pista de ball.",
+    sections:[
+      ["1 · Abans dels setanta: el laboratori inventa el llenguatge",
+       `La música electrònica dels setanta té una genealogia molt anterior. A París, ${ref('pierre-henry','Pierre Henry')} i Pierre Schaeffer havien desenvolupat la musique concrète a partir de sons enregistrats, talls de cinta, bucles i manipulació del material sonor. A Colònia, el ${ref('wdr-studio','WDR Studio für elektronische Musik')} va convertir l’electrònica pura en una disciplina de laboratori: generadors, oscil·ladors, filtres i cinta magnètica s’utilitzaven per construir sons que no existien en cap instrument tradicional. ${ref('eimert','Herbert Eimert')} i ${ref('stockhausen','Karlheinz Stockhausen')} són dues figures fonamentals d’aquest període.`,
+       `La diferència respecte dels anys setanta és d’escala i d’accés. Aquella primera generació treballava amb equips cars, espais institucionals i processos lents. Una peça podia exigir hores de muntatge de cinta per aconseguir uns pocs minuts de material. Però aquella cultura del laboratori havia establert conceptes essencials: el so com a matèria, la composició del timbre, l’espacialització, la repetició, la transformació i la possibilitat de tractar qualsevol soroll com a material musical.`,
+       `Aquesta herència també es va estendre fora de l’Europa continental. El ${ref('bbc-radiophonic-workshop','BBC Radiophonic Workshop')} va demostrar que l’electrònica podia servir per a sintonies, televisió, efectes i ficció sonora. ${ref('delia-derbyshire','Delia Derbyshire')} va convertir la manipulació de cinta i els oscil·ladors en una pràctica de producció amb impacte popular. Al nord dels Països Baixos, l’${ref('institut-sonologia','Institut de Sonologia')} i ${ref('dick-raaijmakers','Dick Raaijmakers')} van mantenir viva la connexió entre investigació, tecnologia i composició.`],
+      ["2 · 1968–1973: el sintetitzador surt del laboratori",
+       `El gran salt simbòlic arriba amb ${ref('wendy-carlos','Wendy Carlos')} i ${wikiLink('Moog','https://en.wikipedia.org/wiki/Moog_synthesizer')}. ${ref('wendy-carlos','Switched-On Bach')} (1968) demostra que un sintetitzador pot sostenir un projecte discogràfic complet i arribar a un públic molt més ampli que el de la música acadèmica. El sintetitzador deixa de ser només una màquina per fabricar sons experimentals i es converteix en un instrument amb identitat pròpia.`,
+       `Als Estats Units, ${wikiLink('Robert Moog','https://en.wikipedia.org/wiki/Robert_Moog')} desenvolupa una filosofia modular basada en el control per voltatge i el 1970 el ${wikiLink('Minimoog','https://en.wikipedia.org/wiki/Minimoog')} condensa bona part d’aquesta tecnologia en un instrument portàtil. A la costa oest, ${ref('buchla-200','Don Buchla')} defensa una idea diferent: el sintetitzador no ha de comportar-se necessàriament com un piano. El ${ref('buchla-200','Buchla 200')} prioritza superfícies tàctils, seqüenciadors i control de paràmetres. ${ref('morton-subotnick','Morton Subotnick')} i el ${ref('sf-tape-music-center','San Francisco Tape Music Center')} són essencials per entendre aquesta altra escola.`,
+       `Al Regne Unit, ${ref('ems-vcs3','EMS VCS3')} introdueix una solució compacta i extraordinàriament flexible. La seva matriu de pins permet connectar els mòduls sense la complexitat dels grans sistemes modulars. El posterior ${ref('ems-synthi-100','EMS Synthi 100')} amplia aquesta filosofia fins a convertir-la en una potent eina d’estudi. El sintetitzador comença així a ocupar un espai intermedi: encara és tecnologia experimental, però ja pot formar part del procés normal de producció.`],
+      ["3 · Alemanya: del Krautrock a la Berlin School",
+       `Alemanya és probablement el territori on la revolució electrònica dels setanta adquireix una identitat més recognoscible. ${ref('kraftwerk','Kraftwerk')} parteixen de l’avantguarda i del krautrock per construir una estètica basada en la precisió, la repetició, les màquines i una nova idea de pop europeu. La seva música converteix el ritme mecànic en una estètica moderna i prepara el terreny per al post-punk, el synth-pop, l’electro i, indirectament, el techno.`,
+       `A Berlín Occidental es desenvolupa una línia diferent. ${ref('tangerine-dream','Tangerine Dream')}, ${ref('klaus-schulze','Klaus Schulze')} i ${ref('ash-ra-tempel','Ash Ra Tempel')} treballen amb seqüenciadors, drons, arpegis repetitius i formes llargues. ${ref('manuel-gottsching','Manuel Göttsching')} connecta la psicodèlia del krautrock amb una electrònica cada vegada més abstracta. Això és el que acabaria coneixent-se com a Berlin School: música de trajecte, evolució lenta, seqüències i paisatges de timbre.`,
+       `La distinció amb la denominada Escola de Düsseldorf és útil però no absoluta. ${ref('kraftwerk','Kraftwerk')}, ${wikiLink('Neu!','https://en.wikipedia.org/wiki/Neu!')} i ${ref('cluster','Cluster')} comparteixen l’experimentació alemanya, però desenvolupen formes diferents: més motorik, més minimalistes o més properes al pop. ${ref('harmonia','Harmonia')} és un punt de contacte especialment interessant entre el rock experimental, el so de màquina i la síntesi.`],
+      ["4 · França i Itàlia: el futur es converteix en espectacle",
+       `A França, ${wikiLink('Jean-Michel Jarre','https://en.wikipedia.org/wiki/Jean-Michel_Jarre')} converteix el sintetitzador en arquitectura sonora monumental. El seu èxit demostra que una producció electrònica pot ser simultàniament tecnològica, melòdica i espectacular. Projectes com ${ref('space-band','Space')} i ${ref('droids','Droids')} exploren la iconografia espacial, mentre ${ref('cerrone','Cerrone')} apropa les màquines al llenguatge de la discoteca.`,
+       `A Itàlia i Alemanya, ${ref('giorgio-moroder','Giorgio Moroder')} representa una transformació encara més profunda: la seqüència electrònica passa a ser el motor físic de la música de ball. Des de ${ref('musicland-studios','Musicland Studios')} a Munic, Moroder treballa amb baixos sintetitzats, caixes de ritmes, seqüenciació i enregistrament multipista. “I Feel Love” (1977), amb Donna Summer, anticipa directament una part important de la música de ball electrònica posterior.`,
+       `En paral·lel, la ${ref('alessandro-alessandroni','library music')} italiana i la indústria cinematogràfica absorbeixen ràpidament les noves sonoritats. ${ref('fabio-frizzi','Fabio Frizzi')}, ${ref('goblin','Goblin')} i altres compositors mostren que l’electrònica no necessitava esperar l’àlbum conceptual: podia funcionar com a textura, efecte, tensió narrativa o atmosfera.`],
+      ["5 · Regne Unit: ràdio, BBC, ambient i industrial",
+       `El Regne Unit desenvolupa una de les xarxes més importants entre música electrònica, radiodifusió i cultura popular. El ${ref('bbc-radiophonic-workshop','BBC Radiophonic Workshop')} actua com un laboratori públic on compositors i tècnics treballen amb cintes, oscil·ladors, filtres i processos d’estudi. ${ref('delia-derbyshire','Delia Derbyshire')} és l’exemple paradigmàtic de com una tècnica de laboratori pot acabar formant part de la memòria popular.`,
+       `${ref('brian-eno','Brian Eno')} introdueix una altra idea decisiva: la música pot funcionar com a entorn. Amb “Discreet Music” (1975) i els treballs que culminen en la noció d’ambient, la composició electrònica deixa de dependre necessàriament del clímax o de la cançó convencional. ${ref('harold-budd','Harold Budd')} representa una sensibilitat propera, basada en l’espai, la quietud i la textura.`,
+       `A finals de la dècada, ${ref('cabaret-voltaire','Cabaret Voltaire')} i ${ref('throbbing-gristle','Throbbing Gristle')} obren un altre camí: l’ús de l’electrònica, el soroll, la cinta i les màquines com a llenguatge industrial i crític. D’aquí sorgirà una genealogia que connectarà post-punk, industrial, experimentació i posteriorment techno i EBM.`],
+      ["6 · Japó: síntesi, precisió i cultura pop",
+       `${ref('isao-tomita','Isao Tomita')} és la gran figura de connexió entre la tecnologia Moog i el públic internacional. Les seves reorquestracions electròniques de repertori clàssic mostren fins a quin punt el sintetitzador podia ser utilitzat com una orquestra completa: timbres, espai, dinàmica i panoramització es converteixen en elements compositius.`,
+       `A finals dels setanta, ${ref('yellow-magic-orchestra','Yellow Magic Orchestra')} porta aquesta relació entre tecnologia i cultura pop a un altre nivell. ${ref('toshi-ichiyanagi','Toshi Ichiyanagi')} representa, al seu torn, la connexió japonesa amb l’avantguarda internacional. El resultat és una escena on la síntesi, la programació, la música electrònica experimental i el pop poden coexistir sense una frontera rígida.`,
+       `Aquesta trajectòria explica per què la música electrònica japonesa dels setanta no s’ha d’entendre només com una còpia de l’escola europea o nord-americana. És una apropiació creativa de la tecnologia, transformada per una cultura d’estudi molt precisa i per una relació especialment estreta entre música, tecnologia i imaginari futurista.`],
+      ["7 · Europa de l’Est i l’URSS: tecnologia sota altres condicions",
+       `La història no es limita a Londres, Berlín, París i Nova York. El ${ref('polish-radio-studio','Polish Radio Experimental Studio')} de Varsòvia és un node fonamental de l’electrònica europea de l’Est. ${ref('eugeniusz-rudnik','Eugeniusz Rudnik')} demostra que el muntatge de cinta podia convertir-se en una autèntica pràctica d’autor, fins i tot quan els recursos materials eren molt més limitats que als grans centres occidentals.`,
+       `A l’URSS, el ${ref('ans-synth','ANS')} ofereix una filosofia tecnològica singular: el so es genera a partir de patrons gràfics sobre discs de vidre i cèl·lules fotoelèctriques. ${ref('eduard-artemyev','Eduard Artemyev')} en fa un ús especialment memorable en el cinema de ciència-ficció, incloent “Solaris” (1972) i “Stalker” (1979).`,
+       `A Suècia, ${ref('ems-stockholm','EMS (Elektronmusikstudion)')} i ${ref('ralph-lundsten','Ralph Lundsten')} mantenen una altra línia de recerca, vinculada a la ràdio pública i als estudis nacionals. El mapa europeu de l’electrònica dels setanta és, per tant, molt més distribuït del que suggereix el relat habitual.`],
+      ["8 · Costa oest dels Estats Units: el sintetitzador com a instrument nou",
+       `La costa oest nord-americana desenvolupa una concepció especialment física i experimental de la síntesi. El ${ref('sf-tape-music-center','San Francisco Tape Music Center')} reuneix compositors interessats en cinta, electrònica i noves formes d’interpretació. ${ref('morton-subotnick','Morton Subotnick')} treballa estretament amb ${ref('buchla-200','Don Buchla')} per desenvolupar instruments que no siguin simples imitacions electròniques del piano.`,
+       `${ref('suzanne-ciani','Suzanne Ciani')} mostra després que aquella tecnologia pot sortir de l’art experimental i entrar en la publicitat, els efectes sonors, els videojocs i la música comercial. ${ref('terry-riley','Terry Riley')}, ${ref('steve-reich','Steve Reich')} i ${ref('philip-glass','Philip Glass')} aporten una altra peça del trencaclosques: repetició, fase, patrons i processos graduals que dialoguen perfectament amb la lògica dels seqüenciadors.`,
+       `Així, el minimalisme i la síntesi no són dos mons separats. Comparteixen una nova concepció del temps musical: menys basada en l’estructura de la cançó i més basada en processos, repeticions, transformacions i canvis subtils.`],
+      ["9 · Cinema, televisió i publicitat: quan el timbre es converteix en narració",
+       `El cinema és un dels grans acceleradors de la música electrònica. ${ref('wendy-carlos','Wendy Carlos')} demostra amb “A Clockwork Orange” que el sintetitzador pot construir un món psicològic complet. ${ref('eduard-artemyev','Eduard Artemyev')} fa una operació comparable des de l’URSS amb el cinema de Tarkovski. ${ref('vangelis','Vangelis')} desenvolupa durant els setanta un llenguatge electrònic orquestral que posteriorment adquirirà una enorme projecció cinematogràfica.`,
+       `La televisió i la publicitat són igualment importants perquè introdueixen aquests sons en la vida quotidiana. El públic no necessita saber què és un VCO o un filtre per reconèixer que aquella sonoritat representa “el futur”. El sintetitzador es converteix en una convenció cultural: espai, tecnologia, misteri, modernitat, ciència-ficció i precisió.`,
+       `La ${ref('alessandro-alessandroni','library music')} i els estudis de producció multipista completen aquest circuit. La música electrònica ja no és només una obra: és també una biblioteca de textures i recursos disponibles per a cineastes, productores, emissores, publicistes i editors.`],
+      ["10 · 1978–1983: el final d’una era i el principi de la següent",
+       `A finals dels setanta, tres processos convergeixen. Primer, els sintetitzadors es fan més petits, fiables i polifònics. Segon, la producció d’estudi incorpora cada vegada més seqüenciació i automatització. Tercer, la cultura post-punk adopta una ètica DIY que redueix la distància entre músic, tècnic i productor. El sintetitzador deixa de ser excepcional.`,
+       `Apareixen així les condicions per al synth-pop, l’electro, el techno i la música industrial dels vuitanta. ${ref('kraftwerk','Kraftwerk')}, ${ref('yellow-magic-orchestra','Yellow Magic Orchestra')}, ${ref('cabaret-voltaire','Cabaret Voltaire')} i ${ref('throbbing-gristle','Throbbing Gristle')} representen camins diferents que convergeixen en una mateixa idea: la màquina ja no és només una eina per produir sons; és part del llenguatge compositiu.`,
+       `El ${ref('ems-vcs3','EMS VCS3')}, el ${ref('buchla-200','Buchla 200')}, els sistemes Moog, els seqüenciadors i finalment instruments com el Yamaha DX7 i la implantació del MIDI simbolitzen una transició. El món dels setanta havia descobert la síntesi analògica; els vuitanta descobririen què passava quan aquesta lògica es digitalitzava i es convertia en infraestructura industrial.`],
+      ["11 · Una xarxa mundial, no una sola escola",
+       `ONDES 70 parteix d’aquesta idea: no existeix una única història de la música electrònica dels setanta. Hi ha laboratoris, emissores, estudis privats, grups de rock, compositors, enginyers, músics de cinema, productors de discoteca i artistes que treballen amb cinta. ${ref('wdr-studio','WDR Studio für elektronische Musik')}, ${ref('bbc-radiophonic-workshop','BBC Radiophonic Workshop')}, ${ref('polish-radio-studio','Polish Radio Experimental Studio')}, ${ref('ems-stockholm','EMS (Elektronmusikstudion)')}, ${ref('institut-sonologia','Institut de Sonologia')} i ${ref('sf-tape-music-center','San Francisco Tape Music Center')} són nodes d’una mateixa transformació, encara que les seves estètiques siguin molt diferents.`,
+       `La circulació d’idees també és essencial: artistes que viatgen, discos que creuen fronteres, instruments que arriben a nous estudis i tècnics que comparteixen mètodes. El resultat és una xarxa molt més complexa que qualsevol etiqueta com “Berlin School”, “Krautrock”, “ambient” o “industrial”. Aquestes categories serveixen per orientar-nos; la història real és una trama de connexions.`,
+       `Per això el mapa d’ONDES 70 és deliberadament fictici però les seves referències són reals. Les emissores inventades funcionen com a coordenades editorials: una manera de situar en l’espai una constel·lació de persones, màquines, estudis i idees que va canviar per sempre la manera d’entendre què podia ser la música.`],
+      ["12 · Escolta: obres i enregistraments clau",
+       "Una selecció de punts d’entrada per continuar la recerca i escoltar obres representatives de les diferents línies descrites en aquest dossier:","",""]
+    ]
+  },
+  en: {
+    kicker:"Special dossier",
+    title:"Electronic Music of the 1970s",
+    subline:"From the academic laboratory to mass culture · 1968 — 1983",
+    summary:"The 1970s are the decade in which electronic music moved from a practice largely associated with radio laboratories, universities and avant-garde studios into a creative infrastructure: a way of composing, producing, recording and imagining the future. The transformation was musical, technological, industrial, media-driven and cultural. Oscillators, filters, sequencers, multitrack tape and early polyphonic systems moved from laboratories into recording studios, cinema, television, advertising and finally the dancefloor.",
+    sections:[
+      ["1 · Before the 1970s: the laboratory invents the language",
+       `Electronic music in the 1970s has a much older genealogy. In Paris, ${ref('pierre-henry','Pierre Henry')} and Pierre Schaeffer developed musique concrète from recorded sounds, tape edits, loops and physical manipulation of sound. In Cologne, the ${ref('wdr-studio','WDR Studio für elektronische Musik')} turned electronic sound into a laboratory discipline: generators, oscillators, filters and magnetic tape were used to construct sounds that had no equivalent in traditional instruments. ${ref('eimert','Herbert Eimert')} and ${ref('stockhausen','Karlheinz Stockhausen')} were central figures in this period.`,
+       `The difference in the 1970s was one of scale and access. The first generation worked with expensive equipment, institutional spaces and slow processes. A piece could require hours of tape editing to produce only a few minutes of material. Yet that laboratory culture established essential ideas: sound as raw material, timbre as a compositional parameter, spatialisation, repetition, transformation and the possibility of treating any noise as musical material.`,
+       `This legacy spread beyond continental Europe. The ${ref('bbc-radiophonic-workshop','BBC Radiophonic Workshop')} showed that electronic techniques could serve television themes, effects and sound fiction. ${ref('delia-derbyshire','Delia Derbyshire')} turned tape manipulation and oscillators into a production practice with popular impact. In the Netherlands, the ${ref('institut-sonologia','Institute of Sonology')} and ${ref('dick-raaijmakers','Dick Raaijmakers')} kept the connection between research, technology and composition alive.`],
+      ["2 · 1968–1973: the synthesizer leaves the laboratory",
+       `The symbolic breakthrough came with ${ref('wendy-carlos','Wendy Carlos')} and ${wikiLink('Moog','https://en.wikipedia.org/wiki/Moog_synthesizer')}. ${ref('wendy-carlos','Switched-On Bach')} (1968) demonstrated that a synthesizer could sustain a complete record project and reach an audience far beyond academic music. The synthesizer stopped being merely a machine for experimental sound and became an instrument with an identity of its own.`,
+       `In the United States, ${wikiLink('Robert Moog','https://en.wikipedia.org/wiki/Robert_Moog')} developed a modular philosophy based on voltage control, while the 1970 ${wikiLink('Minimoog','https://en.wikipedia.org/wiki/Minimoog')} condensed much of that technology into a portable instrument. On the West Coast, ${ref('buchla-200','Don Buchla')} pursued a different idea: a synthesizer did not necessarily have to behave like a piano. The ${ref('buchla-200','Buchla 200')} prioritised touch surfaces, sequencing and parameter control. ${ref('morton-subotnick','Morton Subotnick')} and the ${ref('sf-tape-music-center','San Francisco Tape Music Center')} are essential to this other school.`,
+       `In Britain, the ${ref('ems-vcs3','EMS VCS3')} introduced a compact and extraordinarily flexible solution. Its pin matrix allowed modules to be interconnected without the complexity of large modular systems. The later ${ref('ems-synthi-100','EMS Synthi 100')} expanded the same philosophy into a powerful studio instrument. The synthesizer occupied a new middle ground: still experimental technology, but increasingly part of ordinary production.`],
+      ["3 · Germany: from Krautrock to Berlin School",
+       `Germany is one of the places where the electronic revolution of the 1970s acquired its most recognisable identity. ${ref('kraftwerk','Kraftwerk')} emerged from the avant-garde and Krautrock to build an aesthetic based on precision, repetition, machines and a new idea of European pop. Their music turned mechanical rhythm into a modern aesthetic and helped prepare the ground for post-punk, synth-pop, electro and, indirectly, techno.`,
+       `In West Berlin, a different line developed. ${ref('tangerine-dream','Tangerine Dream')}, ${ref('klaus-schulze','Klaus Schulze')} and ${ref('ash-ra-tempel','Ash Ra Tempel')} worked with sequencers, drones, repeating arpeggios and long forms. ${ref('manuel-gottsching','Manuel Göttsching')} connected psychedelic krautrock with increasingly abstract electronics. This became known as ${wikiLink('Berlin School','https://en.wikipedia.org/wiki/Berlin_School_(electronic_music)')}: journey-like music built from slow evolution, sequences and timbral landscapes.`,
+       `The distinction from the so-called Düsseldorf School is useful but not absolute. ${ref('kraftwerk','Kraftwerk')}, ${wikiLink('Neu!','https://en.wikipedia.org/wiki/Neu!')} and ${ref('cluster','Cluster')} shared German experimentation while developing different forms: motorik rhythm, minimalism or closer approaches to pop. ${ref('harmonia','Harmonia')} is a particularly revealing meeting point between experimental rock, machine sound and synthesis.`],
+      ["4 · France and Italy: the future becomes spectacle",
+       `In France, ${wikiLink('Jean-Michel Jarre','https://en.wikipedia.org/wiki/Jean-Michel_Jarre')} turned the synthesizer into monumental sound architecture. His success demonstrated that electronic production could be technological, melodic and spectacular at the same time. Projects such as ${ref('space-band','Space')} and ${ref('droids','Droids')} explored space-age imagery, while ${ref('cerrone','Cerrone')} brought machines into the language of the discotheque.`,
+       `In Italy and Germany, ${ref('giorgio-moroder','Giorgio Moroder')} represented an even deeper transformation: electronic sequencing became the physical engine of dance music. From ${ref('musicland-studios','Musicland Studios')} in Munich, Moroder worked with synthesised bass, drum machines, sequencing and multitrack recording. “I Feel Love” (1977), with Donna Summer, directly anticipated much of later electronic dance music.`,
+       `At the same time, Italian ${ref('alessandro-alessandroni','library music')} and the film industry rapidly absorbed new sounds. ${ref('fabio-frizzi','Fabio Frizzi')}, ${ref('goblin','Goblin')} and other composers showed that electronic music did not have to wait for a conceptual album: it could function as texture, effect, narrative tension or atmosphere.`],
+      ["5 · Britain: radio, the BBC, ambient and industrial",
+       `Britain developed one of the most important networks linking electronic music, broadcasting and popular culture. The ${ref('bbc-radiophonic-workshop','BBC Radiophonic Workshop')} operated as a public laboratory where composers and technicians worked with tape, oscillators, filters and studio processes. ${ref('delia-derbyshire','Delia Derbyshire')} is the clearest example of how a laboratory technique could enter popular memory.`,
+       `${ref('brian-eno','Brian Eno')} introduced another decisive idea: music could function as an environment. With “Discreet Music” (1975) and the works surrounding the emergence of ${wikiLink('ambient','https://en.wikipedia.org/wiki/Ambient_music')}, electronic composition no longer needed to depend on a climax or conventional song form. ${ref('harold-budd','Harold Budd')} represents a related sensitivity based on space, quietness and texture.`,
+       `By the end of the decade, ${ref('cabaret-voltaire','Cabaret Voltaire')} and ${ref('throbbing-gristle','Throbbing Gristle')} opened another path: electronics, noise, tape and machines became an industrial and critical language. This genealogy would connect post-punk, industrial music, experimentation and later techno and EBM.`],
+      ["6 · Japan: synthesis, precision and pop culture",
+       `${ref('isao-tomita','Isao Tomita')} was a major bridge between Moog technology and an international audience. His electronic re-orchestrations of classical repertoire showed how far a synthesizer could function as a complete orchestra: timbre, space, dynamics and panning became compositional parameters.`,
+       `At the end of the decade, ${ref('yellow-magic-orchestra','Yellow Magic Orchestra')} took the relationship between technology and pop culture to another level. ${ref('toshi-ichiyanagi','Toshi Ichiyanagi')} represented, in turn, Japan’s connection with international avant-garde practice. The result was a scene in which synthesis, programming, experimental electronic music and pop could coexist without rigid boundaries.`,
+       `This trajectory explains why Japanese electronic music of the 1970s should not be understood simply as a copy of European or American schools. It was a creative appropriation of technology, transformed by a highly precise studio culture and by a particularly strong relationship between music, technology and futuristic imagery.`],
+      ["7 · Eastern Europe and the USSR: technology under different conditions",
+       `The story does not stop in London, Berlin, Paris and New York. The ${ref('polish-radio-studio','Polish Radio Experimental Studio')} in Warsaw was a fundamental node of Eastern European electronic music. ${ref('eugeniusz-rudnik','Eugeniusz Rudnik')} showed that tape editing could become a genuine authorial practice even when material resources were much more limited than in major Western centres.`,
+       `In the USSR, the ${ref('ans-synth','ANS')} offered a singular technological philosophy: sound was generated from graphic patterns drawn on glass discs and read by photocells. ${ref('eduard-artemyev','Eduard Artemyev')} made memorable use of it in science-fiction cinema, including “Solaris” (1972) and “Stalker” (1979).`,
+       `In Sweden, ${ref('ems-stockholm','EMS (Elektronmusikstudion)')} and ${ref('ralph-lundsten','Ralph Lundsten')} maintained another research line connected to public broadcasting and national studios. The European map of 1970s electronic music is therefore far more distributed than the standard story suggests.`],
+      ["8 · The US West Coast: the synthesizer as a new instrument",
+       `The American West Coast developed an especially physical and experimental conception of synthesis. The ${ref('sf-tape-music-center','San Francisco Tape Music Center')} brought together composers interested in tape, electronics and new forms of performance. ${ref('morton-subotnick','Morton Subotnick')} worked closely with ${ref('buchla-200','Don Buchla')} to develop instruments that were not simply electronic imitations of the piano.`,
+       `${ref('suzanne-ciani','Suzanne Ciani')} later showed that this technology could leave experimental art and enter advertising, sound effects, pinball machines and commercial music. ${ref('terry-riley','Terry Riley')}, ${ref('steve-reich','Steve Reich')} and ${ref('philip-glass','Philip Glass')} added another piece to the puzzle: repetition, phasing, patterns and gradual processes that interacted naturally with sequencer logic.`,
+       `Minimalism and synthesis were therefore not separate worlds. They shared a new conception of musical time: less dependent on song structure and more concerned with processes, repetition, transformation and subtle change.`],
+      ["9 · Cinema, television and advertising: when timbre becomes narrative",
+       `Cinema became one of the great accelerators of electronic music. ${ref('wendy-carlos','Wendy Carlos')} demonstrated with “A Clockwork Orange” that a synthesizer could construct an entire psychological world. ${ref('eduard-artemyev','Eduard Artemyev')} performed a comparable operation in the USSR through Tarkovsky’s cinema. ${ref('vangelis','Vangelis')} developed during the 1970s an orchestral electronic language that would later achieve enormous cinematic reach.`,
+       `Television and advertising were equally important because they introduced these sounds into everyday life. The audience did not need to know what a VCO or filter was to recognise a sound as “the future”. The synthesizer became a cultural convention: space, technology, mystery, modernity, science fiction and precision.`,
+       `Italian ${ref('alessandro-alessandroni','library music')} and multitrack production studios completed this circuit. Electronic music was no longer only an artwork; it was also a library of textures and resources available to filmmakers, producers, broadcasters, advertisers and editors.`],
+      ["10 · 1978–1983: the end of one era and the beginning of the next",
+       `By the end of the 1970s, three processes converged. First, synthesizers became smaller, more reliable and increasingly polyphonic. Second, studio production adopted more sequencing and automation. Third, post-punk’s DIY culture reduced the distance between musician, technician and producer. The synthesizer ceased to be exceptional.`,
+       `These conditions prepared the ground for synth-pop, electro, techno and the industrial music of the 1980s. ${ref('kraftwerk','Kraftwerk')}, ${ref('yellow-magic-orchestra','Yellow Magic Orchestra')}, ${ref('cabaret-voltaire','Cabaret Voltaire')} and ${ref('throbbing-gristle','Throbbing Gristle')} followed different paths that converged on the same idea: the machine was no longer merely a tool for producing sounds; it had become part of the compositional language.`,
+       `The ${ref('ems-vcs3','EMS VCS3')}, the ${ref('buchla-200','Buchla 200')}, Moog systems, sequencers and finally instruments such as the Yamaha DX7 and the adoption of ${wikiLink('MIDI','https://en.wikipedia.org/wiki/MIDI')} symbolise the transition. The 1970s discovered analogue synthesis; the 1980s discovered what happened when that logic became digital and industrial infrastructure.`],
+      ["11 · A worldwide network, not a single school",
+       `ONDES 70 starts from a simple idea: there is no single history of 1970s electronic music. There are laboratories, broadcasters, private studios, rock groups, composers, engineers, film musicians, dance producers and artists working with tape. The ${ref('wdr-studio','WDR Studio für elektronische Musik')}, ${ref('bbc-radiophonic-workshop','BBC Radiophonic Workshop')}, ${ref('polish-radio-studio','Polish Radio Experimental Studio')}, ${ref('ems-stockholm','EMS (Elektronmusikstudion)')}, ${ref('institut-sonologia','Institute of Sonology')} and ${ref('sf-tape-music-center','San Francisco Tape Music Center')} are nodes in the same transformation, even though their aesthetics differ greatly.`,
+       `The circulation of ideas is equally important: artists travelling, records crossing borders, instruments arriving in new studios and technicians sharing methods. The result is a network much more complex than any label such as Berlin School, Krautrock, ambient or industrial. These categories help us navigate; the real history is a web of connections.`,
+       `That is why the ONDES 70 map is deliberately fictional while its references are real. The invented stations act as editorial coordinates: a way of placing in space a constellation of people, machines, studios and ideas that permanently changed what music could be.`],
+      ["12 · Listen: key works and recordings",
+       "A selection of entry points for further research and listening across the different lines described in this dossier:","",""]
+    ]
+  }
+};
+
+var DOSSIER_WIKI = {
+  "pierre-henry":"https://en.wikipedia.org/wiki/Pierre_Henry",
+  "wdr-studio":"https://en.wikipedia.org/wiki/WDR_Studio_for_Electronic_Music",
+  "eimert":"https://en.wikipedia.org/wiki/Herbert_Eimert",
+  "stockhausen":"https://en.wikipedia.org/wiki/Karlheinz_Stockhausen",
+  "wendy-carlos":"https://en.wikipedia.org/wiki/Wendy_Carlos",
+  "buchla-200":"https://en.wikipedia.org/wiki/Buchla_Electronic_Musical_Instrument",
+  "morton-subotnick":"https://en.wikipedia.org/wiki/Morton_Subotnick",
+  "sf-tape-music-center":"https://en.wikipedia.org/wiki/San_Francisco_Tape_Music_Center",
+  "ems-vcs3":"https://en.wikipedia.org/wiki/EMS_VCS_3",
+  "ems-synthi-100":"https://en.wikipedia.org/wiki/EMS_Synthi_100",
+  "kraftwerk":"https://en.wikipedia.org/wiki/Kraftwerk",
+  "tangerine-dream":"https://en.wikipedia.org/wiki/Tangerine_Dream",
+  "klaus-schulze":"https://en.wikipedia.org/wiki/Klaus_Schulze",
+  "ash-ra-tempel":"https://en.wikipedia.org/wiki/Ash_Ra_Tempel",
+  "manuel-gottsching":"https://en.wikipedia.org/wiki/Manuel_G%C3%B6ttsching",
+  "cluster":"https://en.wikipedia.org/wiki/Cluster_(band)",
+  "harmonia":"https://en.wikipedia.org/wiki/Harmonia_(band)",
+  "space-band":"https://en.wikipedia.org/wiki/Space_(French_band)",
+  "cerrone":"https://en.wikipedia.org/wiki/Cerrone",
+  "giorgio-moroder":"https://en.wikipedia.org/wiki/Giorgio_Moroder",
+  "musicland-studios":"https://en.wikipedia.org/wiki/Musicland_Studios",
+  "brian-eno":"https://en.wikipedia.org/wiki/Brian_Eno",
+  "harold-budd":"https://en.wikipedia.org/wiki/Harold_Budd",
+  "cabaret-voltaire":"https://en.wikipedia.org/wiki/Cabaret_Voltaire_(band)",
+  "throbbing-gristle":"https://en.wikipedia.org/wiki/Throbbing_Gristle",
+  "isao-tomita":"https://en.wikipedia.org/wiki/Isao_Tomita",
+  "yellow-magic-orchestra":"https://en.wikipedia.org/wiki/Yellow_Magic_Orchestra",
+  "toshi-ichiyanagi":"https://en.wikipedia.org/wiki/Toshi_Ichiyanagi",
+  "polish-radio-studio":"https://en.wikipedia.org/wiki/Experimental_Studio_of_Polish_Radio",
+  "eugeniusz-rudnik":"https://en.wikipedia.org/wiki/Eugeniusz_Rudnik",
+  "ans-synth":"https://en.wikipedia.org/wiki/ANS_synthesizer",
+  "eduard-artemyev":"https://en.wikipedia.org/wiki/Eduard_Artemyev",
+  "ems-stockholm":"https://en.wikipedia.org/wiki/Electronic_Music_Studio_(Stockholm)",
+  "ralph-lundsten":"https://en.wikipedia.org/wiki/Ralph_Lundsten",
+  "institut-sonologia":"https://en.wikipedia.org/wiki/Institute_of_Sonology",
+  "dick-raaijmakers":"https://en.wikipedia.org/wiki/Dick_Raaijmakers",
+  "bbc-radiophonic-workshop":"https://en.wikipedia.org/wiki/BBC_Radiophonic_Workshop",
+  "delia-derbyshire":"https://en.wikipedia.org/wiki/Delia_Derbyshire",
+  "vangelis":"https://en.wikipedia.org/wiki/Vangelis",
+  "suzanne-ciani":"https://en.wikipedia.org/wiki/Suzanne_Ciani",
+  "terry-riley":"https://en.wikipedia.org/wiki/Terry_Riley",
+  "steve-reich":"https://en.wikipedia.org/wiki/Steve_Reich",
+  "philip-glass":"https://en.wikipedia.org/wiki/Philip_Glass",
+  "alessandro-alessandroni":"https://en.wikipedia.org/wiki/Alessandro_Alessandroni",
+  "fabio-frizzi":"https://en.wikipedia.org/wiki/Fabio_Frizi",
+  "goblin":"https://en.wikipedia.org/wiki/Goblin_(band)"
+};
+function dossierLinkedText(text){
+  if(!text) return "";
+  return text.replace(/<button class="ref-link" type="button" data-ref="([^"]+)">([^<]+)<\/button>/g, function(full,id,label){
+    var url=DOSSIER_WIKI[id];
+    return url ? full+' '+wikiLink('Wikipedia',url) : full;
+  });
+}
+
+function renderDossier(lang){
+  var d = DOSSIER[lang] || DOSSIER.ca;
+  var html = '<p class="ref-kicker" id="modalTitleTarget">'+d.kicker+'</p>';
+  html += '<h3 class="ref-title">'+d.title+'</h3>';
+  html += '<p class="ref-subline">'+d.subline+'</p>';
+  html += '<p class="ref-summary">'+d.summary+'</p>';
+  d.sections.forEach(function(sec, i){
+    html += '<div class="ref-section"><h4>'+dossierLinkedText(sec[0])+'</h4>';
+    if(sec[1]) html += '<p>'+dossierLinkedText(sec[1])+'</p>';
+    if(sec[2]) html += '<p>'+dossierLinkedText(sec[2])+'</p>';
+    if(sec[3]) html += '<p>'+dossierLinkedText(sec[3])+'</p>';
+    if(i===11){
+      html += '<div class="ref-list">';
+      html += '<a class="chip link-ext" href="https://tangerinedreamofficial.bandcamp.com/album/phaedra-revisited-35th-anniversary-edition" target="_blank" rel="noopener">Tangerine Dream · Phaedra (1974) ↗</a>';
+      html += '<a class="chip link-ext" href="https://klausschulze.bandcamp.com/music" target="_blank" rel="noopener">Klaus Schulze · Timewind / Moondawn ↗</a>';
+      html += '<a class="chip link-ext" href="https://clusterofficial.bandcamp.com/album/cluster-71" target="_blank" rel="noopener">Cluster · Cluster 71 (1971) ↗</a>';
+      html += '<a class="chip link-ext" href="https://harmoniamusic.bandcamp.com/album/musik-von-harmonia-reworks" target="_blank" rel="noopener">Harmonia · Musik von Harmonia (1974) ↗</a>';
+      html += '</div>';
+    }
+    html += '</div>';
+  });
+  modalContent.innerHTML = html;
+  modalVeil.classList.add("open");
+  modalPanel.scrollTop = 0;
+  modalClose.focus();
+}
+
+$('#synthEraBtn').addEventListener("click", function(){
+  state.focusReturnEl = document.activeElement;
+  renderDossier(currentLang);
+});
+
+/* ================= LANGUAGE ================= */
+var currentLang = "ca";
+
+var UI_TEXT = {
+  ca:{
+    live:"EN DIRECTE", about:"Sobre el projecte", title:"Atlas mundial de la ràdio electrònica dels anys 70",
+    introTitle:"Cartografia d'emissores", instruction:"Fes clic en un punt per sintonitzar l'emissora",
+    introEn:"World map of 1970s electronic radio stations",
+    introDesc:"Emissores especialitzades en sintetitzadors, Krautrock, Berlin School i ambient dels anys 70.",
+    wake:"Comprova el reproductor", wakeHint:"Toca aquí abans de sintonitzar si el so no arrenca",
+    dossier:"Dossier especial", dossierTitle:"Música electrònica dels anys 70",
+    dossierSub:"Del laboratori acadèmic a la pista de ball: pioners, sintetitzadors i escenes que van inventar el futur.",
+    dossierCta:"Llegir el dossier complet →", search:"Cerca emissora, ciutat, país o gènere…",
+    all:"Totes", favorites:"Preferits", discover:"Descobreix", mapCaption:"PROJECCIÓ EQUIRECTANGULAR · FES SCROLL O ELS BOTONS PER AMPLIAR",
+    stations:"emissores", foundOne:"emissora trobada", foundMany:"emissores trobades",
+    now:"SONANT ARA", noStation:"Cap emissora seleccionada", choose:"Tria un punt del mapa per començar",
+    play:"Reproduir", pause:"Pausa", ready:"LLEST PER EMETRE", connecting:"CONNECTANT…", onAir:"EN ANTENA",
+    paused:"EN PAUSA", error:"SENYAL NO DISPONIBLE", retry:"Reintenta", addFav:"Afegir a preferits", inFav:"★ Als preferits",
+    wait:"EN ESPERA", noMatch:"Cap emissora coincideix amb la cerca actual.", allGenres:"Tots els gèneres"
+  },
+  en:{
+    live:"LIVE", about:"About the project", title:"World Atlas of 1970s Electronic Radio",
+    introTitle:"Station cartography", instruction:"Click a point to tune the station",
+    introEn:"World map of 1970s electronic radio stations",
+    introDesc:"Stations focused on synthesizers, Krautrock, Berlin School and 1970s ambient music.",
+    wake:"Check player", wakeHint:"Tap here before tuning if playback does not start",
+    dossier:"Special dossier", dossierTitle:"Electronic Music of the 1970s",
+    dossierSub:"From the academic laboratory to the dancefloor: pioneers, synthesizers and scenes that invented the future.",
+    dossierCta:"Read the full dossier →", search:"Search station, city, country or genre…",
+    all:"All", favorites:"Favorites", discover:"Discover", mapCaption:"EQUIRECTANGULAR PROJECTION · SCROLL OR USE THE BUTTONS TO ZOOM",
+    stations:"stations", foundOne:"station found", foundMany:"stations found",
+    now:"NOW PLAYING", noStation:"No station selected", choose:"Choose a point on the map to start",
+    play:"Play", pause:"Pause", ready:"READY", connecting:"CONNECTING…", onAir:"ON AIR",
+    paused:"PAUSED", error:"SIGNAL UNAVAILABLE", retry:"RETRY", addFav:"Add to favorites", inFav:"★ In favorites",
+    wait:"STANDBY", noMatch:"No station matches the current search.", allGenres:"All genres"
+  }
+};
+
+function applyLanguage(lang){
+  currentLang = lang==="en" ? "en" : "ca";
+  var t = UI_TEXT[currentLang];
+  document.documentElement.lang = currentLang;
+
+  document.querySelector(".live-tag").lastChild.nodeValue = t.live;
+  $('#aboutBtn').textContent = t.about;
+  $('.masthead-title').textContent = t.title;
+  $('.intro h2').textContent = t.introTitle;
+  $('.intro-instruction').textContent = t.instruction;
+  $('.intro-en').textContent = t.introEn;
+  $('.intro-desc').textContent = t.introDesc;
+  $('#wakeBtn').lastChild.nodeValue = t.wake;
+  $('#wakeStatus').textContent = t.wakeHint;
+  $('.feature-kicker').textContent = t.dossier;
+  $('.feature-title').textContent = t.dossierTitle;
+  $('.feature-sub').textContent = t.dossierSub;
+  $('.feature-cta').textContent = t.dossierCta;
+  searchInput.placeholder = t.search;
+  $('#countAll').parentElement.childNodes[0].nodeValue = t.all+" ";
+  $('#countFav').parentElement.childNodes[0].nodeValue = t.favorites+" ";
+  $('.segment.discover').childNodes[0].nodeValue = t.discover;
+  $('.map-caption span:first-child').textContent = t.mapCaption;
+  $('.player-label').textContent = t.now;
+
+  document.querySelectorAll(".lang-switch button").forEach(function(b){
+    b.classList.toggle("active", (b.textContent.trim()==="EN") === (currentLang==="en"));
+  });
+
+  buildGenreOptions();
+  renderCatalog();
+  renderPlayer();
+  if($('#wakeStatus').classList.contains("ok")){
+    $('#wakeStatus').textContent = currentLang==="en" ? "Player ready. Click a station on the map to tune." : "Reproductor llest. Fes clic en una emissora del mapa per sintonitzar.";
+  }
+}
+
+document.querySelectorAll('.lang-switch button').forEach(function(btn){
+  btn.addEventListener("click", function(){ applyLanguage(btn.textContent.trim()==="EN" ? "en" : "ca"); });
+});
+
+/* ================= INIT ================= */
+applyLanguage("ca");
+renderCatalog();
+renderPlayer();
+renderCounts();
+startMetadataPolling();
+buildMap().then(function(){
+  updateMapMarkers(getFilteredList().map(function(s){return s.id;}));
+});
+
+})();
+</script>
+</body>
+</html>

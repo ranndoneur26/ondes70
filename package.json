@@ -1,0 +1,7 @@
+{
+  "name": "ondes70-vercel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ONDES 70 static site with Radio Caprice ICY metadata on Vercel",
+  "engines": { "node": ">=18" }
+}
